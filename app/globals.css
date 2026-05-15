@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f7f5ef;
+  --white: #fffdfa;
+  --ink: #111111;
+  --deep: #25231f;
+  --muted: #e9e5da;
+  --line: #d7d1c4;
+  --stone: #7c786f;
+  --rust: #7d3a2c;
+  --amber: #c47c4c;
+}
+
+@layer base {
+  html {
+    background-color: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .border-line {
+    border-color: var(--line);
+  }
+}
