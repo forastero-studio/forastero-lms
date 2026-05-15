@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useUser, SignOutButton } from "@clerk/nextjs";
 
 const navItems = [
   { label: "Dashboard", href: "/dashboard" },
@@ -11,6 +12,12 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { user } = useUser();
+
+  const displayName =
+    user?.firstName ||
+    user?.emailAddresses[0]?.emailAddress?.split("@")[0] ||
+    "Estudiante";
 
   return (
     <aside className="w-56 shrink-0 border-r border-line bg-paper min-h-screen flex flex-col">
@@ -41,9 +48,16 @@ export default function Sidebar() {
       </nav>
 
       <div className="px-6 py-5 border-t border-line">
-        <p className="font-mono text-[9px] tracking-wider uppercase text-stone">
-          forastero.studio
-        </p>
+        {user && (
+          <p className="font-sans text-xs text-deep mb-3 truncate">
+            {displayName}
+          </p>
+        )}
+        <SignOutButton>
+          <button className="font-mono text-[9px] tracking-wider uppercase text-stone hover:text-ink transition-colors cursor-pointer">
+            Cerrar sesión
+          </button>
+        </SignOutButton>
       </div>
     </aside>
   );

@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 import ContentArea from "@/components/ContentArea";
 import ModuleCard from "@/components/ModuleCard";
 import { getCadManagementModule, getCadManagementModules } from "@/lib/content";
+import { hasAccess } from "@/lib/db";
+import Link from "next/link";
 
 interface Props {
   params: Promise<{ modulo: string }>;
@@ -15,8 +18,40 @@ export async function generateStaticParams() {
 export default async function ModuloPage({ params }: Props) {
   const { modulo } = await params;
   const content = getCadManagementModule(modulo);
-
   if (!content) notFound();
+
+  const { userId } = await auth();
+  const access = userId ? await hasAccess(userId, "cad-management") : false;
+
+  if (!access) {
+    return (
+      <ContentArea>
+        <p className="eyebrow mb-6">CAD Management</p>
+        <h1
+          className="text-4xl font-light text-ink mb-4"
+          style={{ letterSpacing: "-0.03em" }}
+        >
+          {content.title}
+        </h1>
+        <div className="h-px bg-line my-8" />
+        <div className="max-w-md">
+          <p className="text-base font-light text-deep mb-2">
+            Este contenido es exclusivo para alumnos del Taller CAD Management.
+          </p>
+          <p className="text-sm font-light text-stone mb-6">
+            Accedé a los dos módulos completos, materiales de apoyo y
+            actualizaciones futuras del taller.
+          </p>
+          <Link
+            href="/cad-management"
+            className="inline-block text-xs font-mono tracking-wider uppercase text-paper bg-ink px-5 py-3 hover:bg-rust transition-colors"
+          >
+            Comprar CAD Management
+          </Link>
+        </div>
+      </ContentArea>
+    );
+  }
 
   const allModules = getCadManagementModules();
 
