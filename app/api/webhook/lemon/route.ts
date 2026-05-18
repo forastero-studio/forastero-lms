@@ -1,19 +1,78 @@
+import { createHmac, timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabase";
 
-// Lemon Squeezy webhook — placeholder
-// Docs: https://docs.lemonsqueezy.com/help/webhooks
+const PRODUCT_SLUGS: Record<number, string> = {
+  1667874: "cad-management",
+  1063951: "bootcamp",
+  1063959: "pack",
+};
+
+function verifySignature(rawBody: string, signature: string): boolean {
+  const secret = process.env.LEMON_WEBHOOK_SECRET!;
+  const digest = createHmac("sha256", secret).update(rawBody).digest("hex");
+  try {
+    return timingSafeEqual(Buffer.from(digest), Buffer.from(signature));
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(req: NextRequest) {
   const signature = req.headers.get("x-signature");
-
   if (!signature) {
     return NextResponse.json({ error: "Missing signature" }, { status: 401 });
   }
 
-  const body = await req.json();
+  const rawBody = await req.text();
 
-  // TODO: verify HMAC signature with LEMON_SQUEEZY_WEBHOOK_SECRET
-  // TODO: handle events: order_created, subscription_created, etc.
-  console.log("[lemon webhook]", body.meta?.event_name);
+  if (!verifySignature(rawBody, signature)) {
+    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  }
+
+  const body = JSON.parse(rawBody);
+  const eventName: string = body.meta?.event_name;
+  const data = body.data?.attributes;
+  const orderId: string = body.data?.id;
+
+  if (eventName === "order_created") {
+    const email: string = data?.user_email ?? "";
+    const productId: number = data?.first_order_item?.product_id;
+    const productSlug = PRODUCT_SLUGS[productId];
+
+    if (!productSlug) {
+      console.warn("[lemon webhook] unknown product_id:", productId);
+      return NextResponse.json({ received: true });
+    }
+
+    const { data: existingUser } = await supabaseAdmin
+      .from("users")
+      .select("id")
+      .eq("email", email)
+      .maybeSingle();
+
+    if (existingUser) {
+      await supabaseAdmin.from("purchases").insert({
+        user_id: existingUser.id,
+        product_slug: productSlug,
+        lemon_order_id: orderId,
+        status: "active",
+      });
+    } else {
+      await supabaseAdmin.from("purchases").insert({
+        user_id: null,
+        pending_email: email,
+        product_slug: productSlug,
+        lemon_order_id: orderId,
+        status: "active",
+      });
+    }
+  } else if (eventName === "order_refunded") {
+    await supabaseAdmin
+      .from("purchases")
+      .update({ status: "refunded" })
+      .eq("lemon_order_id", orderId);
+  }
 
   return NextResponse.json({ received: true });
 }

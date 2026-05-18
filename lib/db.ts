@@ -52,43 +52,21 @@ export async function hasAccess(
   const user = await getUserByClerkId(clerkId);
   if (!user) return false;
 
-  if (productSlug === "pack") {
-    const { data: packPurchase } = await supabaseAdmin
-      .from("purchases")
-      .select("id")
-      .eq("user_id", user.id)
-      .eq("product_slug", "pack")
-      .eq("status", "active")
-      .maybeSingle();
-    if (packPurchase) return true;
-
-    const [{ data: cadPurchase }, { data: bootcampPurchase }] =
-      await Promise.all([
-        supabaseAdmin
-          .from("purchases")
-          .select("id")
-          .eq("user_id", user.id)
-          .eq("product_slug", "cad-management")
-          .eq("status", "active")
-          .maybeSingle(),
-        supabaseAdmin
-          .from("purchases")
-          .select("id")
-          .eq("user_id", user.id)
-          .eq("product_slug", "bootcamp")
-          .eq("status", "active")
-          .maybeSingle(),
-      ]);
-    return !!(cadPurchase && bootcampPurchase);
-  }
+  // pack grants access to everything; check it first for cad-management and bootcamp
+  const slugsToCheck =
+    productSlug === "pack"
+      ? ["pack"]
+      : [productSlug, "pack"];
 
   const { data } = await supabaseAdmin
     .from("purchases")
     .select("id")
     .eq("user_id", user.id)
-    .eq("product_slug", productSlug)
+    .in("product_slug", slugsToCheck)
     .eq("status", "active")
+    .limit(1)
     .maybeSingle();
+
   return !!data;
 }
 

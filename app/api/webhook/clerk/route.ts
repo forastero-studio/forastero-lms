@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { Webhook } from "svix";
 import { createUser, updateUser, deleteUser } from "@/lib/db";
+import { supabaseAdmin } from "@/lib/supabase";
 
 interface ClerkUserEvent {
   type: "user.created" | "user.updated" | "user.deleted";
@@ -41,9 +42,20 @@ export async function POST(req: Request) {
   const name = [first_name, last_name].filter(Boolean).join(" ") || email;
 
   switch (evt.type) {
-    case "user.created":
-      await createUser(id, email, name);
+    case "user.created": {
+      const user = await createUser(id, email, name);
+      const { data: pending } = await supabaseAdmin
+        .from("purchases")
+        .select("id")
+        .eq("pending_email", email);
+      if (pending && pending.length > 0) {
+        await supabaseAdmin
+          .from("purchases")
+          .update({ user_id: user.id, pending_email: null })
+          .eq("pending_email", email);
+      }
       break;
+    }
     case "user.updated":
       await updateUser(id, email, name);
       break;

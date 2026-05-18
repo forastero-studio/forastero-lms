@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import BuyButton from "@/components/ui/BuyButton";
 
 export default function LandingPage() {
   return (
@@ -382,7 +383,7 @@ function PricingSection() {
             "Acceso de por vida",
           ]}
           cta="Comprar taller"
-          href="#"
+          checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
         />
         <PriceCard
           number="02"
@@ -395,7 +396,7 @@ function PricingSection() {
             "Acceso de por vida",
           ]}
           cta="Comprar bootcamp"
-          href="#"
+          checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
         />
         <PriceCard
           number="03"
@@ -408,7 +409,7 @@ function PricingSection() {
             "Acceso de por vida",
           ]}
           cta="Comprar pack"
-          href="#"
+          checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
           featured
           badge="Mejor valor"
         />
@@ -423,7 +424,7 @@ function PriceCard({
   price,
   includes,
   cta,
-  href,
+  checkoutUrl,
   featured = false,
   badge,
 }: {
@@ -432,7 +433,7 @@ function PriceCard({
   price: string;
   includes: string[];
   cta: string;
-  href: string;
+  checkoutUrl: string;
   featured?: boolean;
   badge?: string;
 }) {
@@ -497,8 +498,8 @@ function PriceCard({
         {DISCLAIMER}
       </p>
 
-      <Link
-        href={href}
+      <BuyButton
+        checkoutUrl={checkoutUrl}
         className={`inline-block border px-5 py-3 text-sm font-light text-center transition-colors ${
           featured
             ? "border-white/40 text-white hover:border-white"
@@ -506,7 +507,7 @@ function PriceCard({
         }`}
       >
         {cta}
-      </Link>
+      </BuyButton>
     </div>
   );
 }
