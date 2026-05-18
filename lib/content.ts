@@ -1,13 +1,20 @@
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 
 export type ContentFile = {
   slug: string;
   title: string;
   body: string;
+  videoDriveId?: string;
+  prevModulo?: string | null;
+  nextModulo?: string | null;
+  duracion_estimada?: string;
+  clase?: number;
+  moduloLetra?: string;
 };
 
-function readMarkdownDir(dir: string): ContentFile[] {
+function readMarkdownFiles(dir: string): ContentFile[] {
   const full = path.join(process.cwd(), "content", dir);
   if (!fs.existsSync(full)) return [];
 
@@ -16,29 +23,35 @@ function readMarkdownDir(dir: string): ContentFile[] {
     .filter((f) => f.endsWith(".md"))
     .map((file) => {
       const raw = fs.readFileSync(path.join(full, file), "utf-8");
-      const titleMatch = raw.match(/^#\s+(.+)$/m);
+      const { data, content } = matter(raw);
       return {
-        slug: file.replace(".md", ""),
-        title: titleMatch ? titleMatch[1] : file.replace(".md", ""),
-        body: raw,
+        slug: data.slug ?? file.replace(".md", ""),
+        title: data.title ?? file.replace(".md", ""),
+        body: content,
+        videoDriveId: data.videoDriveId || undefined,
+        prevModulo: data.prevModulo ?? null,
+        nextModulo: data.nextModulo ?? null,
+        duracion_estimada: data.duracion_estimada,
+        clase: data.clase,
+        moduloLetra: data.moduloLetra,
       };
     });
 }
 
 export function getCadManagementModules(): ContentFile[] {
-  return readMarkdownDir("cad-management");
+  const taller = readMarkdownFiles("cad-management/taller");
+  const workshop = readMarkdownFiles("cad-management/workshop");
+  return [...taller, ...workshop];
 }
 
 export function getBootcampWeeks(): ContentFile[] {
-  return readMarkdownDir("bootcamp");
+  return readMarkdownFiles("bootcamp");
 }
 
 export function getCadManagementModule(slug: string): ContentFile | null {
-  const all = getCadManagementModules();
-  return all.find((m) => m.slug === slug) ?? null;
+  return getCadManagementModules().find((m) => m.slug === slug) ?? null;
 }
 
 export function getBootcampWeek(slug: string): ContentFile | null {
-  const all = getBootcampWeeks();
-  return all.find((w) => w.slug === slug) ?? null;
+  return getBootcampWeeks().find((w) => w.slug === slug) ?? null;
 }

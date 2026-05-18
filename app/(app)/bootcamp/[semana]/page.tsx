@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import ContentArea from "@/components/ContentArea";
 import AgentPanel from "@/components/AgentPanel";
 import ModuleCard from "@/components/ModuleCard";
+import MarkdownBody from "@/components/ui/MarkdownBody";
 import { getBootcampWeek, getBootcampWeeks } from "@/lib/content";
 import { hasAccess } from "@/lib/db";
 import Link from "next/link";
@@ -66,44 +67,53 @@ export default async function SemanaPage({ params }: Props) {
         >
           {content.title}
         </h1>
+        {content.duracion_estimada && (
+          <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mt-2">
+            {content.duracion_estimada}
+          </p>
+        )}
         <div className="h-px bg-line my-8" />
 
-        <div className="font-light text-deep leading-relaxed max-w-none mb-16">
-          {content.body.split("\n").map((line, i) => {
-            if (line.startsWith("# ")) return null;
-            if (line.startsWith("## "))
-              return (
-                <h2
-                  key={i}
-                  className="text-2xl font-light text-ink mt-10 mb-4"
-                  style={{ letterSpacing: "-0.025em" }}
-                >
-                  {line.slice(3)}
-                </h2>
-              );
-            if (line.startsWith("- "))
-              return (
-                <p key={i} className="text-deep font-light text-sm mb-1 pl-4">
-                  · {line.slice(2)}
-                </p>
-              );
-            if (line.startsWith("> "))
-              return (
-                <blockquote
-                  key={i}
-                  className="border-l border-ink pl-5 my-6 text-stone font-light text-sm"
-                >
-                  {line.slice(2)}
-                </blockquote>
-              );
-            if (line.trim() === "") return <div key={i} className="h-3" />;
-            return (
-              <p key={i} className="text-deep font-light text-base leading-relaxed">
-                {line}
-              </p>
-            );
-          })}
+        {content.videoDriveId && (
+          <div className="aspect-video w-full rounded-md overflow-hidden mb-10 bg-muted">
+            <iframe
+              src={`https://drive.google.com/file/d/${content.videoDriveId}/preview`}
+              className="w-full h-full"
+              allow="autoplay"
+              allowFullScreen
+            />
+          </div>
+        )}
+
+        <div className="max-w-none mb-16">
+          <MarkdownBody content={content.body} />
         </div>
+
+        {(content.prevModulo || content.nextModulo) && (
+          <>
+            <div className="h-px bg-line mb-8" />
+            <div className="flex justify-between gap-4 mb-12">
+              {content.prevModulo ? (
+                <Link
+                  href={`/bootcamp/${content.prevModulo}`}
+                  className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+                >
+                  ← Anterior
+                </Link>
+              ) : (
+                <span />
+              )}
+              {content.nextModulo && (
+                <Link
+                  href={`/bootcamp/${content.nextModulo}`}
+                  className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+                >
+                  Siguiente →
+                </Link>
+              )}
+            </div>
+          </>
+        )}
 
         <div className="h-px bg-line mb-8" />
         <p className="eyebrow mb-6">Semanas del bootcamp</p>
