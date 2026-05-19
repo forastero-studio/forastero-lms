@@ -78,37 +78,6 @@ function Hero() {
         </div>
       </div>
 
-      <div className="hidden md:block self-end pb-2">
-        <div className="border border-line p-8 bg-white">
-          <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone mb-6">
-            Progreso del alumno
-          </p>
-          <div className="flex flex-col gap-3">
-            {[
-              { label: "Taller de Documentación", done: true },
-              { label: "Workshop de Cotización", done: false },
-              { label: "Bootcamp — Semana 1", done: false },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div
-                  className={`w-3.5 h-3.5 border shrink-0 ${
-                    item.done
-                      ? "bg-ink border-ink"
-                      : "border-line bg-transparent"
-                  }`}
-                />
-                <span
-                  className={`text-sm font-light ${
-                    item.done ? "text-stone line-through" : "text-deep"
-                  }`}
-                >
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </header>
   );
 }
@@ -183,7 +152,6 @@ function PathsSection() {
           includes={[
             "8 semanas de formación progresiva",
             "Agente Forastero integrado en cada semana",
-            "Acceso a comunidad de arquitectos",
           ]}
           cta="Ver bootcamp"
           href="/bootcamp"
@@ -392,7 +360,6 @@ function PricingSection() {
           includes={[
             "8 semanas de formación",
             "Agente Forastero integrado",
-            "Comunidad de arquitectos",
             "Acceso de por vida",
           ]}
           cta="Comprar bootcamp"
