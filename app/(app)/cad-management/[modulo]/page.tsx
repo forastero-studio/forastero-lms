@@ -84,7 +84,25 @@ export default async function ModuloPage({ params }: Props) {
       )}
 
       <div className="max-w-none mb-16">
-        <MarkdownBody content={content.body} />
+        {content.body.trim() ? (
+          <MarkdownBody content={content.body} />
+        ) : (
+          <div className="border border-line bg-white p-8 max-w-lg">
+            <p className="text-base font-light text-deep mb-2">
+              Este contenido está en preparación.
+            </p>
+            <p className="text-sm font-light text-stone">
+              Lo vas a tener disponible antes del 1 de junio. Cualquier
+              consulta:{" "}
+              <a
+                href="mailto:hola@forastero.studio"
+                className="text-ink hover:text-rust transition-colors"
+              >
+                hola@forastero.studio
+              </a>
+            </p>
+          </div>
+        )}
       </div>
 
       {(content.prevModulo || content.nextModulo) && (
