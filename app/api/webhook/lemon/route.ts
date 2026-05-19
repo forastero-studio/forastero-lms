@@ -3,15 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 
 const PRODUCT_IDS: Record<string, string> = {
-  "1667874": "cad-management",
+  "1063937": "cad-management",
   "1063951": "bootcamp",
   "1063959": "pack",
 };
 
 const VARIANT_IDS: Record<string, string> = {
-  "1063937": "cad-management",
-  // TODO: agregar variant_id de bootcamp
-  // TODO: agregar variant_id de pack
+  "1667874": "cad-management",
+  "1667893": "bootcamp",
+  "1667903": "pack",
 };
 
 function resolveSlug(productId: unknown, variantId: unknown): string | null {
