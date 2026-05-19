@@ -2,11 +2,25 @@ import { createHmac, timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 
-const PRODUCT_SLUGS: Record<number, string> = {
-  1667874: "cad-management",
-  1063951: "bootcamp",
-  1063959: "pack",
+const PRODUCT_IDS: Record<string, string> = {
+  "1667874": "cad-management",
+  "1063951": "bootcamp",
+  "1063959": "pack",
 };
+
+const VARIANT_IDS: Record<string, string> = {
+  "1063937": "cad-management",
+  // TODO: agregar variant_id de bootcamp
+  // TODO: agregar variant_id de pack
+};
+
+function resolveSlug(productId: unknown, variantId: unknown): string | null {
+  return (
+    PRODUCT_IDS[String(productId)] ??
+    VARIANT_IDS[String(variantId)] ??
+    null
+  );
+}
 
 function verifySignature(rawBody: string, signature: string): boolean {
   const secret = process.env.LEMON_WEBHOOK_SECRET!;
@@ -37,11 +51,12 @@ export async function POST(req: NextRequest) {
 
   if (eventName === "order_created") {
     const email: string = data?.user_email ?? "";
-    const productId: number = data?.first_order_item?.product_id;
-    const productSlug = PRODUCT_SLUGS[productId];
+    const productId = data?.first_order_item?.product_id;
+    const variantId = data?.first_order_item?.variant_id;
+    const productSlug = resolveSlug(productId, variantId);
 
     if (!productSlug) {
-      console.warn("[lemon webhook] unknown product_id:", productId);
+      console.warn("[lemon webhook] unknown product_id/variant_id:", { productId, variantId });
       return NextResponse.json({ received: true });
     }
 
