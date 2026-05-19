@@ -86,7 +86,22 @@ export default async function SemanaPage({ params }: Props) {
         )}
 
         <div className="max-w-none mb-16">
-          <MarkdownBody content={content.body} />
+          {content.body.trim() ? (
+            <MarkdownBody content={content.body} />
+          ) : (
+            <div className="border border-line bg-white p-8 max-w-lg">
+              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+                Cohorte 0
+              </p>
+              <p className="text-base font-light text-deep mb-2">
+                Inicia el lunes 7 de julio de 2026.
+              </p>
+              <p className="text-sm font-light text-stone">
+                Esta semana se desbloquea cuando arranque la cohorte. Vas a
+                recibir un email con instrucciones unos días antes del inicio.
+              </p>
+            </div>
+          )}
         </div>
 
         {(content.prevModulo || content.nextModulo) && (
