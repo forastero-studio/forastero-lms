@@ -1,0 +1,52 @@
+descargables:
+  - nombre: "01.EXCEL COTIZACION DE OBRA GLOBAL.xls"
+    fileId: "1Xn1CBjfDpKM2q5VHcNoxo_oC7Qz0a4Gh"
+    tipo: download
+  - nombre: "02.PRESUPUESTO DE OBRA GLOBAL.pdf"
+    fileId: "1bVNqTQFmDZraFYknlIfYm0jHk-xl2aF7"
+    tipo: inline
+  - nombre: "03.COTIZACION DE OBRA DETALLADA.xls"
+    fileId: "10nxgkZPToC7L3Xw9h7i7-Snu8zZRs3wj"
+    tipo: download
+  - nombre: "04.PRESUPUESTO DE OBRA DETALLADA.pdf"
+    fileId: "1SzgRlfdpK6epV79fANzDQgGYriHQKSzl"
+    tipo: inline
+  - nombre: "05.PORCENTAJE INCIDENCIA POR RUBRO DE OBRA.pdf"
+    fileId: "17Ig9ckLk1mtv9Ex6JH8kE_rxwVIx5rYn"
+    tipo: inline
+  - nombre: "06.MATERIALES LISTADO DE OBRA.pdf"
+    fileId: "180_LkKBQRvPA8W6lDQPMm2AyyBrEBdEF"
+    tipo: inline
+  - nombre: "07.COMPUTO DE HORMIGON Y ACERO.pdf"
+    fileId: "1L63VDgMBzdYo4XTDWlrh7n6L7frQ80sU"
+    tipo: inline
+  - nombre: "08.COSTO DE MATERIALES DE CONSTRUCCION.pdf"
+    fileId: "118ebYUhZLORHQoQq25qjksYhVF_Z7DaP"
+    tipo: inline
+  - nombre: "09.COSTOS DE CONSTRUCCION POR RUBRO.pdf"
+    fileId: "1unF8MJfdxIPudkayqdbusGCmV-Nil1af"
+    tipo: inline
+  - nombre: "10.LISTADO PRECIO SANITARIOS.pdf"
+    fileId: "1YkVw92-zGRcGo_xYpbHGAZYD6n7eidri"
+    tipo: inline
+  - nombre: "11.PRESUPUESTO CARPINTERIA ALUMINIO.pdf"
+    fileId: "1j1RIjd24lg8svhEJAZoHen9Ljlpk6id4"
+    tipo: inline
+  - nombre: "12.PRESUPUESTO CARPINTERIA ALUMINIO.pdf"
+    fileId: "1veChijpQO11tq1zgJP9qJiG-MHAhIWnQ"
+    tipo: inline
+  - nombre: "13.PRESUPUESTO CARPINTERIA ALUMINIO.pdf"
+    fileId: "1x7-ZZIeMYVjexkSvvNIWaRJ8OYiY8YsQ"
+    tipo: inline
+  - nombre: "14.PRESUPUESTO CORRALON.pdf"
+    fileId: "1F1B27E9m3-kYaT4RPiWBs75NYb846arM"
+    tipo: inline
+  - nombre: "15.PRESUPUESTO CORRALON.pdf"
+    fileId: "1hfW5Oiirkt1_1TrHBRIfRqr6dScMwlgC"
+    tipo: inline
+  - nombre: "16.PRESUPUESTO MARMOLERIA.pdf"
+    fileId: "1iyyXWhzbH984xt8FEdvKCdqdUBn36gkW"
+    tipo: inline
+  - nombre: "17.PRESUPUESTO ELECTRICIDAD.pdf"
+    fileId: "1xXpiIfTdEwnh_VmHYKXu7SZoBLV9f2YM"
+    tipo: inline
