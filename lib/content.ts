@@ -2,6 +2,12 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export type Descargable = {
+  nombre: string;
+  fileId: string;
+  tipo: "inline" | "download";
+};
+
 export type ContentFile = {
   slug: string;
   title: string;
@@ -12,6 +18,7 @@ export type ContentFile = {
   duracion_estimada?: string;
   clase?: number;
   moduloLetra?: string;
+  descargables?: Descargable[];
 };
 
 function readMarkdownFiles(dir: string): ContentFile[] {
@@ -34,6 +41,7 @@ function readMarkdownFiles(dir: string): ContentFile[] {
         duracion_estimada: data.duracion_estimada,
         clase: data.clase,
         moduloLetra: data.moduloLetra,
+        descargables: Array.isArray(data.descargables) ? data.descargables : undefined,
       };
     });
 }

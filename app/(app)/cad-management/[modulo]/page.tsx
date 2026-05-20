@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import ContentArea from "@/components/ContentArea";
 import ModuleCard from "@/components/ModuleCard";
 import MarkdownBody from "@/components/ui/MarkdownBody";
+import DescargablesList from "@/components/DescargablesList";
 import { getCadManagementModule, getCadManagementModules } from "@/lib/content";
 import { hasAccess } from "@/lib/db";
 import Link from "next/link";
@@ -104,6 +105,18 @@ export default async function ModuloPage({ params }: Props) {
           </div>
         )}
       </div>
+
+      {content.descargables && content.descargables.length > 0 && (
+        <div className="mb-16">
+          <h2
+            className="text-2xl font-light text-ink mt-10 mb-4"
+            style={{ letterSpacing: "-0.025em" }}
+          >
+            Recursos del módulo
+          </h2>
+          <DescargablesList items={content.descargables} />
+        </div>
+      )}
 
       {(content.prevModulo || content.nextModulo) && (
         <>
