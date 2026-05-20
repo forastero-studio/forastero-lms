@@ -63,3 +63,33 @@ export function getCadManagementModule(slug: string): ContentFile | null {
 export function getBootcampWeek(slug: string): ContentFile | null {
   return getBootcampWeeks().find((w) => w.slug === slug) ?? null;
 }
+
+export type LegalPage = {
+  slug: string;
+  title: string;
+  ultimaActualizacion?: string;
+  body: string;
+};
+
+const LEGAL_SLUGS: Record<string, string> = {
+  "terminos-y-condiciones": "terminos-y-condiciones",
+  privacidad: "politica-privacidad",
+  reembolso: "politica-reembolso",
+};
+
+export function getLegalPage(slug: string): LegalPage | null {
+  const filename = LEGAL_SLUGS[slug];
+  if (!filename) return null;
+
+  const full = path.join(process.cwd(), "content", "legal", `${filename}.md`);
+  if (!fs.existsSync(full)) return null;
+
+  const raw = fs.readFileSync(full, "utf-8");
+  const { data, content } = matter(raw);
+  return {
+    slug,
+    title: data.title ?? slug,
+    ultimaActualizacion: data.ultimaActualizacion,
+    body: content,
+  };
+}

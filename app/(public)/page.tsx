@@ -483,13 +483,25 @@ function PriceCard({
 
 function Footer() {
   return (
-    <footer className="px-8 md:px-14 py-16 flex flex-col md:flex-row justify-between items-start gap-4">
+    <footer className="px-8 md:px-14 py-16 flex flex-col md:flex-row justify-between items-start gap-6 border-t border-line">
       <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
         Forastero · Studio
       </p>
-      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
-        Habitar el sentido
-      </p>
+      <div className="flex flex-wrap gap-6">
+        {[
+          { href: "/legal/terminos-y-condiciones", label: "Términos y condiciones" },
+          { href: "/legal/privacidad", label: "Política de privacidad" },
+          { href: "/legal/reembolso", label: "Política de reembolso" },
+        ].map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+          >
+            {l.label}
+          </a>
+        ))}
+      </div>
     </footer>
   );
 }
