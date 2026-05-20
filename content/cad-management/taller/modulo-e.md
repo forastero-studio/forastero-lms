@@ -7,6 +7,46 @@ slug: "modulo-e"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
 videoDriveId: "1-Xmqxpam_X9Ms02TdVjAUUEhAprBe5-S"
+descargables:
+  - nombre: "00.BLOQUES INSTALACIONES.dwg"
+    fileId: "1gADoWeJWhwm7G5nA3IRPAinseMkNyFcF"
+    tipo: download
+  - nombre: "01.LISTADO DE LAYERS INSTALACION ELECTRICA Y TERMOMECANICA.dwg"
+    fileId: "1DMm8hD3WXvSuvEUHNdEB4E6pNXONDGh5"
+    tipo: download
+  - nombre: "01.LISTADO DE LAYERS INSTALACION ELECTRICA Y TERMOMECANICA.xlsx"
+    fileId: "1XiwY3B0iCpE9khA6ZMNGtaQnIvaw3Jys"
+    tipo: download
+  - nombre: "02-INSTALACION ELECTRICA Y TERMOMECANICA 1.100.ctb"
+    fileId: "1Og8TwIdDfcm_3Qpsa5tfPaKueKYwvzTA"
+    tipo: download
+  - nombre: "02-INSTALACION ELECTRICA Y TERMOMECANICA 1.50.ctb"
+    fileId: "1pCkDxdwQnZRJMtf5FFfnI9yI3THgGpJI"
+    tipo: download
+  - nombre: "03.INSTALACION ELECTRICA ILUMINACION.pdf"
+    fileId: "1woatS0plVafXvsxUutwGEA_n5KnXvAfQ"
+    tipo: inline
+  - nombre: "04.INSTALACION ELECTRICA TOMAS Y CORRIENTES DEBILES.pdf"
+    fileId: "1BP1hTLSxji5AYAJ77jVL9_R1RC-n_2s8"
+    tipo: inline
+  - nombre: "05.INSTALACION AIRE ACONDICINADO.pdf"
+    fileId: "1h1bL3ZDqN0LG6ovmZqUQztV_M99_RC5Q"
+    tipo: inline
+  - nombre: "06.INSTALACIÓN RADIADORES.pdf"
+    fileId: "1KORPxOFDcN-Ul1HvjOz5ciD9F4RRcpij"
+    tipo: inline
+  - nombre: "07.INSTALACION LOSA RADIANTE.pdf"
+    fileId: "1QrElT76cwgA1QNjKMkWQbUPELwLoSpXL"
+    tipo: inline
+  - nombre: "ANEXO AUTOCAD-CTB.pdf"
+    fileId: "12qYtV8jDjnhj5MWk5-tjzkp50CTQfQBw"
+    tipo: inline
+  - nombre: "ANEXO AUTOCAD-IMPRESION.pdf"
+    fileId: "1GVeipZvrk8XuksCeJfdax0bMNIsNUpKT"
+    tipo: inline
+  - nombre: "GUÍA PRACTICA E.pdf"
+    fileId: "1dIpMWi-3fEBKQwhOfH_vuu3FkXJ3Bl94"
+    tipo: inline
 guiaPracticaPdf: "modulo-e/guia-practica-e.pdf"
 prevModulo: "modulo-d"
 nextModulo: "modulo-f"

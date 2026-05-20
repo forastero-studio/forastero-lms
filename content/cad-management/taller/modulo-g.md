@@ -7,6 +7,37 @@ slug: "modulo-g"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
 videoDriveId: "1TSaQb0plcGVU9-VohDfe2nqZe_bh4Efx"
+descargables:
+  - nombre: "00.ITEMIZADO.xlsx"
+    fileId: "1HjS-qjOhVZjwYZU_hN8c2GOgCQto4ZwC"
+    tipo: download
+  - nombre: "00.LAMINA CARPINTERIAS.dwg"
+    fileId: "1afJErvaew3JBlNBE5Aw3psR0OuOU_l3p"
+    tipo: download
+  - nombre: "00.PLANILLA DE LOCALES.xls"
+    fileId: "1ox2CeobE61apqmkFoPkJ08rAlCUGXSWJ"
+    tipo: download
+  - nombre: "01.LAYERS PLANILLA DE CARPINTERIAS.dwg"
+    fileId: "1n5wUMvoevMmkSASovvEe2jzQqv5ANsNQ"
+    tipo: download
+  - nombre: "01.LISTADO DE LAYERS PLANILLA DE CARPINTERIAS.xlsx"
+    fileId: "1Oxx33t9v7SK_Pj3uq2wm8RXxe04ErwVA"
+    tipo: download
+  - nombre: "02-CARPINTERIAS 1.50.ctb"
+    fileId: "1o4jEPQLaKEr4iBpoL4ipmE4Tm1EuXYim"
+    tipo: download
+  - nombre: "03.PLANILLA DE CARPINTERIAS.pdf"
+    fileId: "1dhzXRlTwLFLSoBfvZ_esauP2iVV0UXKU"
+    tipo: inline
+  - nombre: "04.PLANILLA DE LOCALES.pdf"
+    fileId: "1WJmP-qg-5Xx1ahNSm3U56ue5X_poPWY4"
+    tipo: inline
+  - nombre: "05.ITEMIZADO.pdf"
+    fileId: "1E3jdW4CNjyWrZEHasJtbku88ZdEqHpn1"
+    tipo: inline
+  - nombre: "GUÍA PRACTICA G.pdf"
+    fileId: "1mjC8YzrYzln9gQJSJFkrhBNpciDCNI_d"
+    tipo: inline
 guiaPracticaPdf: "modulo-g/guia-practica-g.pdf"
 prevModulo: "modulo-f"
 nextModulo: null

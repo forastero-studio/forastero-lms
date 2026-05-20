@@ -5,6 +5,13 @@ slug: "workshop-computo"
 duracion_estimada: "3 a 4 horas"
 videoUrl: ""
 videoDriveId: "1Ill5IYpvbtkqQvS6EQEBg8xmcUeLj3oy"
+descargables:
+  - nombre: "01.BASE COMPUTO.dwg"
+    fileId: "1f35oVU49BuQQwUKJLK762Oe31-X0qpDE"
+    tipo: download
+  - nombre: "02.PROYECTO EJEMPLO.dwg"
+    fileId: "1D-TBtweVojg6jenPzIZhMfnOBDrtskk5"
+    tipo: download
 prevModulo: "workshop-cotizacion"
 nextModulo: null
 producto: "workshop-cotizacion"

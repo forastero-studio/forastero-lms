@@ -7,6 +7,61 @@ slug: "modulo-b"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
 videoDriveId: "11Ytf3_R5vnsGWpcgjveapG3IdteVRLRj"
+descargables:
+  - nombre: "00.ESTRUCTURA.dwg"
+    fileId: "1NnW7EeASwTuEeKJhjXIRERdRgnCL-DOY"
+    tipo: download
+  - nombre: "00.XREF-ESTRUCTURA.dwg"
+    fileId: "1IFuPGjj0ON0PgmOKt8ghlB0IZV71l6S4"
+    tipo: download
+  - nombre: "01.LAYERS REPLANTEO DE MUROS Y XREFS.dwg"
+    fileId: "1hoFF9M9z1Zy2NjqxK5cUADd6C173bbS8"
+    tipo: download
+  - nombre: "01.LISTADO DE LAYERS REPLANTEO DE MUROS Y XREFS.xlsx"
+    fileId: "1fgzXBm0XcrtPmDsCZ55qZ9XciKv24AUh"
+    tipo: download
+  - nombre: "02-ARQUITECTURA 1.100.ctb"
+    fileId: "1E7GPwv-5SZmWjKAMWrkk9FRjONWZKLTP"
+    tipo: download
+  - nombre: "02-ARQUITECTURA 1.50.ctb"
+    fileId: "1hQnnFTdzITIsLNdASVelKwEqdQRPeyrw"
+    tipo: download
+  - nombre: "03.1.PLANILLA RESUMEN COLUMNAS.PDF"
+    fileId: "1zMhXFDN0NMFfNkYlaDh9K_vYDZFbd2Y2"
+    tipo: inline
+  - nombre: "03.2.COMPOSICION Y DOBLADO VIGAS S-7 PORTADA.PDF"
+    fileId: "1nEwW2cLiDR3MqlYQ2YWqXDPkIDn-_qia"
+    tipo: inline
+  - nombre: "03.3.COMPOSICION Y DOBLADO VIGAS S-7 COMPUTO.PDF"
+    fileId: "1yr5OS2bmuOO2um3OAeB6ffVZ465Jz8P6"
+    tipo: inline
+  - nombre: "03.4.COMPOSICION Y DOBLADO VIGAS S-7 VIGA 1.PDF"
+    fileId: "1Rust2DqhCddkBYC05HjnnPsFmRlER5FT"
+    tipo: inline
+  - nombre: "03.5.COMPOSICION Y DOBLADO VIGAS S-7 VIGA 2.PDF"
+    fileId: "1_qOC4dxum23PNTQ7TGbwv0mLEGLfX8eV"
+    tipo: inline
+  - nombre: "03.6.COMPOSICION Y DOBLADO VIGAS S-7 VIGA 3.PDF"
+    fileId: "1oZrNy9D0ympQyr1uK222wUVpBiqlFy1T"
+    tipo: inline
+  - nombre: "03.7.COMPOSICION Y DOBLADO DE LOSAS S-7 LOSA 1.PDF"
+    fileId: "1zagLbxrwF3B1dg03P5TYz1nzS7wEtDEP"
+    tipo: inline
+  - nombre: "03.8.COMPOSICION Y DOBLADO DE LOSAS S-7 LOSA 2.PDF"
+    fileId: "1HEoGYAYNzh6UmJDpAhEpyfn5gKVZsE3i"
+    tipo: inline
+  - nombre: "03.9.COMPOSICION Y DOBLADO DE LOSAS S-7 LOSA 3.PDF"
+    fileId: "1zFVkbuykIUwd4u2XDcX6zoiSxuhWmIeg"
+    tipo: inline
+  - nombre: "04.REPLANTEO DE MUROS.pdf"
+    fileId: "1VMfHvllvIcTphqsWMngliN_GDD2f36a0"
+    tipo: inline
+  - nombre: "ANEXO AUTOCAD-XREF.pdf"
+    fileId: "1iUgPA7O_uAo46DAlGVKiAN36ZoS8gftJ"
+    tipo: inline
+  - nombre: "GUÍA PRACTICA B.pdf"
+    fileId: "1E_tkbrwI4QV-YNjxggexIv1CFAQk-8hU"
+    tipo: inline
 guiaPracticaPdf: "modulo-b/guia-practica-b.pdf"
 prevModulo: "modulo-a"
 nextModulo: "modulo-c"
