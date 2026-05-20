@@ -66,21 +66,21 @@ export async function POST(req: NextRequest) {
       .eq("email", email)
       .maybeSingle();
 
-    if (existingUser) {
-      await supabaseAdmin.from("purchases").insert({
-        user_id: existingUser.id,
-        product_slug: productSlug,
-        lemon_order_id: orderId,
-        status: "active",
-      });
-    } else {
-      await supabaseAdmin.from("purchases").insert({
-        user_id: null,
-        pending_email: email,
-        product_slug: productSlug,
-        lemon_order_id: orderId,
-        status: "active",
-      });
+    const { error } = await supabaseAdmin.from("purchases").insert({
+      user_id: existingUser?.id ?? null,
+      pending_email: existingUser ? null : email,
+      product_slug: productSlug,
+      lemon_order_id: orderId,
+      status: "active",
+    });
+
+    if (error?.code === "23505") {
+      // Duplicate lemon_order_id — evento ya procesado (reenvío de LS)
+      return NextResponse.json({ received: true });
+    }
+    if (error) {
+      console.error("[lemon webhook] insert error:", error);
+      return NextResponse.json({ error: "DB error" }, { status: 500 });
     }
   } else if (eventName === "order_refunded") {
     await supabaseAdmin
