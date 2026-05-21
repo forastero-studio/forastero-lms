@@ -1,6 +1,7 @@
 import { createHmac, timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { buildBienvenidaEmail } from "@/lib/emails/bienvenida";
 
 // Map de product_id de Lemon Squeezy → slug interno
 // TODO: verificar/actualizar los IDs cuando crees los productos en Lemon Squeezy
@@ -123,6 +124,24 @@ export async function POST(req: NextRequest) {
     }
     // TODO: cuando el agente forastero-bim tenga autenticación Supabase,
     // leer bootcamp_active desde users para sincronizar el userProfile del agente.
+
+    // Email de bienvenida
+    const resendKey = process.env.RESEND_API_KEY;
+    if (resendKey && email) {
+      try {
+        const { Resend } = await import("resend");
+        const resend = new Resend(resendKey);
+        const { subject, html } = buildBienvenidaEmail(productSlug, email);
+        await resend.emails.send({
+          from: "Forastero Studio <info@forastero.studio>",
+          to: email,
+          subject,
+          html,
+        });
+      } catch (e) {
+        console.error("[lemon webhook] welcome email error:", e);
+      }
+    }
 
   } else if (eventName === "order_refunded") {
     await supabaseAdmin
