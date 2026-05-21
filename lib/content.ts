@@ -51,9 +51,7 @@ function readMarkdownFiles(dir: string): ContentFile[] {
 }
 
 export function getCadManagementModules(): ContentFile[] {
-  const taller = readMarkdownFiles("cad-management/taller");
-  const workshop = readMarkdownFiles("cad-management/workshop");
-  return [...taller, ...workshop];
+  return readMarkdownFiles("cad-management");
 }
 
 export function getBootcampWeeks(): ContentFile[] {
