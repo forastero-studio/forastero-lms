@@ -22,5 +22,12 @@ ALTER TABLE progress ENABLE ROW LEVEL SECURITY;
 -- Si Lemon Squeezy reenvía el mismo evento, el INSERT falla con
 -- código 23505 (duplicate key). El webhook lo detecta y devuelve
 -- 200 sin duplicar la compra.
+
 ALTER TABLE purchases
   ADD CONSTRAINT purchases_lemon_order_id_key UNIQUE (lemon_order_id);
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+  ALTER TABLE purchases ENABLE ROW LEVEL SECURITY;
+  ALTER TABLE progress ENABLE ROW LEVEL SECURITY;
+
+  ALTER TABLE purchases
+    ADD CONSTRAINT purchases_lemon_order_id_key UNIQUE (lemon_order_id);

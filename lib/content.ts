@@ -16,8 +16,10 @@ export type ContentFile = {
   prevModulo?: string | null;
   nextModulo?: string | null;
   duracion_estimada?: string;
+  description?: string;
   clase?: number;
   moduloLetra?: string;
+  semana?: number;
   descargables?: Descargable[];
 };
 
@@ -39,8 +41,10 @@ function readMarkdownFiles(dir: string): ContentFile[] {
         prevModulo: data.prevModulo ?? null,
         nextModulo: data.nextModulo ?? null,
         duracion_estimada: data.duracion_estimada,
+        description: data.description,
         clase: data.clase,
         moduloLetra: data.moduloLetra,
+        semana: typeof data.semana === 'number' ? data.semana : undefined,
         descargables: Array.isArray(data.descargables) ? data.descargables : undefined,
       };
     });

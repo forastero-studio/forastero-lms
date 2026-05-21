@@ -1,6 +1,13 @@
-﻿# Semana 1 — Fundamentos
+---
+slug: semana-1
+title: "Semana 1 — Mentalidad BIM y setup"
+description: "Crear el archivo BIM, configurar niveles según el proyecto elegido, importar planos CAD de referencia."
+duracion_estimada: "4–6 horas"
+semana: 1
+---
 
-Introducción al ecosistema BIM y diagnóstico de tu flujo actual de trabajo en CAD.
+# Semana 1 — Mentalidad BIM y setup
 
-> Contenido completo próximamente.
+Creá tu archivo BIM, configurá los niveles según las cotas reales de tu proyecto, e importá los planos CAD de referencia.
 
+> Contenido completo disponible al inicio de Cohorte 0 (7 de julio de 2026).

@@ -5,7 +5,8 @@ import AgentPanel from "@/components/AgentPanel";
 import ModuleCard from "@/components/ModuleCard";
 import MarkdownBody from "@/components/ui/MarkdownBody";
 import { getBootcampWeek, getBootcampWeeks } from "@/lib/content";
-import { hasAccess } from "@/lib/db";
+import { hasAccess, getProgress } from "@/lib/db";
+import { computeDripStatus, formatDate } from "@/lib/bootcamp";
 import Link from "next/link";
 
 interface Props {
@@ -24,6 +25,34 @@ export default async function SemanaPage({ params }: Props) {
 
   const { userId } = await auth();
   const access = userId ? await hasAccess(userId, "bootcamp") : false;
+
+  // Drip check: verificar si la semana está desbloqueada para este alumno
+  if (access && userId && content.semana) {
+    const completedSlugs = await getProgress(userId, "bootcamp");
+    const dripStatus = computeDripStatus(completedSlugs);
+    const weekDrip = dripStatus[content.semana - 1];
+    if (weekDrip && (weekDrip.status === "not_started" || weekDrip.status === "locked_prev")) {
+      const lockReason = weekDrip.status === "not_started"
+        ? `Disponible a partir del ${formatDate(weekDrip.openDate)}.`
+        : `Completá la validación IFC de Semana ${content.semana - 1} para desbloquear esta semana.`;
+      return (
+        <ContentArea>
+          <p className="eyebrow mb-6">Bootcamp CAD→BIM</p>
+          <h1 className="text-4xl font-light text-ink mb-4" style={{ letterSpacing: "-0.03em" }}>
+            {content.title}
+          </h1>
+          <div className="h-px bg-line my-8" />
+          <div className="max-w-md">
+            <p className="text-base font-light text-deep mb-2">Semana no disponible todavía.</p>
+            <p className="text-sm font-light text-stone mb-6">{lockReason}</p>
+            <Link href="/bootcamp/dashboard" className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors">
+              ← Volver al progreso
+            </Link>
+          </div>
+        </ContentArea>
+      );
+    }
+  }
 
   if (!access) {
     return (
@@ -85,7 +114,7 @@ export default async function SemanaPage({ params }: Props) {
           </div>
         )}
 
-        <div className="max-w-none mb-16">
+        <div className="max-w-none mb-10">
           {content.body.trim() ? (
             <MarkdownBody content={content.body} />
           ) : (
@@ -97,11 +126,30 @@ export default async function SemanaPage({ params }: Props) {
                 Inicia el lunes 7 de julio de 2026.
               </p>
               <p className="text-sm font-light text-stone">
-                Esta semana se desbloquea cuando arranque la cohorte. Vas a
+                El contenido completo se desbloquea en esta fecha. Vas a
                 recibir un email con instrucciones unos días antes del inicio.
               </p>
             </div>
           )}
+        </div>
+
+        {/* Botón al agente */}
+        <div className="border border-line bg-white p-6 max-w-md mb-16">
+          <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-2">
+            Agente Forastero · BIM
+          </p>
+          <p className="text-sm font-light text-stone mb-4">
+            El agente sabe que estás en {content.title}. Preguntale lo que necesitás
+            y subí tu IFC para validación cuando termines la semana.
+          </p>
+          <a
+            href="https://forastero-bim.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] tracking-[.1em] uppercase text-ink border border-ink px-4 py-2 hover:bg-ink hover:text-paper transition-colors inline-block"
+          >
+            Abrir agente →
+          </a>
         </div>
 
         {(content.prevModulo || content.nextModulo) && (

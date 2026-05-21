@@ -82,6 +82,23 @@ export async function POST(req: NextRequest) {
       console.error("[lemon webhook] insert error:", error);
       return NextResponse.json({ error: "DB error" }, { status: 500 });
     }
+
+    // Si compró el bootcamp, inicializar campos de cohorte en users
+    // TODO: cuando el agente forastero-bim tenga autenticación Supabase,
+    // leer bootcamp_active y cohort_number desde esta tabla para sincronizar
+    // el userProfile del agente con el estado del LMS.
+    if (productSlug === "bootcamp" || productSlug === "pack") {
+      if (existingUser?.id) {
+        await supabaseAdmin
+          .from("users")
+          .update({
+            bootcamp_active: true,
+            cohort_number: "C00",
+          })
+          .eq("id", existingUser.id)
+          .select(); // no tiramos error si la columna no existe todavía
+      }
+    }
   } else if (eventName === "order_refunded") {
     await supabaseAdmin
       .from("purchases")
