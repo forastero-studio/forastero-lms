@@ -45,6 +45,37 @@ export async function deleteUser(clerkId: string): Promise<void> {
   await supabaseAdmin.from("users").delete().eq("clerk_id", clerkId);
 }
 
+// Qué slugs en purchases otorgan acceso a cada producto
+const ACCESS_GRANTS: Record<string, string[]> = {
+  "taller-documentacion": [
+    "taller-documentacion",
+    "pack-cad-management",
+    "pack-completo",
+    "cad-management", // backward compat
+    "pack",           // backward compat
+  ],
+  "workshop-cotizacion": [
+    "workshop-cotizacion",
+    "pack-cad-management",
+    "pack-completo",
+  ],
+  "bootcamp": [
+    "bootcamp",
+    "pack-completo",
+    "pack", // backward compat
+  ],
+  "pack-cad-management": ["pack-cad-management", "pack-completo"],
+  "pack-completo": ["pack-completo"],
+  // Legacy slug — acceso equivalente al taller original
+  "cad-management": [
+    "cad-management",
+    "pack",
+    "taller-documentacion",
+    "pack-cad-management",
+    "pack-completo",
+  ],
+};
+
 export async function hasAccess(
   clerkId: string,
   productSlug: string
@@ -52,11 +83,7 @@ export async function hasAccess(
   const user = await getUserByClerkId(clerkId);
   if (!user) return false;
 
-  // pack grants access to everything; check it first for cad-management and bootcamp
-  const slugsToCheck =
-    productSlug === "pack"
-      ? ["pack"]
-      : [productSlug, "pack"];
+  const slugsToCheck = ACCESS_GRANTS[productSlug] ?? [productSlug];
 
   const { data } = await supabaseAdmin
     .from("purchases")

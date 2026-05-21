@@ -2,16 +2,24 @@ import { createHmac, timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 
+// Map de product_id de Lemon Squeezy → slug interno
+// TODO: verificar/actualizar los IDs cuando crees los productos en Lemon Squeezy
 const PRODUCT_IDS: Record<string, string> = {
-  "1063937": "cad-management",
-  "1063951": "bootcamp",
-  "1063959": "pack",
+  "1063937": "taller-documentacion",   // Taller de Documentación (era pack cad-management, revisar)
+  "1063951": "bootcamp",               // Bootcamp CAD → BIM
+  "1063959": "pack-completo",          // Pack CAD Management + Bootcamp (ajustar precio en LS)
+  // TODO: agregar product_id del Workshop de Cotización cuando se cree en LS
+  // TODO: agregar product_id del Pack CAD Management (Taller + Workshop) cuando se cree en LS
 };
 
+// Map de variant_id de Lemon Squeezy → slug interno
+// TODO: actualizar con los variant_ids reales después de crear variantes en LS
 const VARIANT_IDS: Record<string, string> = {
-  "1667874": "cad-management",
+  "1667874": "taller-documentacion",   // Variante taller (era cad-management)
   "1667893": "bootcamp",
-  "1667903": "pack",
+  "1667903": "pack-completo",
+  // TODO: "XXXXX": "workshop-cotizacion",
+  // TODO: "XXXXX": "pack-cad-management",
 };
 
 function resolveSlug(productId: unknown, variantId: unknown): string | null {
@@ -30,6 +38,20 @@ function verifySignature(rawBody: string, signature: string): boolean {
   } catch {
     return false;
   }
+}
+
+async function initBootcampProgress(userId: string): Promise<void> {
+  await supabaseAdmin
+    .from("bootcamp_progress")
+    .upsert(
+      {
+        user_id: userId,
+        current_week: 1,
+        completed_weeks: [],
+        start_date: new Date().toISOString().split("T")[0],
+      },
+      { onConflict: "user_id", ignoreDuplicates: true }
+    );
 }
 
 export async function POST(req: NextRequest) {
@@ -83,22 +105,25 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "DB error" }, { status: 500 });
     }
 
-    // Si compró el bootcamp, inicializar campos de cohorte en users
-    // TODO: cuando el agente forastero-bim tenga autenticación Supabase,
-    // leer bootcamp_active y cohort_number desde esta tabla para sincronizar
-    // el userProfile del agente con el estado del LMS.
-    if (productSlug === "bootcamp" || productSlug === "pack") {
-      if (existingUser?.id) {
+    // Lógica de habilitación según producto
+    if (existingUser?.id) {
+      const userId = existingUser.id;
+
+      const includesBootcamp =
+        productSlug === "bootcamp" || productSlug === "pack-completo";
+
+      if (includesBootcamp) {
         await supabaseAdmin
           .from("users")
-          .update({
-            bootcamp_active: true,
-            cohort_number: "C00",
-          })
-          .eq("id", existingUser.id)
-          .select(); // no tiramos error si la columna no existe todavía
+          .update({ bootcamp_active: true })
+          .eq("id", userId);
+
+        await initBootcampProgress(userId);
       }
     }
+    // TODO: cuando el agente forastero-bim tenga autenticación Supabase,
+    // leer bootcamp_active desde users para sincronizar el userProfile del agente.
+
   } else if (eventName === "order_refunded") {
     await supabaseAdmin
       .from("purchases")
