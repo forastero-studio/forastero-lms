@@ -11,6 +11,8 @@ export default function LandingPage() {
       <PathsSection />
       <AgentSection />
       <PricingSection />
+      <BioSection />
+      <FaqSection />
       <Footer />
     </div>
   );
@@ -476,6 +478,142 @@ function PriceCard({
         {cta}
       </BuyButton>
     </div>
+  );
+}
+
+/* ─── Bio ───────────────────────────────────────────────────────────────── */
+
+function BioSection() {
+  return (
+    <section id="quien-soy" className="px-8 md:px-14 py-24 border-b border-line">
+      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
+        Quién soy
+      </p>
+      <div className="grid md:grid-cols-[1fr_2fr] gap-14 items-start max-w-4xl">
+        <div>
+          <div className="w-full aspect-square bg-muted border border-line flex items-center justify-center max-w-[200px]">
+            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone/40 text-center px-4">
+              Foto · próximamente
+            </p>
+          </div>
+        </div>
+        <div>
+          <h2
+            className="text-[32px] leading-[1.08] font-light text-ink mb-1"
+            style={{ letterSpacing: "-0.035em" }}
+          >
+            Ariel Fragosa
+          </h2>
+          <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-8">
+            Architetto · Forastero · Grono, Suiza
+          </p>
+          <p className="text-base font-light text-deep leading-[1.65] mb-8">
+            Originalmente de Argentina, basado en Grono (Cantón Graubünden,
+            Suiza italiana) desde hace varios años. Combino una práctica
+            arquitectónica independiente (Forastero) con trabajo en estudios
+            profesionales en el Cantón Ticino. Forastero es una plataforma
+            educativa que reúne lo que aprendí en proyectos reales — desde la
+            documentación técnica clásica hasta la transición CAD → BIM con
+            criterio profesional.
+          </p>
+          <div className="flex flex-col gap-1.5">
+            <a
+              href="https://forastero.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] tracking-[.08em] uppercase text-stone hover:text-ink transition-colors"
+            >
+              forastero.studio →
+            </a>
+            <a
+              href="mailto:info@forastero.studio"
+              className="font-mono text-[10px] tracking-[.08em] uppercase text-stone hover:text-ink transition-colors"
+            >
+              info@forastero.studio
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FAQ ───────────────────────────────────────────────────────────────── */
+
+const FAQ_ITEMS = [
+  {
+    q: "¿Cuándo arranca el Bootcamp?",
+    a: "No tiene fecha fija. Comprás cuando querés y arrancás cuando querés. La Semana 1 se desbloquea al confirmar tu pago.",
+  },
+  {
+    q: "¿En cuánto tiempo termino el Bootcamp?",
+    a: "El bootcamp está diseñado para 8 semanas con dedicación de ~8 horas/semana. Pero podés ir a tu ritmo: las semanas se desbloquean a medida que completás la validación de la anterior.",
+  },
+  {
+    q: "¿Necesito experiencia previa con Revit o ArchiCAD?",
+    a: "No. La Semana 0 (opcional) cubre los fundamentos del software. Si ya manejás uno de los dos, saltala.",
+  },
+  {
+    q: "¿Cuál es mejor: Revit o ArchiCAD?",
+    a: "Ambos funcionan. Lo importante es la lógica BIM, no el software. En la Semana 0 hay una guía para elegir.",
+  },
+  {
+    q: "¿Qué pasa si me trabo?",
+    a: "Tenés un agente IA disponible 24/7 que sabe en qué semana estás y qué proyecto elegiste. Te guía con preguntas concretas.",
+  },
+  {
+    q: "¿Cómo se valida el avance?",
+    a: "Al final de cada semana exportás un IFC del modelo. El agente lo valida automáticamente y te da feedback. Si está bien desbloqueás la siguiente semana.",
+  },
+  {
+    q: "¿El certificado tiene validez profesional?",
+    a: "Es un certificado emitido por Forastero, no por Autodesk ni Graphisoft. Refleja que completaste un proyecto BIM profesional completo. Es verificable públicamente.",
+  },
+  {
+    q: "¿Puedo combinar el Taller, el Workshop y el Bootcamp?",
+    a: "Sí. El Pack CAD Management + Bootcamp incluye todo con descuento.",
+  },
+  {
+    q: "¿Hay reembolso si no me convence?",
+    a: "14 días desde la compra sin justificación. Para el Bootcamp, además, siempre que no hayas completado más de 2 validaciones IFC. Detalle completo en la Política de Reembolso.",
+  },
+  {
+    q: "¿Cómo me contacto si tengo dudas antes de comprar?",
+    a: "info@forastero.studio · respuesta en 24-48 horas hábiles.",
+  },
+];
+
+function FaqSection() {
+  return (
+    <section id="faq" className="px-8 md:px-14 py-24 border-b border-line">
+      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
+        Preguntas frecuentes
+      </p>
+      <h2
+        className="text-[44px] leading-[1.04] font-light text-ink mb-14 max-w-xl"
+        style={{ letterSpacing: "-0.035em" }}
+      >
+        Lo que la gente suele preguntar.
+      </h2>
+
+      <div className="max-w-2xl border-t border-line">
+        {FAQ_ITEMS.map((item, i) => (
+          <details key={i} className="group border-b border-line">
+            <summary className="flex items-start justify-between gap-6 py-5 cursor-pointer list-none">
+              <span className="text-sm font-light text-ink leading-snug">
+                {item.q}
+              </span>
+              <span className="font-mono text-base font-light text-stone shrink-0 mt-0.5 group-open:rotate-45 transition-transform duration-200 select-none">
+                +
+              </span>
+            </summary>
+            <p className="text-sm font-light text-stone leading-relaxed pb-5 pr-8">
+              {item.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </section>
   );
 }
 

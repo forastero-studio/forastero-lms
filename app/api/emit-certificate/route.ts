@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { hasAccess, getUserByClerkId, getProgress } from "@/lib/db";
 import { generateCertificatePdf } from "@/lib/certificate";
-import { COHORT_0 } from "@/lib/bootcamp";
 
 const PROJECT_NAMES: Record<string, string> = {
   refugio: "Refugio Alpe di Portola",
@@ -73,9 +72,9 @@ export async function POST(req: NextRequest) {
       project_name: PROJECT_NAMES[projectSlug],
       project_slug: projectSlug,
       software,
-      cohort_number: COHORT_0.number,
-      start_date: COHORT_0.startDate.toISOString().split("T")[0],
-      end_date: COHORT_0.endDate.toISOString().split("T")[0],
+      cohort_number: String(new Date().getFullYear()),
+      start_date: new Date().toISOString().split("T")[0],
+      end_date: new Date().toISOString().split("T")[0],
     })
     .select()
     .single();
@@ -93,7 +92,7 @@ export async function POST(req: NextRequest) {
       projectName: PROJECT_NAMES[projectSlug],
       projectSlug,
       software,
-      cohortNumber: COHORT_0.number,
+      cohortNumber: String(new Date().getFullYear()),
       id: cert.id,
     });
 

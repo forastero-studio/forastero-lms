@@ -2,7 +2,6 @@ import { auth } from "@clerk/nextjs/server";
 import BuyButton from "@/components/ui/BuyButton";
 import { getBootcampWeeks } from "@/lib/content";
 import { hasAccess } from "@/lib/db";
-import { COHORT_0 } from "@/lib/bootcamp";
 import Link from "next/link";
 
 export default async function BootcampProductPage() {
@@ -27,7 +26,7 @@ export default async function BootcampProductPage() {
           elegido entre dos proyectos reales del estudio.
         </p>
         <p className="text-base font-light text-stone leading-relaxed max-w-2xl mb-10">
-          Revit o ArchiCAD. Asincrónico con cohorte. Agente IA incluido que
+          Revit o ArchiCAD. Asincrónico · a tu ritmo. Agente IA incluido que
           sabe en qué semana estás, qué proyecto elegiste y qué software usás.
           Validación IFC en cada semana. Certificado al final.
         </p>
@@ -51,7 +50,7 @@ export default async function BootcampProductPage() {
         )}
 
         <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-20">
-          {COHORT_0.label} · {COHORT_0.dateLabel}
+          Acceso inmediato · A tu ritmo
         </p>
 
         {/* Proyectos */}
@@ -94,7 +93,7 @@ export default async function BootcampProductPage() {
 
         {/* Semanas */}
         <div className="h-px bg-line mb-10" />
-        <p className="eyebrow mb-8">Programa · {COHORT_0.label}</p>
+        <p className="eyebrow mb-8">Programa · 8 semanas</p>
 
         <div className="flex flex-col divide-y divide-line border border-line mb-8">
           {weeks.map((w, i) => {
@@ -153,7 +152,7 @@ export default async function BootcampProductPage() {
             <p className="text-sm font-light text-stone leading-relaxed">
               Al completar la Semana 8 con validación aprobada, el sistema
               emite automáticamente tu certificado. Incluye tu nombre,
-              proyecto, software y número de cohorte.
+              proyecto, software y número de verificación.
             </p>
           </div>
         </div>
@@ -169,7 +168,7 @@ export default async function BootcampProductPage() {
               Comprar bootcamp · USD 297
             </BuyButton>
             <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
-              {COHORT_0.label} · {COHORT_0.dateLabel}
+              Acceso inmediato · A tu ritmo
             </p>
           </div>
         ) : (

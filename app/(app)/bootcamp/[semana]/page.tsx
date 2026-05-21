@@ -6,7 +6,7 @@ import ModuleCard from "@/components/ModuleCard";
 import MarkdownBody from "@/components/ui/MarkdownBody";
 import { getBootcampWeek, getBootcampWeeks } from "@/lib/content";
 import { hasAccess, getProgress } from "@/lib/db";
-import { computeDripStatus, formatDate } from "@/lib/bootcamp";
+import { computeDripStatus } from "@/lib/bootcamp";
 import Link from "next/link";
 
 interface Props {
@@ -31,10 +31,8 @@ export default async function SemanaPage({ params }: Props) {
     const completedSlugs = await getProgress(userId, "bootcamp");
     const dripStatus = computeDripStatus(completedSlugs);
     const weekDrip = dripStatus[content.semana - 1];
-    if (weekDrip && (weekDrip.status === "not_started" || weekDrip.status === "locked_prev")) {
-      const lockReason = weekDrip.status === "not_started"
-        ? `Disponible a partir del ${formatDate(weekDrip.openDate)}.`
-        : `Completá la validación IFC de Semana ${content.semana - 1} para desbloquear esta semana.`;
+    if (weekDrip && weekDrip.status === "locked_prev") {
+      const lockReason = `Completá la validación IFC de Semana ${content.semana - 1} para desbloquear esta semana.`;
       return (
         <ContentArea>
           <p className="eyebrow mb-6">Bootcamp CAD→BIM</p>
@@ -119,15 +117,14 @@ export default async function SemanaPage({ params }: Props) {
             <MarkdownBody content={content.body} />
           ) : (
             <div className="border border-line bg-white p-8 max-w-lg">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
-                Cohorte 0
-              </p>
               <p className="text-base font-light text-deep mb-2">
-                Inicia el lunes 7 de julio de 2026.
+                Este contenido está en preparación.
               </p>
               <p className="text-sm font-light text-stone">
-                El contenido completo se desbloquea en esta fecha. Vas a
-                recibir un email con instrucciones unos días antes del inicio.
+                Lo vas a tener disponible pronto. Cualquier consulta:{" "}
+                <a href="mailto:info@forastero.studio" className="text-ink hover:text-rust transition-colors">
+                  info@forastero.studio
+                </a>
               </p>
             </div>
           )}

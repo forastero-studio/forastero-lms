@@ -1,5 +1,4 @@
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
-import { COHORT_0 } from "./bootcamp";
 
 export interface CertificateData {
   studentName: string;
@@ -96,7 +95,7 @@ export async function generateCertificatePdf(cert: CertificateData): Promise<Buf
   });
 
   // Cohort
-  page.drawText(`${cert.cohortNumber} · ${COHORT_0.dateLabel}`, {
+  page.drawText(cert.cohortNumber, {
     x: pad, y: height - 530,
     size: 8, font: regular, color: gray,
   });

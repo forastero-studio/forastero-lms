@@ -4,15 +4,14 @@ import ContentArea from "@/components/ContentArea";
 import CertificateRequest from "@/components/CertificateRequest";
 import { getBootcampWeeks } from "@/lib/content";
 import { hasAccess, getProgress, getUserByClerkId } from "@/lib/db";
-import { computeDripStatus, COHORT_0, formatDate, WeekStatus } from "@/lib/bootcamp";
+import { computeDripStatus, WeekStatus } from "@/lib/bootcamp";
 import { supabaseAdmin } from "@/lib/supabase";
 import Link from "next/link";
 
 function statusLabel(s: WeekStatus): string {
   if (s === "completed") return "IFC validado";
   if (s === "available") return "Disponible";
-  if (s === "locked_prev") return "Completá la semana anterior";
-  return "Próximamente";
+  return "Completá la semana anterior";
 }
 
 function statusClass(s: WeekStatus): string {
@@ -54,7 +53,7 @@ export default async function BootcampDashboard() {
 
   return (
     <ContentArea>
-      <p className="eyebrow mb-6">{COHORT_0.label} · {COHORT_0.dateLabel}</p>
+      <p className="eyebrow mb-6">Bootcamp CAD→BIM</p>
       <h1 className="text-4xl font-light tracking-tight text-ink mb-2">
         {name}
       </h1>
@@ -100,7 +99,7 @@ export default async function BootcampDashboard() {
       <div className="flex flex-col divide-y divide-line border border-line">
         {weeks.map((w, i) => {
           const drip = dripStatus[i];
-          const isLocked = drip.status === "not_started" || drip.status === "locked_prev";
+          const isLocked = drip.status === "locked_prev";
           const weekLabel = statusLabel(drip.status);
           const labelClass = statusClass(drip.status);
 
@@ -120,11 +119,6 @@ export default async function BootcampDashboard() {
                   {w.duracion_estimada && (
                     <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone/50 mt-1">
                       {w.duracion_estimada}
-                    </p>
-                  )}
-                  {drip.status === "not_started" && (
-                    <p className="font-mono text-[9px] tracking-[.08em] text-stone/40 mt-1">
-                      Disponible a partir del {formatDate(drip.openDate)}
                     </p>
                   )}
                   {drip.status === "locked_prev" && (
@@ -162,7 +156,7 @@ export default async function BootcampDashboard() {
       )}
 
       <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mt-8">
-        {COHORT_0.label} · {COHORT_0.dateLabel}
+        Forastero · BIM Bootcamp
       </p>
     </ContentArea>
   );
