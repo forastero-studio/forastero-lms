@@ -1,9 +1,11 @@
 import { redirect } from "next/navigation";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import ContentArea from "@/components/ContentArea";
+import CertificateRequest from "@/components/CertificateRequest";
 import { getBootcampWeeks } from "@/lib/content";
-import { hasAccess, getProgress } from "@/lib/db";
+import { hasAccess, getProgress, getUserByClerkId } from "@/lib/db";
 import { computeDripStatus, COHORT_0, formatDate, WeekStatus } from "@/lib/bootcamp";
+import { supabaseAdmin } from "@/lib/supabase";
 import Link from "next/link";
 
 function statusLabel(s: WeekStatus): string {
@@ -37,9 +39,18 @@ export default async function BootcampDashboard() {
   const dripStatus = computeDripStatus(completedSlugs);
 
   const completedCount = dripStatus.filter((w) => w.status === "completed").length;
-  const currentWeek = dripStatus.find(
-    (w) => w.status === "available" || w.status === "locked_prev"
-  );
+
+  // Certificado: buscar si ya tiene uno emitido
+  const dbUser = await getUserByClerkId(userId);
+  const existingCert = dbUser
+    ? await supabaseAdmin
+        .from("certificates")
+        .select("id, pdf_url")
+        .eq("user_id", dbUser.id)
+        .eq("revoked", false)
+        .maybeSingle()
+        .then((r) => r.data)
+    : null;
 
   return (
     <ContentArea>
@@ -141,6 +152,14 @@ export default async function BootcampDashboard() {
           );
         })}
       </div>
+
+      {completedCount === 8 && (
+        <>
+          <div className="h-px bg-line mb-8 mt-8" />
+          <p className="eyebrow mb-6">Tu certificado</p>
+          <CertificateRequest existingCert={existingCert} />
+        </>
+      )}
 
       <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mt-8">
         {COHORT_0.label} · {COHORT_0.dateLabel}

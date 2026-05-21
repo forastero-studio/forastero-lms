@@ -14,10 +14,12 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.16.0",
     "next": "^16.2.6",
+    "pdf-lib": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "resend": "^4.8.0",
     "svix": "^1.93.0"
   },
   "devDependencies": {
