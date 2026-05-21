@@ -6,7 +6,7 @@ import { useUser, SignOutButton } from "@clerk/nextjs";
 
 const navItems = [
   { label: "Dashboard", href: "/dashboard" },
-  { label: "CAD Management", href: "/cad-management/modulo-1" },
+  { label: "CAD Management", href: "/cad-management" },
   { label: "Bootcamp CAD→BIM", href: "/bootcamp/semana-1" },
 ];
 

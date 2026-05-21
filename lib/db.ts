@@ -113,6 +113,26 @@ export async function getProgress(
   return data?.map((r) => r.module_slug) ?? [];
 }
 
+export interface Purchase {
+  product_slug: string;
+  status: string;
+  created_at: string;
+}
+
+export async function getPurchases(clerkId: string): Promise<Purchase[]> {
+  const user = await getUserByClerkId(clerkId);
+  if (!user) return [];
+
+  const { data } = await supabaseAdmin
+    .from("purchases")
+    .select("product_slug, status, created_at")
+    .eq("user_id", user.id)
+    .eq("status", "active")
+    .order("created_at", { ascending: true });
+
+  return data ?? [];
+}
+
 export async function markCompleted(
   clerkId: string,
   productSlug: string,

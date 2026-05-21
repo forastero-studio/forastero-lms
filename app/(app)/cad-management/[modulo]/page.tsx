@@ -96,7 +96,7 @@ export default async function ModuloPage({ params }: Props) {
               Lo vas a tener disponible antes del 1 de junio. Cualquier
               consulta:{" "}
               <a
-                href="mailto:hola@forastero.studio"
+                href="mailto:info@forastero.studio"
                 className="text-ink hover:text-rust transition-colors"
               >
                 hola@forastero.studio
