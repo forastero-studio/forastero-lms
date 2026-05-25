@@ -73,8 +73,18 @@ export default async function BootcampDashboard() {
         <span className="font-mono text-[9px] tracking-[.08em] text-stone">Semana 8</span>
       </div>
 
+      {/* Links de acceso rápido */}
+      <div className="flex gap-4 mb-10 flex-wrap">
+        <Link
+          href="/bootcamp/guia"
+          className="font-mono text-[9px] tracking-[.1em] uppercase text-stone border border-line px-4 py-2 hover:border-ink hover:text-ink transition-colors"
+        >
+          Cómo arrancar →
+        </Link>
+      </div>
+
       {/* Agente */}
-      <div className="border border-line bg-white p-6 mb-10 max-w-md">
+      <div className="border border-line bg-paper p-6 mb-10 max-w-md">
         <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-2">
           Agente Forastero · BIM
         </p>
@@ -82,14 +92,9 @@ export default async function BootcampDashboard() {
           Tu asistente sabe en qué semana estás, qué proyecto elegiste y qué
           software usás. Preguntale lo que necesitás y subí tu IFC desde ahí.
         </p>
-        <a
-          href="https://forastero-bim.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-[10px] tracking-[.1em] uppercase text-ink border border-ink px-4 py-2 hover:bg-ink hover:text-paper transition-colors inline-block"
-        >
-          Abrir agente →
-        </a>
+        <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone">
+          Usá el botón "Agente" abajo a la derecha para abrirlo en esta pantalla.
+        </p>
       </div>
 
       {/* Lista de semanas */}

@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --paper: #f7f5ef;
-  --white: #fffdfa;
-  --ink: #111111;
-  --deep: #25231f;
-  --muted: #e9e5da;
-  --line: #d7d1c4;
-  --stone: #7c786f;
-  --rust: #7d3a2c;
-  --amber: #c47c4c;
+  --paper: #FFFFFF;
+  --ink: #0A0A0A;
+  --deep: #0A0A0A;
+  --muted: #FAFAFA;
+  --line: #E5E5E5;
+  --line-strong: #C8C8C8;
+  --stone: #888888;
+  --rust: #0F2A1D;
+  --rust-hover: #1B4332;
+  --rust-light: #F0F4F1;
 }
 
 @layer base {
@@ -25,6 +26,7 @@
   body {
     background-color: var(--paper);
     color: var(--ink);
+    line-height: 1.6;
   }
 
   * {
@@ -34,7 +36,7 @@
 
 @layer utilities {
   .eyebrow {
-    font-family: var(--font-jetbrains-mono), monospace;
+    font-family: var(--font-mono), monospace;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -43,5 +45,13 @@
 
   .border-line {
     border-color: var(--line);
+  }
+
+  .technical-header {
+    font-family: var(--font-mono), monospace;
+    font-size: 11px;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
   }
 }

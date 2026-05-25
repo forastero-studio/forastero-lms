@@ -10,18 +10,20 @@ const config: Config = {
     extend: {
       colors: {
         paper: "var(--paper)",
-        white: "var(--white)",
+        white: "var(--paper)",
         ink: "var(--ink)",
         deep: "var(--deep)",
         muted: "var(--muted)",
         line: "var(--line)",
         stone: "var(--stone)",
         rust: "var(--rust)",
-        amber: "var(--amber)",
+        amber: "var(--rust-light)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Arial", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        body: ["var(--font-body)", "Arial", "sans-serif"],
+        sans: ["var(--font-body)", "Arial", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       letterSpacing: {
         widest: ".12em",

@@ -8,6 +8,7 @@ const navItems = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "CAD Management", href: "/cad-management" },
   { label: "Bootcamp CAD→BIM", href: "/bootcamp/semana-1" },
+  { label: "Cómo arrancar", href: "/bootcamp/guia" },
 ];
 
 export default function Sidebar() {
@@ -22,9 +23,9 @@ export default function Sidebar() {
   return (
     <aside className="w-56 shrink-0 border-r border-line bg-paper min-h-screen flex flex-col">
       <div className="px-6 py-5 border-b border-line">
-        <p className="font-sans font-medium text-sm text-ink">Forastero</p>
+        <p className="font-display font-light text-base text-ink tracking-[0.05em]">forastero</p>
         <p className="font-mono text-[9px] tracking-widest uppercase text-stone mt-0.5">
-          LMS
+          lms
         </p>
       </div>
 
