@@ -324,10 +324,7 @@ function AgentSection() {
   );
 }
 
-/* ─── Pricing ───────────────────────────────────────────────────────────── */
-
-const DISCLAIMER =
-  "Precio en pesos argentinos calculado al momento del pago. Impuestos del país del comprador no incluidos.";
+/* ─── Pricing ────────────────────────────────────────────────────────────── */
 
 function PricingSection() {
   return (
@@ -342,131 +339,112 @@ function PricingSection() {
         Acceso de por vida. Sin suscripción.
       </h2>
 
-      <div className="grid md:grid-cols-3 gap-0 border border-line">
-        <PriceCard
-          number="01"
-          title="CAD Management"
-          price="USD 99"
-          includes={[
-            "Taller de Documentación de Obras",
-            "Workshop de Cotización de Obras",
-            "Acceso de por vida",
-          ]}
-          cta="Comprar taller"
-          checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
-        />
-        <PriceCard
-          number="02"
-          title="Bootcamp CAD→BIM"
-          price="USD 297"
-          includes={[
-            "8 semanas de formación",
-            "Agente Forastero integrado",
-            "Acceso de por vida",
-          ]}
-          cta="Comprar bootcamp"
-          checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
-        />
-        <PriceCard
-          number="03"
-          title="Pack completo"
-          price="USD 349"
-          includes={[
-            "CAD Management completo",
-            "Bootcamp CAD→BIM completo",
-            "Agente Forastero integrado",
-            "Acceso de por vida",
-          ]}
-          cta="Comprar pack"
-          checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
-          featured
-          badge="Mejor valor"
-        />
+      {/* Grupo A · Fundamentos */}
+      <div className="mb-20">
+        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-6">
+          Fundamentos · punto de entrada
+        </p>
+        <div className="grid md:grid-cols-3 gap-0 border border-line">
+          <PriceCard
+            compact
+            title="Taller de Documentación de Obras"
+            description="Sistema de trabajo para documentar obras en CAD. Layers, CTBs, referencias, planillas."
+            price="USD 100"
+            cta="Comprar el Taller"
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_TALLER!}
+          />
+          <PriceCard
+            compact
+            title="Workshop Cotización de Obras"
+            description="Cómputo y presupuesto de obra. Excel con sistema de ítems, planilla de cotización detallada."
+            price="USD 80"
+            cta="Comprar el Workshop"
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_WORKSHOP!}
+          />
+          <PriceCard
+            compact
+            title="Pack CAD Management"
+            description="Taller de Documentación + Workshop Cotización. Los dos juntos."
+            price="USD 150"
+            cta="Comprar el Pack CAD"
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
+          />
+        </div>
+      </div>
+
+      {/* Grupo B · Bootcamp */}
+      <div>
+        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-6">
+          Bootcamp · profundización
+        </p>
+        <div className="grid md:grid-cols-2 gap-0 border border-line">
+          <PriceCard
+            title="Bootcamp CAD→BIM"
+            description="8 semanas. Pasás de AutoCAD a BIM modelando un proyecto real. Validación IFC por semana. Agente IA incluido."
+            price="USD 349"
+            cta="Comprar el Bootcamp"
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
+          />
+          <PriceCard
+            title="Pack CAD Management + Bootcamp"
+            description="Todo Forastero en un solo acceso."
+            price="USD 449"
+            cta="Comprar el Pack Completo"
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
+            featured
+          />
+        </div>
       </div>
     </section>
   );
 }
 
 function PriceCard({
-  number,
   title,
+  description,
   price,
-  includes,
   cta,
   checkoutUrl,
   featured = false,
-  badge,
+  compact = false,
 }: {
-  number: string;
   title: string;
+  description: string;
   price: string;
-  includes: string[];
   cta: string;
   checkoutUrl: string;
   featured?: boolean;
-  badge?: string;
+  compact?: boolean;
 }) {
   return (
     <div
-      className={`p-8 flex flex-col border-r border-line last:border-r-0 ${
+      className={`${compact ? "p-6" : "p-8"} flex flex-col border-r border-line last:border-r-0 ${
         featured ? "bg-ink" : "bg-white"
       }`}
     >
-      <div className="flex items-start justify-between mb-10">
-        <p
-          className={`font-mono text-[10px] tracking-[.12em] ${
-            featured ? "text-white/40" : "text-stone"
-          }`}
-        >
-          {number}
-        </p>
-        {badge && (
-          <span className="font-mono text-[8px] tracking-[.1em] uppercase border border-amber text-amber px-2 py-0.5">
-            {badge}
-          </span>
-        )}
-      </div>
-
       <h3
-        className={`text-xl font-light mb-2 ${
+        className={`${compact ? "text-sm" : "text-base"} font-light mb-3 leading-snug ${
           featured ? "text-white" : "text-ink"
         }`}
-        style={{ letterSpacing: "-0.03em" }}
+        style={{ letterSpacing: "-0.02em" }}
       >
         {title}
       </h3>
-
       <p
-        className={`text-[52px] font-light leading-none mb-6 ${
+        className={`text-sm font-light leading-relaxed mb-6 flex-1 ${
+          featured ? "text-white/60" : "text-stone"
+        }`}
+      >
+        {description}
+      </p>
+      <p
+        className={`${compact ? "text-[28px]" : "text-[42px]"} font-light leading-none mb-8 ${
           featured ? "text-white" : "text-ink"
         }`}
         style={{ letterSpacing: "-0.05em" }}
       >
         {price}
       </p>
-
-      <ul className="flex flex-col gap-2 mb-8 flex-1">
-        {includes.map((item, i) => (
-          <li
-            key={i}
-            className={`flex items-start gap-3 text-sm font-light ${
-              featured ? "text-white/60" : "text-stone"
-            }`}
-          >
-            <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
-            {item}
-          </li>
-        ))}
-      </ul>
-
-      <p
-        className={`text-[11px] font-light leading-relaxed mb-6 ${
-          featured ? "text-white/40" : "text-stone"
-        }`}
-      >
-        {DISCLAIMER}
-      </p>
-
       <BuyButton
         checkoutUrl={checkoutUrl}
         className={`inline-block border px-5 py-3 text-sm font-light text-center transition-colors ${
@@ -481,7 +459,7 @@ function PriceCard({
   );
 }
 
-/* ─── Bio ───────────────────────────────────────────────────────────────── */
+/* ─── Bio ────────────────────────────────────────────────────────────────── */
 
 function BioSection() {
   return (
@@ -491,54 +469,31 @@ function BioSection() {
       </p>
       <div className="grid md:grid-cols-[1fr_2fr] gap-14 items-start max-w-4xl">
         <div>
-          <div className="w-full aspect-square bg-muted border border-line flex items-center justify-center max-w-[200px]">
-            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone/40 text-center px-4">
-              Foto · próximamente
-            </p>
-          </div>
+          <div className="w-full aspect-square bg-muted border border-line max-w-[200px]" />
         </div>
         <div>
-          <h2
-            className="text-[32px] leading-[1.08] font-light text-ink mb-1"
-            style={{ letterSpacing: "-0.035em" }}
-          >
-            Ariel Fragosa
-          </h2>
-          <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-8">
-            Architetto · Forastero · Grono, Suiza
+          <p className="text-base font-light text-deep leading-[1.65] mb-6">
+            Soy Ariel Fragosa, arquitecto. Estudié en La Plata, me especialicé en Valencia,
+            trabajé en estudios de Argentina, España, Italia y Suiza. Desde 2022 vivo en
+            Grono, en los Alpes del Cantón Graubünden.
           </p>
-          <p className="text-base font-light text-deep leading-[1.65] mb-8">
-            Originalmente de Argentina, basado en Grono (Cantón Graubünden,
-            Suiza italiana) desde hace varios años. Combino una práctica
-            arquitectónica independiente (Forastero) con trabajo en estudios
-            profesionales en el Cantón Ticino. Forastero es una plataforma
-            educativa que reúne lo que aprendí en proyectos reales — desde la
-            documentación técnica clásica hasta la transición CAD → BIM con
-            criterio profesional.
+          <p className="text-base font-light text-deep leading-[1.65] mb-6">
+            Después de más de diez años realizando colaboraciones en otros estudios, empecé
+            Forastero. La idea es simple: pasar lo que aprendí en el oficio real. No la
+            teoría — la práctica de trabajar en estudios, lidiar con plazos, mantener el
+            modelo en orden cuando las cosas se complican, y llegar a obra con documentación
+            que se entienda.
           </p>
-          <div className="flex flex-col gap-1.5">
-            <a
-              href="https://forastero.studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[10px] tracking-[.08em] uppercase text-stone hover:text-ink transition-colors"
-            >
-              forastero.studio →
-            </a>
-            <a
-              href="mailto:info@forastero.studio"
-              className="font-mono text-[10px] tracking-[.08em] uppercase text-stone hover:text-ink transition-colors"
-            >
-              info@forastero.studio
-            </a>
-          </div>
+          <p className="text-base font-light text-deep leading-[1.65]">
+            Forastero es la versión ordenada de lo que normalmente se aprende a base de errores.
+          </p>
         </div>
       </div>
     </section>
   );
 }
 
-/* ─── FAQ ───────────────────────────────────────────────────────────────── */
+/* ─── FAQ ────────────────────────────────────────────────────────────────── */
 
 const FAQ_ITEMS = [
   {
@@ -547,31 +502,31 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿En cuánto tiempo termino el Bootcamp?",
-    a: "El bootcamp está diseñado para 8 semanas con dedicación de ~8 horas/semana. Pero podés ir a tu ritmo: las semanas se desbloquean a medida que completás la validación de la anterior.",
+    a: "Está diseñado para 8 semanas con dedicación de ~8 horas/semana. Pero podés ir a tu ritmo: las semanas se desbloquean a medida que completás la validación IFC de la anterior.",
   },
   {
     q: "¿Necesito experiencia previa con Revit o ArchiCAD?",
-    a: "No. La Semana 0 (opcional) cubre los fundamentos del software. Si ya manejás uno de los dos, saltala.",
+    a: "No. La Semana 0 (opcional) cubre los fundamentos del software con material oficial de Autodesk y Graphisoft. Si ya manejás uno de los dos, saltala.",
   },
   {
     q: "¿Cuál es mejor: Revit o ArchiCAD?",
-    a: "Ambos funcionan. Lo importante es la lógica BIM, no el software. En la Semana 0 hay una guía para elegir.",
+    a: "Ambos funcionan. Lo importante es la lógica BIM, no el software. En la Semana 0 hay una guía para elegir según tu mercado y contexto.",
   },
   {
     q: "¿Qué pasa si me trabo?",
-    a: "Tenés un agente IA disponible 24/7 que sabe en qué semana estás y qué proyecto elegiste. Te guía con preguntas concretas.",
+    a: "Tenés un agente IA disponible 24/7 que sabe en qué semana estás y qué proyecto elegiste. Te guía con preguntas concretas y referencias al material.",
   },
   {
     q: "¿Cómo se valida el avance?",
-    a: "Al final de cada semana exportás un IFC del modelo. El agente lo valida automáticamente y te da feedback. Si está bien desbloqueás la siguiente semana.",
+    a: "Al final de cada semana exportás un IFC del modelo. El agente lo valida automáticamente y te da feedback verde, amarillo o rojo. Si está en verde o amarillo, desbloqueás la siguiente semana.",
   },
   {
     q: "¿El certificado tiene validez profesional?",
-    a: "Es un certificado emitido por Forastero, no por Autodesk ni Graphisoft. Refleja que completaste un proyecto BIM profesional completo. Es verificable públicamente.",
+    a: "Es un certificado emitido por Forastero, no por Autodesk ni Graphisoft. Refleja que completaste un proyecto BIM profesional completo, verificable públicamente con su ID. Cada estudio decide cuánto peso le da.",
   },
   {
     q: "¿Puedo combinar el Taller, el Workshop y el Bootcamp?",
-    a: "Sí. El Pack CAD Management + Bootcamp incluye todo con descuento.",
+    a: "Sí. El Pack CAD Management + Bootcamp incluye todo con un 22% de descuento sobre la compra separada.",
   },
   {
     q: "¿Hay reembolso si no me convence?",
@@ -579,7 +534,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿Cómo me contacto si tengo dudas antes de comprar?",
-    a: "info@forastero.studio · respuesta en 24-48 horas hábiles.",
+    a: "info@forastero.studio — respuesta en 24-48 horas hábiles.",
   },
 ];
 
@@ -617,29 +572,43 @@ function FaqSection() {
   );
 }
 
-/* ─── Footer ────────────────────────────────────────────────────────────── */
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
 
 function Footer() {
   return (
-    <footer className="px-8 md:px-14 py-16 flex flex-col md:flex-row justify-between items-start gap-6 border-t border-line">
-      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
-        Forastero · Studio
-      </p>
-      <div className="flex flex-wrap gap-6">
-        {[
-          { href: "/legal/terminos-y-condiciones", label: "Términos y condiciones" },
-          { href: "/legal/privacidad", label: "Política de privacidad" },
-          { href: "/legal/reembolso", label: "Política de reembolso" },
-        ].map((l) => (
+    <footer className="px-8 md:px-14 py-16 border-t border-line">
+      <div className="grid md:grid-cols-[2fr_1fr] gap-10 mb-10">
+        <p className="text-sm font-light text-stone leading-relaxed max-w-md">
+          Forastero lo lleva Ariel Fragosa, arquitecto. Argentino-italiano, formado en
+          La Plata y Valencia, con experiencia profesional en Argentina, España, Italia y
+          Suiza. Actualmente en Grono, Cantón Graubünden.{" "}
           <a
-            key={l.href}
-            href={l.href}
-            className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+            href="mailto:info@forastero.studio"
+            className="text-ink hover:text-stone transition-colors"
           >
-            {l.label}
+            info@forastero.studio
           </a>
-        ))}
+        </p>
+        <div className="flex flex-col gap-3">
+          {[
+            { href: "/legal/terminos-y-condiciones", label: "Términos y condiciones" },
+            { href: "/legal/privacidad", label: "Política de privacidad" },
+            { href: "/legal/reembolso", label: "Política de reembolso" },
+          ].map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
       </div>
+      <div className="h-px bg-line mb-6" />
+      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+        © Forastero 2026
+      </p>
     </footer>
   );
 }
