@@ -3,32 +3,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { buildBienvenidaEmail } from "@/lib/emails/bienvenida";
 
-// Map de product_id de Lemon Squeezy → slug interno
-// TODO: verificar/actualizar los IDs cuando crees los productos en Lemon Squeezy
-const PRODUCT_IDS: Record<string, string> = {
-  "1063937": "taller-documentacion",   // Taller de Documentación (era pack cad-management, revisar)
-  "1063951": "bootcamp",               // Bootcamp CAD → BIM
-  "1063959": "pack-completo",          // Pack CAD Management + Bootcamp (ajustar precio en LS)
-  // TODO: agregar product_id del Workshop de Cotización cuando se cree en LS
-  // TODO: agregar product_id del Pack CAD Management (Taller + Workshop) cuando se cree en LS
+// variant_id de Lemon Squeezy → slug interno
+const VARIANT_TO_PRODUCT_MAP: Record<string, string> = {
+  "1086419": "taller",
+  "1702406": "workshop",
+  "1063937": "pack-cad-management",
+  "1063951": "bootcamp",
+  "1063959": "pack-completo",
 };
 
-// Map de variant_id de Lemon Squeezy → slug interno
-// TODO: actualizar con los variant_ids reales después de crear variantes en LS
-const VARIANT_IDS: Record<string, string> = {
-  "1667874": "taller-documentacion",   // Variante taller (era cad-management)
-  "1667893": "bootcamp",
-  "1667903": "pack-completo",
-  // TODO: "XXXXX": "workshop-cotizacion",
-  // TODO: "XXXXX": "pack-cad-management",
-};
-
-function resolveSlug(productId: unknown, variantId: unknown): string | null {
-  return (
-    PRODUCT_IDS[String(productId)] ??
-    VARIANT_IDS[String(variantId)] ??
-    null
-  );
+function resolveSlug(variantId: unknown): string | null {
+  return VARIANT_TO_PRODUCT_MAP[String(variantId)] ?? null;
 }
 
 function verifySignature(rawBody: string, signature: string): boolean {
@@ -74,12 +59,11 @@ export async function POST(req: NextRequest) {
 
   if (eventName === "order_created") {
     const email: string = data?.user_email ?? "";
-    const productId = data?.first_order_item?.product_id;
     const variantId = data?.first_order_item?.variant_id;
-    const productSlug = resolveSlug(productId, variantId);
+    const productSlug = resolveSlug(variantId);
 
     if (!productSlug) {
-      console.warn("[lemon webhook] unknown product_id/variant_id:", { productId, variantId });
+      console.warn("[lemon webhook] unknown variant_id:", { variantId });
       return NextResponse.json({ received: true });
     }
 
