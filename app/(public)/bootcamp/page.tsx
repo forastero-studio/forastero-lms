@@ -52,7 +52,7 @@ export default async function BootcampProductPage() {
               checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
               className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
             >
-              Empezar el Bootcamp
+              Acceder al Bootcamp · USD 350
             </BuyButton>
           )}
           {access && (
@@ -352,7 +352,7 @@ export default async function BootcampProductPage() {
               checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
               className="border border-ink text-ink px-5 py-4 text-sm font-light hover:border-rust hover:text-rust transition-colors text-center"
             >
-              Empezar el Bootcamp · {PRICE}
+              Acceder al Bootcamp · {PRICE}
             </BuyButton>
             <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
               Acceso de por vida · a tu ritmo

@@ -50,7 +50,7 @@ export default async function CadManagementProductPage() {
             checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
             className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
           >
-            Empezar · USD 150
+            Acceder al pack · USD 150
           </BuyButton>
         ) : (
           <Link
@@ -350,7 +350,7 @@ export default async function CadManagementProductPage() {
               checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
               className="border border-ink text-ink px-5 py-4 text-sm font-light hover:border-rust hover:text-rust transition-colors text-center"
             >
-              Empezar · USD 150
+              Acceder al pack · USD 150
             </BuyButton>
             <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
               Acceso de por vida · actualizaciones incluidas
