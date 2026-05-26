@@ -5,6 +5,7 @@ import { hasAccess } from "@/lib/db";
 import Link from "next/link";
 
 const PRICE = "USD 349";
+const PUBLIC_SLUGS = ["semana-0", "semana-1"];
 
 export default async function BootcampProductPage() {
   const { userId } = await auth();
@@ -136,23 +137,29 @@ export default async function BootcampProductPage() {
         {/* Semanas */}
         <div className="h-px bg-line mb-10" />
         <p id="semanas" className="eyebrow mb-8">Programa · 8 semanas</p>
-        {/* TODO: Falta semana-0.md (Antes de empezar · opcional) — Ariel lo produce */}
         <div className="flex flex-col divide-y divide-line border border-line mb-16">
-          {weeks.map((w, i) => {
-            const weekNum = w.semana ?? i + 1;
-            return (
-              <div
-                key={w.slug}
-                className="flex items-start justify-between gap-6 px-6 py-5 bg-white"
-              >
+          {weeks.map((w) => {
+            const weekNum = w.semana ?? 0;
+            const isPublic = PUBLIC_SLUGS.includes(w.slug);
+            const hasIfc = (w.semana ?? 0) >= 1;
+
+            const rowInner = (
+              <div className="flex items-start justify-between gap-6 px-6 py-5 bg-white">
                 <div className="flex items-start gap-5 flex-1 min-w-0">
                   <span className="font-mono text-[10px] tracking-[.1em] text-stone shrink-0 pt-0.5">
                     {String(weekNum).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-sm font-light text-ink leading-snug">
-                      {w.title}
-                    </p>
+                    <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                      <p className="text-sm font-light text-ink leading-snug">
+                        {w.title}
+                      </p>
+                      {isPublic && (
+                        <span className="font-mono text-[8px] tracking-[.1em] uppercase text-stone border border-line px-1.5 py-0.5 shrink-0 leading-none">
+                          vista previa
+                        </span>
+                      )}
+                    </div>
                     {w.description && (
                       <p className="text-xs font-light text-stone mt-1 leading-snug">
                         {w.description}
@@ -163,13 +170,34 @@ export default async function BootcampProductPage() {
                         {w.duracion_estimada}
                       </p>
                     )}
+                    {!isPublic && (
+                      <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone/40 mt-1">
+                        Disponible al comprar el Bootcamp
+                      </p>
+                    )}
                   </div>
                 </div>
-                <div className="shrink-0 pt-0.5">
-                  <span className="font-mono text-[9px] tracking-[.08em] uppercase text-stone/40">
-                    IFC ✓
-                  </span>
-                </div>
+                {hasIfc && (
+                  <div className="shrink-0 pt-0.5">
+                    <span className="font-mono text-[9px] tracking-[.08em] uppercase text-stone/40">
+                      IFC ✓
+                    </span>
+                  </div>
+                )}
+              </div>
+            );
+
+            return isPublic ? (
+              <Link
+                key={w.slug}
+                href={`/bootcamp/${w.slug}`}
+                className="hover:bg-muted transition-colors block"
+              >
+                {rowInner}
+              </Link>
+            ) : (
+              <div key={w.slug} className="opacity-70">
+                {rowInner}
               </div>
             );
           })}

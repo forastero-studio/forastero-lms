@@ -9,6 +9,8 @@ export default function AgentDrawer() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const isBootcamp = pathname?.startsWith("/bootcamp");
+  const isPublicWeek =
+    pathname?.includes("semana-0") || pathname?.includes("semana-1");
 
   const weekMatch = pathname?.match(/semana-(\d+)/);
   const weekNum = weekMatch ? parseInt(weekMatch[1]) : 0;
@@ -30,7 +32,7 @@ export default function AgentDrawer() {
     return () => window.removeEventListener("message", handleMessage);
   }, []);
 
-  if (!isBootcamp) return null;
+  if (!isBootcamp || isPublicWeek) return null;
 
   return (
     <>

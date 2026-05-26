@@ -33,7 +33,7 @@ export default async function BootcampDashboard() {
     user?.emailAddresses[0]?.emailAddress?.split("@")[0] ||
     "Estudiante";
 
-  const weeks = getBootcampWeeks();
+  const weeks = getBootcampWeeks().filter((w) => (w.semana ?? 0) >= 1);
   const completedSlugs = await getProgress(userId, "bootcamp");
   const dripStatus = computeDripStatus(completedSlugs);
 

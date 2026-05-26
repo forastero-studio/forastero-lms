@@ -50,14 +50,22 @@ function readMarkdownFiles(dir: string): ContentFile[] {
     });
 }
 
+export function getTallerModules(): ContentFile[] {
+  return readMarkdownFiles("cad-management/taller");
+}
+
+export function getWorkshopModules(): ContentFile[] {
+  return readMarkdownFiles("cad-management/workshop");
+}
+
 export function getCadManagementModules(): ContentFile[] {
-  const taller = readMarkdownFiles("cad-management/taller");
-  const workshop = readMarkdownFiles("cad-management/workshop");
-  return [...taller, ...workshop];
+  return [...getTallerModules(), ...getWorkshopModules()];
 }
 
 export function getBootcampWeeks(): ContentFile[] {
-  return readMarkdownFiles("bootcamp");
+  return readMarkdownFiles("bootcamp").sort(
+    (a, b) => (a.semana ?? 99) - (b.semana ?? 99)
+  );
 }
 
 export function getCadManagementModule(slug: string): ContentFile | null {
