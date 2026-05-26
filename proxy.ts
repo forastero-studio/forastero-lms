@@ -8,6 +8,7 @@ const isPublicRoute = createRouteMatcher([
   "/bootcamp/semana-0/(.*)",
   "/bootcamp/semana-1",
   "/bootcamp/semana-1/(.*)",
+  "/legal/(.*)",
   "/verify(.*)",
   "/sign-in(.*)",
   "/sign-up(.*)",
