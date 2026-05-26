@@ -9,33 +9,21 @@ export default async function CadManagementProductPage() {
 
   return (
     <main className="min-h-screen bg-paper">
-      {/* Header */}
-      <div className="px-8 md:px-14 py-5 border-b border-line flex items-center justify-between">
+      <div className="px-8 md:px-14 py-20 max-w-5xl mx-auto">
+        {/* Hero */}
         <Link
           href="/"
-          className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+          className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors inline-block mb-12"
         >
           ← forastero
         </Link>
-        <p
-          className="text-sm font-light text-stone hidden md:block"
-          style={{ letterSpacing: "0.05em" }}
-        >
-          forastero · cad management
-        </p>
-      </div>
-
-      <div className="px-8 md:px-14 py-20 max-w-5xl mx-auto">
-        {/* Hero */}
+        <p className="eyebrow mb-6">Pack CAD Management</p>
         <h1
           className="text-5xl font-light leading-tight mb-4 text-ink"
           style={{ letterSpacing: "-0.04em" }}
         >
           CAD Management
         </h1>
-        <p className="font-mono text-[10px] tracking-[.08em] uppercase text-stone mb-6">
-          Sistema completo para ordenar tu estudio
-        </p>
         <p className="text-xl font-light text-deep leading-relaxed max-w-2xl mb-4">
           Documentación de obras + Cotización profesional.
         </p>
