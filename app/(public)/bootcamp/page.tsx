@@ -4,7 +4,7 @@ import { getBootcampWeeks } from "@/lib/content";
 import { hasAccess } from "@/lib/db";
 import Link from "next/link";
 
-const PRICE = "USD 349";
+const PRICE = "USD 350";
 const PUBLIC_SLUGS = ["semana-0", "semana-1"];
 
 export default async function BootcampProductPage() {
@@ -14,6 +14,22 @@ export default async function BootcampProductPage() {
 
   return (
     <main className="min-h-screen bg-paper">
+      {/* Header */}
+      <div className="px-8 md:px-14 py-5 border-b border-line flex items-center justify-between">
+        <Link
+          href="/"
+          className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+        >
+          ← forastero
+        </Link>
+        <p
+          className="text-sm font-light text-stone hidden md:block"
+          style={{ letterSpacing: "0.05em" }}
+        >
+          forastero · bootcamp cad → bim
+        </p>
+      </div>
+
       <div className="px-8 md:px-14 py-20 max-w-5xl mx-auto">
 
         {/* Hero */}
@@ -22,15 +38,11 @@ export default async function BootcampProductPage() {
           className="text-5xl font-light leading-tight mb-6 text-ink"
           style={{ letterSpacing: "-0.04em" }}
         >
-          Bootcamp CAD→BIM
+          Bootcamp CAD → BIM
         </h1>
         <p className="text-xl font-light text-deep leading-relaxed max-w-2xl mb-4">
-          Pasá de AutoCAD a BIM modelando un proyecto profesional completo en 8 semanas.
-        </p>
-        <p className="text-base font-light text-stone leading-relaxed max-w-2xl mb-8">
-          Revit o ArchiCAD. A tu ritmo. Agente IA incluido que sabe en qué semana
-          estás, qué proyecto elegiste y qué software usás. Validación IFC en cada
-          semana. Certificado al final.
+          8 semanas para pasar de AutoCAD® a BIM modelando un proyecto
+          profesional completo.
         </p>
 
         {/* Precio */}
@@ -50,7 +62,7 @@ export default async function BootcampProductPage() {
               checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
               className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
             >
-              Comprar el Bootcamp
+              Empezar el Bootcamp
             </BuyButton>
           )}
           {access && (
@@ -69,22 +81,38 @@ export default async function BootcampProductPage() {
           </a>
         </div>
 
+        {/* La idea */}
+        <div className="h-px bg-line mb-10" />
+        <p className="eyebrow mb-8">La idea</p>
+        <div className="max-w-2xl mb-16">
+          <p className="text-base font-light text-deep leading-[1.65] mb-5">
+            No vas a "aprender BIM" mirando tutoriales sueltos durante meses. Vas
+            a modelar un proyecto real, paso a paso, con un asistente digital al
+            lado que sabe en qué semana estás.
+          </p>
+          <p className="text-base font-light text-deep leading-[1.65]">
+            8 semanas con dedicación de 30-45 minutos por día. Al final tenés un
+            proyecto BIM terminado, con la documentación profesional que sale del
+            modelo y un certificado verificable de forastero.
+          </p>
+        </div>
+
         {/* Cómo funciona */}
         <div className="h-px bg-line mb-10" />
         <p className="eyebrow mb-8">Cómo funciona</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-line mb-16">
           {[
             {
-              title: "Acceso inmediato sin esperar",
-              body: "Comprás, te llega el acceso, arrancás. Sin fechas fijas. Tu ritmo, tus tiempos.",
+              title: "Una semana = un objetivo concreto",
+              body: "Cada semana cubrís una etapa específica del modelado: estructura, aberturas, materiales, cubierta, vistas, documentación, planillas, presentación final. Cada etapa tiene material teórico, paso a paso operativo en Revit® o ArchiCAD®, ejemplos contextuales y un cierre con feedback.",
             },
             {
-              title: "Validación IFC al final de cada semana",
-              body: "Exportás el IFC del modelo. Un agente IA lo valida con criterios profesionales y te da feedback concreto. Si está bien, desbloqueás la siguiente semana.",
+              title: "Validación al final de cada semana",
+              body: "Al cerrar cada semana le mandás tu archivo al asistente del bootcamp. Lo revisa con criterios profesionales y te devuelve un semáforo: verde (seguir), amarillo (corregir esto antes de avanzar), o rojo (acá hay un problema serio para resolver). Si pasás en verde o amarillo, se desbloquea la semana siguiente.",
             },
             {
-              title: "Certificado verificable al completar",
-              body: "Cuando terminás las 8 semanas con validación verde o amarillo, se emite tu certificado. ID único, verificable públicamente.",
+              title: "Asistente IA durante las 8 semanas",
+              body: "Cuando te trabás, escribís al asistente del bootcamp. Sabe qué semana estás cursando, qué proyecto elegiste, qué software usás. Te guía con criterio profesional, no con respuestas genéricas de internet. Te acompaña de principio a fin del bootcamp.",
             },
           ].map((item, i) => (
             <div key={i} className="bg-white p-8 border-r border-line last:border-r-0">
@@ -97,42 +125,84 @@ export default async function BootcampProductPage() {
         {/* Proyectos */}
         <div className="h-px bg-line mb-10" />
         <p className="eyebrow mb-6">Los 2 proyectos guía</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line border border-line mb-4">
+        <p className="text-sm font-light text-stone mb-8">
+          Al inicio elegís uno de estos dos proyectos.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line border border-line mb-16">
           <div className="bg-white p-8">
             <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
               Opción A · Preexistencia
             </p>
             <h3 className="text-lg font-light text-ink mb-2">
-              Refugio Alpe di Portola
+              Refugio Alpe di Portola · Suiza
             </h3>
-            <p className="text-sm font-light text-stone leading-relaxed mb-3">
-              Suiza · intervención sobre preexistencia. ~32 m², 2 niveles, mampostería de
-              piedra existente.
+            <p className="text-sm font-light text-stone leading-relaxed mb-4">
+              Pequeño refugio alpino de aproximadamente 32 m², planta única, en
+              mampostería de piedra existente, con cubierta de madera a dos aguas.
             </p>
-            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone">
-              Sistema de fases (existing/new) · modelado patrimonial · intervención reversible
+            <p className="text-sm font-light text-stone leading-relaxed mb-4">
+              El proyecto consiste en una intervención cuidadosa sobre la
+              preexistencia: piso técnico nuevo, divisiones internas livianas,
+              sustitución de carpinterías.
             </p>
+            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-3">
+              Ideal si te interesa:
+            </p>
+            <ul className="flex flex-col gap-1.5">
+              {[
+                "Trabajo sobre construcción existente",
+                "Intervenciones reversibles (criterio patrimonial)",
+                "Materialidad tradicional (piedra, madera)",
+                "Proyectos chicos con detalle cuidado",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm font-light text-stone">
+                  <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="bg-white p-8">
             <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
               Opción B · Obra nueva
             </p>
             <h3 className="text-lg font-light text-ink mb-2">
-              Cabina Patagonia
+              Cabina Patagonia · Argentina
             </h3>
-            <p className="text-sm font-light text-stone leading-relaxed mb-3">
-              Argentina · construcción nueva residencial. Planta única, cubierta inclinada
-              característica.
+            <p className="text-sm font-light text-stone leading-relaxed mb-4">
+              Cabina residencial nueva, planta única, con cubierta inclinada
+              característica de zonas con nieve. Construcción en mampostería con
+              aislación térmica.
             </p>
-            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone">
-              Documentación completa multidisciplinar · coordinación con instalaciones
+            <p className="text-sm font-light text-stone leading-relaxed mb-4">
+              Documentación arquitectónica completa: plantas, cortes, alzados,
+              carpinterías, terminaciones y detalles constructivos.
             </p>
+            <p className="text-sm font-light text-stone leading-relaxed mb-4">
+              Sobre las instalaciones: este bootcamp es una introducción a BIM
+              enfocada en el modelo arquitectónico. Las instalaciones (sanitaria,
+              electricidad, gas) se pueden documentar en 2D o las resuelve el
+              asesor especialista por separado, como ocurre habitualmente en
+              proyectos de esta escala.
+            </p>
+            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-3">
+              Ideal si te interesa:
+            </p>
+            <ul className="flex flex-col gap-1.5">
+              {[
+                "Construcción residencial nueva",
+                "Climas fríos y cubiertas inclinadas",
+                "Documentación arquitectónica completa",
+                "Proyectos residenciales unifamiliares",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm font-light text-stone">
+                  <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <p className="text-sm font-light text-stone mb-16">
-          Elegís uno al arrancar Semana 1. Los planos CAD de cada proyecto se descargan
-          desde tu dashboard.
-        </p>
 
         {/* Semanas */}
         <div className="h-px bg-line mb-10" />
@@ -141,7 +211,6 @@ export default async function BootcampProductPage() {
           {weeks.map((w) => {
             const weekNum = w.semana ?? 0;
             const isPublic = PUBLIC_SLUGS.includes(w.slug);
-            const hasIfc = (w.semana ?? 0) >= 1;
 
             const rowInner = (
               <div className="flex items-start justify-between gap-6 px-6 py-5 bg-white">
@@ -177,13 +246,6 @@ export default async function BootcampProductPage() {
                     )}
                   </div>
                 </div>
-                {hasIfc && (
-                  <div className="shrink-0 pt-0.5">
-                    <span className="font-mono text-[9px] tracking-[.08em] uppercase text-stone/40">
-                      IFC ✓
-                    </span>
-                  </div>
-                )}
               </div>
             );
 
@@ -206,26 +268,22 @@ export default async function BootcampProductPage() {
         {/* Qué necesitás */}
         <div className="h-px bg-line mb-10" />
         <p className="eyebrow mb-8">Qué necesitás</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-line mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-line mb-16">
           {[
             {
               label: "Software",
-              body: "Revit 2022+ o ArchiCAD 25+. Licencia educacional o profesional. El bootcamp es agnóstico.",
-            },
-            {
-              label: "Computadora",
-              body: "16 GB de RAM mínimo, GPU dedicada o iGPU moderna, disco SSD. Mac soporta ArchiCAD nativamente; para Revit necesitás Windows o virtualización.",
+              body: "Revit® 2022 o más reciente, o ArchiCAD® 25 o más reciente. Licencia educacional o profesional.",
             },
             {
               label: "Tiempo",
-              body: "~8 horas por semana. Las 8 semanas pueden estirarse según tu ritmo — no hay caducidad del acceso por 24 meses.",
+              body: "30-45 minutos por día durante 8 semanas. Las semanas pueden estirarse según tu ritmo. Acceso al material de por vida.",
             },
             {
               label: "Conocimiento previo",
-              body: "AutoCAD a nivel profesional. Si no manejás AutoCAD, hacé primero el Taller de Documentación de Obras.",
+              body: "AutoCAD® a nivel profesional. Si todavía no manejás AutoCAD® a nivel profesional, empezá primero por el Taller de Documentación de Obras.",
             },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 border-r border-b border-line">
+            <div key={i} className="bg-white p-8 border-r border-line last:border-r-0">
               <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
                 {item.label}
               </p>
@@ -234,26 +292,52 @@ export default async function BootcampProductPage() {
           ))}
         </div>
 
-        {/* FAQ específica del Bootcamp */}
+        {/* Cuándo no es para vos */}
+        <div className="h-px bg-line mb-10" />
+        <p className="eyebrow mb-8">Cuándo no es para vos</p>
+        <div className="max-w-2xl mb-16">
+          <ul className="flex flex-col gap-3">
+            {[
+              "Si buscás formación oficial certificada por Autodesk® o Graphisoft® (este es un programa forastero, no afiliado a esas marcas)",
+              "Si tu objetivo es BIM gerencial o BIM management avanzado (este es un programa de modelado profesional, no de coordinación BIM)",
+              "Si necesitás acreditación universitaria",
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-3 text-sm font-light text-stone">
+                <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* FAQ */}
         <div className="h-px bg-line mb-10" />
         <p className="eyebrow mb-8">Preguntas frecuentes</p>
         <div className="max-w-2xl border-t border-line mb-16">
           {[
             {
-              q: "¿Cuándo arranca?",
-              a: "No tiene fecha fija. Comprás cuando querés y arrancás cuando querés. La Semana 1 se desbloquea al confirmar tu pago.",
+              q: "¿Qué pasa si me trabo y no puedo avanzar?",
+              a: "Tenés acceso al asistente IA del bootcamp 24/7. Sabe en qué semana estás y qué proyecto modelás. Te guía con criterio profesional hasta que resuelvas el bloqueo.",
             },
             {
-              q: "¿En cuánto tiempo termino?",
-              a: "Está diseñado para 8 semanas con dedicación de ~8 horas/semana. Podés ir a tu ritmo: las semanas se desbloquean a medida que completás la validación IFC de la anterior.",
+              q: "¿Y si después de comprar no me convence?",
+              a: "Tenés 7 días para pedir reembolso, con motivo declarado.",
             },
             {
-              q: "¿Cómo se valida el avance?",
-              a: "Al final de cada semana exportás un IFC del modelo. El agente lo valida automáticamente y te da feedback verde, amarillo o rojo. Si está en verde o amarillo, desbloqueás la siguiente semana.",
+              q: "¿Puedo usar mi propio proyecto en lugar de los dos proyectos guía?",
+              a: "Para el material formal del bootcamp se trabaja sobre uno de los dos proyectos guía. Pero podés aplicar en paralelo todo lo que aprendés a un proyecto tuyo. Mucha gente lo hace y acelera el aprendizaje.",
             },
             {
-              q: "¿Hay reembolso?",
-              a: "14 días desde la compra sin justificación, siempre que no hayas completado más de 2 validaciones IFC. Detalle completo en la Política de Reembolso.",
+              q: "¿Cuándo emite el certificado?",
+              a: "Al completar las 8 semanas con validación en verde o amarillo. La emisión es automática y recibís un PDF más un link verificable público.",
+            },
+            {
+              q: "¿Tengo que terminar en 8 semanas exactas?",
+              a: "No hay reloj. Las semanas se desbloquean cuando validás la anterior, a tu ritmo. Acceso de por vida al material desde la compra.",
+            },
+            {
+              q: "¿Esto reemplaza a un curso oficial de Revit® o ArchiCAD®?",
+              a: "No. Esto es un bootcamp de transición CAD → BIM con criterio profesional. Para certificación oficial del software, mirá Autodesk® Training o Graphisoft® Learn.",
             },
           ].map((item, i) => (
             <details key={i} className="group border-b border-line">
@@ -278,10 +362,10 @@ export default async function BootcampProductPage() {
               checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
               className="border border-ink text-ink px-5 py-4 text-sm font-light hover:border-rust hover:text-rust transition-colors text-center"
             >
-              Comprar el Bootcamp · {PRICE}
+              Empezar el Bootcamp · {PRICE}
             </BuyButton>
             <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
-              Acceso inmediato · A tu ritmo
+              Acceso de por vida · a tu ritmo
             </p>
           </div>
         ) : (
