@@ -27,7 +27,7 @@ export default async function LegalPage({ params }: Props) {
           href="/"
           className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors mb-12 inline-block"
         >
-          ← Forastero · LMS
+          ← forastero
         </Link>
 
         <h1

@@ -25,9 +25,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Forastero · LMS",
+  title: "forastero · LMS",
   description:
-    "Plataforma de cursos para arquitectos. De CAD a BIM, sin romper tu manera de trabajar.",
+    "Plataforma de formación para arquitectos. De CAD a BIM, sin modificar tu forma de trabajar.",
   metadataBase: new URL("https://forastero.studio"),
 };
 
