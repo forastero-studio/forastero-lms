@@ -10,7 +10,6 @@ const config: Config = {
     extend: {
       colors: {
         paper: "var(--paper)",
-        white: "var(--paper)",
         ink: "var(--ink)",
         deep: "var(--deep)",
         muted: "var(--muted)",
