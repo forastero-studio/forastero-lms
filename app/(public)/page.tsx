@@ -7,7 +7,6 @@ export default function LandingPage() {
       <Nav />
       <Hero />
       <ProblemSection />
-      <PathsSection />
       <AgentSection />
       <PricingSection />
       <BioSection />
@@ -27,7 +26,7 @@ function Nav() {
       </p>
       <div className="hidden md:flex items-center gap-8">
         {[
-          { label: "Formaciones", href: "#caminos" },
+          { label: "Formaciones", href: "#precios" },
           { label: "Agente", href: "#agente" },
           { label: "Precios", href: "#precios" },
         ].map((l) => (
@@ -67,7 +66,7 @@ function Hero() {
           Sin frustrarte, abandonar o empezar desde cero.
         </p>
         <div className="flex flex-wrap gap-4">
-          <Button variant="primary" href="#caminos">
+          <Button variant="primary" href="#precios">
             Ver formaciones
           </Button>
           <Button variant="outline" href="#precios">
@@ -123,131 +122,6 @@ function ProblemSection() {
         </p>
       </blockquote>
     </section>
-  );
-}
-
-/* ─── 2 Caminos ─────────────────────────────────────────────────────────── */
-
-function PathsSection() {
-  return (
-    <section id="caminos" className="px-8 md:px-14 py-24 border-b border-line">
-      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
-        Dos caminos
-      </p>
-      <h2
-        className="text-[44px] leading-[1.04] font-light text-ink mb-14 max-w-xl"
-        style={{ letterSpacing: "-0.035em" }}
-      >
-        Elegí el que se ajusta a tu momento.
-      </h2>
-
-      <div className="grid md:grid-cols-2 gap-0 border border-line">
-        <PathCard
-          number="01"
-          title="CAD Management"
-          tag="Taller · Workshop"
-          description="Sistema completo para ordenar tu estudio: documentación de obras y cotización profesional. Dos formaciones que se complementan."
-          includes={[
-            "Taller de Documentación de Obras",
-            "Workshop Cotización de Obras",
-          ]}
-          cta="Empezar"
-          href="/cad-management"
-        />
-        <PathCard
-          number="02"
-          title="Bootcamp CAD→BIM"
-          tag="8 semanas · Asistente IA"
-          description="La transición real a BIM. Modelás un proyecto profesional completo paso a paso, con validación semanal y asistente disponible 24/7."
-          includes={[
-            "Revit® o ArchiCAD® a tu ritmo",
-            "Validación al cierre de cada semana",
-            "Certificado verificable al completar",
-          ]}
-          cta="Empezar"
-          href="/bootcamp"
-          accent
-        />
-      </div>
-    </section>
-  );
-}
-
-function PathCard({
-  number,
-  title,
-  tag,
-  description,
-  includes,
-  cta,
-  href,
-  accent = false,
-}: {
-  number: string;
-  title: string;
-  tag: string;
-  description: string;
-  includes: string[];
-  cta: string;
-  href: string;
-  accent?: boolean;
-}) {
-  return (
-    <div
-      className={`min-h-[520px] p-8 md:p-10 flex flex-col border-r border-line last:border-r-0 ${
-        accent ? "bg-ink text-white" : "bg-white"
-      }`}
-    >
-      <p className="font-mono text-[10px] tracking-[.12em] mb-14 text-stone">
-        {number}
-      </p>
-
-      <div className="flex-1">
-        <h3
-          className={`text-[32px] leading-[1.02] font-light mb-3 ${
-            accent ? "text-white" : "text-ink"
-          }`}
-          style={{ letterSpacing: "-0.04em" }}
-        >
-          {title}
-        </h3>
-        <p className={`text-sm mb-4 ${accent ? "text-amber" : "text-rust"}`}>
-          {tag}
-        </p>
-        <p
-          className={`text-base font-light leading-relaxed mb-8 ${
-            accent ? "text-white/80" : "text-deep"
-          }`}
-        >
-          {description}
-        </p>
-
-        <ul className="flex flex-col gap-2 mb-10">
-          {includes.map((item, i) => (
-            <li
-              key={i}
-              className={`flex items-start gap-3 text-sm font-light ${
-                accent ? "text-white/70" : "text-stone"
-              }`}
-            >
-              <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <Link
-        href={href}
-        className={`inline-block border px-5 py-3 text-sm font-light transition-colors w-fit ${
-          accent
-            ? "border-white/40 text-white hover:border-white"
-            : "border-ink text-ink hover:border-rust hover:text-rust"
-        }`}
-      >
-        {cta}
-      </Link>
-    </div>
   );
 }
 
@@ -385,10 +259,10 @@ function PricingSection() {
               USD 100
             </p>
             <Link
-              href="/cad-management"
+              href="/taller-documentacion-de-obras"
               className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light text-center transition-colors hover:border-rust hover:text-rust w-fit"
             >
-              Empezar
+              Ver el Taller
             </Link>
           </div>
 
@@ -424,10 +298,10 @@ function PricingSection() {
               USD 80
             </p>
             <Link
-              href="/cad-management"
+              href="/workshop-cotizacion-de-obras"
               className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light text-center transition-colors hover:border-rust hover:text-rust w-fit"
             >
-              Empezar
+              Ver el Workshop
             </Link>
           </div>
         </div>
@@ -478,7 +352,7 @@ function PricingSection() {
               href="/cad-management"
               className="inline-block border border-white/40 text-white px-5 py-3 text-sm font-light transition-colors hover:border-white w-fit"
             >
-              Empezar
+              Ver el pack
             </Link>
           </div>
         </div>
@@ -540,7 +414,7 @@ function PricingSection() {
                 href="/bootcamp"
                 className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light transition-colors hover:border-rust hover:text-rust w-fit"
               >
-                Empezar
+                Ver el Bootcamp
               </Link>
             </div>
           </div>
@@ -591,10 +465,10 @@ function PricingSection() {
                 ahorrás USD 50 vs comprarlos por separado
               </p>
               <Link
-                href="/bootcamp"
+                href="/pack-completo"
                 className="inline-block border border-white/40 text-white px-5 py-3 text-sm font-light transition-colors hover:border-white w-fit"
               >
-                Empezar
+                Ver el pack
               </Link>
             </div>
           </div>
