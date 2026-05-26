@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Button from "@/components/ui/Button";
 import BuyButton from "@/components/ui/BuyButton";
 
 export default function LandingPage() {
@@ -7,11 +5,9 @@ export default function LandingPage() {
     <div className="min-h-screen bg-paper font-sans">
       <Nav />
       <Hero />
-      <ProblemSection />
-      <PathsSection />
-      <AgentSection />
-      <PricingSection />
-      <BioSection />
+      <IntroSection />
+      <ProductsSection />
+      <ConversationSection />
       <FaqSection />
       <Footer />
     </div>
@@ -23,15 +19,16 @@ export default function LandingPage() {
 function Nav() {
   return (
     <nav className="flex items-center justify-between px-8 md:px-14 py-5 border-b border-line">
-      <p className="text-sm font-medium text-ink">
-        Forastero{" "}
-        <span className="font-light text-stone ml-2">· LMS</span>
+      <p
+        className="text-sm font-light text-ink"
+        style={{ letterSpacing: "0.05em" }}
+      >
+        forastero
       </p>
       <div className="hidden md:flex items-center gap-8">
         {[
-          { label: "Cursos", href: "#caminos" },
-          { label: "Agente", href: "#agente" },
-          { label: "Precios", href: "#precios" },
+          { label: "Formaciones", href: "#formaciones" },
+          { label: "Preguntas", href: "#faq" },
         ].map((l) => (
           <a
             key={l.href}
@@ -50,443 +47,386 @@ function Nav() {
 
 function Hero() {
   return (
-    <header className="min-h-[88vh] grid md:grid-cols-[1.1fr_.9fr] gap-14 items-end px-8 md:px-14 pt-20 pb-16 border-b border-line">
-      <div>
-        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-stone mb-6">
-          Para arquitectos que vienen de AutoCAD
-        </p>
-        <h1
-          className="text-[clamp(48px,7vw,96px)] leading-[.93] tracking-[-0.06em] font-light text-ink mb-8"
-          style={{ letterSpacing: "-0.06em" }}
-        >
-          De CAD a BIM,
-          <br />
-          sin romper tu
-          <br />
-          manera de trabajar.
-        </h1>
-        <p className="text-xl font-light text-deep leading-[1.5] max-w-xl mb-10">
-          Un sistema progresivo para ordenar tu documentación, modernizar
-          tu flujo CAD y avanzar hacia BIM sin frustrarte ni empezar
-          desde cero.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <Button variant="primary" href="#caminos">
-            Elegir camino
-          </Button>
-          <Button variant="outline" href="#precios">
-            Ver precios
-          </Button>
-        </div>
-      </div>
-
+    <header className="min-h-[72vh] flex flex-col justify-end px-8 md:px-14 pt-20 pb-16 border-b border-line">
+      <h1
+        className="text-[clamp(40px,6vw,80px)] leading-[.95] font-light text-ink mb-6 max-w-3xl"
+        style={{ letterSpacing: "-0.05em" }}
+      >
+        De CAD a BIM,
+        <br />
+        sin modificar tu
+        <br />
+        forma de trabajar.
+      </h1>
+      <p className="text-xl font-light text-deep leading-[1.5] max-w-xl">
+        Sin frustrarte, abandonar o empezar desde cero.
+      </p>
     </header>
   );
 }
 
-/* ─── Problema ──────────────────────────────────────────────────────────── */
+/* ─── Intro ─────────────────────────────────────────────────────────────── */
 
-function ProblemSection() {
+function IntroSection() {
   return (
     <section className="px-8 md:px-14 py-24 border-b border-line">
-      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
-        El problema
-      </p>
-      <h2
-        className="text-[44px] leading-[1.04] font-light text-ink mb-8 max-w-2xl"
-        style={{ letterSpacing: "-0.035em" }}
-      >
-        No estás atrasado. Estás trabajando con un sistema que ya no
-        alcanza.
-      </h2>
-      <p className="text-lg font-light text-deep leading-[1.65] max-w-2xl mb-12">
-        Durante años, AutoCAD fue suficiente. Dibujar, documentar, imprimir,
-        corregir, volver a dibujar. Pero el trabajo cambió: hoy te piden más
-        velocidad, más precisión, mejores entregas, presupuestos más claros,
-        coordinación e información.
-      </p>
-      <blockquote className="border-l border-ink pl-7 max-w-xl">
-        <p
-          className="text-[32px] leading-[1.18] font-light text-ink"
-          style={{ letterSpacing: "-0.035em" }}
-        >
-          Tu manera de trabajar tiene valor. No hay que destruirla. Hay que
-          volverla más inteligente.
+      <div className="max-w-2xl">
+        <p className="text-base font-light text-deep leading-[1.65] mb-5">
+          Durante años trabajaste con AutoCAD®. Lo dominás. Tu forma de
+          producir está afinada — sabés dónde poner cada línea, qué layer
+          usar, cómo escalar para imprimir.
         </p>
-      </blockquote>
-    </section>
-  );
-}
-
-/* ─── 2 Caminos ─────────────────────────────────────────────────────────── */
-
-function PathsSection() {
-  return (
-    <section id="caminos" className="px-8 md:px-14 py-24 border-b border-line">
-      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
-        Dos caminos
-      </p>
-      <h2
-        className="text-[44px] leading-[1.04] font-light text-ink mb-14 max-w-xl"
-        style={{ letterSpacing: "-0.035em" }}
-      >
-        Elegí el que se ajusta a tu momento.
-      </h2>
-
-      <div className="grid md:grid-cols-2 gap-0 border border-line">
-        <PathCard
-          number="01"
-          title="CAD Management"
-          tag="Taller"
-          description="Ordená tu producción en CAD."
-          includes={[
-            "Taller de Documentación de Obras",
-            "Workshop de Cotización de Obras",
-          ]}
-          cta="Ver taller"
-          href="/cad-management"
-        />
-        <PathCard
-          number="02"
-          title="Bootcamp CAD→BIM"
-          tag="8 semanas · Con agente Forastero"
-          description="La transición completa a BIM."
-          includes={[
-            "8 semanas de formación progresiva",
-            "Agente Forastero integrado en cada semana",
-          ]}
-          cta="Ver bootcamp"
-          href="/bootcamp"
-          accent
-        />
-      </div>
-    </section>
-  );
-}
-
-function PathCard({
-  number,
-  title,
-  tag,
-  description,
-  includes,
-  cta,
-  href,
-  accent = false,
-}: {
-  number: string;
-  title: string;
-  tag: string;
-  description: string;
-  includes: string[];
-  cta: string;
-  href: string;
-  accent?: boolean;
-}) {
-  return (
-    <div
-      className={`min-h-[520px] p-8 md:p-10 flex flex-col border-r border-line last:border-r-0 ${
-        accent ? "bg-ink text-white" : "bg-white"
-      }`}
-    >
-      <p
-        className={`font-mono text-[10px] tracking-[.12em] mb-14 ${
-          accent ? "text-stone" : "text-stone"
-        }`}
-      >
-        {number}
-      </p>
-
-      <div className="flex-1">
-        <h3
-          className={`text-[32px] leading-[1.02] font-light mb-3 ${
-            accent ? "text-white" : "text-ink"
-          }`}
-          style={{ letterSpacing: "-0.04em" }}
-        >
-          {title}
-        </h3>
-        <p
-          className={`text-sm mb-2 ${accent ? "text-amber" : "text-rust"}`}
-        >
-          {tag}
+        <p className="text-base font-light text-deep leading-[1.65] mb-5">
+          El problema no es el software. El problema es que ahora podés hacer
+          lo mismo en la mitad del tiempo, con menos errores, y dejar
+          información que se reutiliza en cada proyecto siguiente.
         </p>
-        <p
-          className={`text-base font-light leading-relaxed mb-8 ${
-            accent ? "text-white/80" : "text-deep"
-          }`}
-        >
-          {description}
+        <p className="text-base font-light text-deep leading-[1.65] mb-5">
+          No hace falta descartar lo que ya sabés ni dedicarle meses de tu
+          vida a empezar desde cero.
         </p>
-
-        <ul className="flex flex-col gap-2 mb-10">
-          {includes.map((item, i) => (
-            <li
-              key={i}
-              className={`flex items-start gap-3 text-sm font-light ${
-                accent ? "text-white/70" : "text-stone"
-              }`}
-            >
-              <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <Link
-        href={href}
-        className={`inline-block border px-5 py-3 text-sm font-light transition-colors w-fit ${
-          accent
-            ? "border-white/40 text-white hover:border-white"
-            : "border-ink text-ink hover:border-rust hover:text-rust"
-        }`}
-      >
-        {cta}
-      </Link>
-    </div>
-  );
-}
-
-/* ─── Agente ────────────────────────────────────────────────────────────── */
-
-function AgentSection() {
-  const messages = [
-    {
-      role: "user" as const,
-      text: "Vengo de AutoCAD. No entiendo si tengo que modelar todo desde el principio.",
-    },
-    {
-      role: "agent" as const,
-      text: "No. Ese es el error que hace abandonar a muchos arquitectos. Primero ordenás el proyecto. Después decidís qué información necesita modelo y qué puede seguir en CAD.",
-    },
-    {
-      role: "user" as const,
-      text: "¿Y mis bloques de AutoCAD sirven en Revit?",
-    },
-    {
-      role: "agent" as const,
-      text: "Depende. Los bloques de representación pueden quedarse en CAD linkeado. Las familias que tienen datos —puertas, aberturas, equipamiento— conviene convertirlas. Te ayudo a priorizar cuáles.",
-    },
-  ];
-
-  return (
-    <section id="agente" className="px-8 md:px-14 py-24 border-b border-line">
-      <div className="grid md:grid-cols-2 gap-14 items-start">
-        <div>
-          <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
-            El agente Forastero
-          </p>
-          <h2
-            className="text-[44px] leading-[1.04] font-light text-ink mb-6"
+        <p className="text-base font-light text-deep leading-[1.65] mb-14">
+          Con 30 minutos por día durante 8 semanas, ya estás entregando
+          proyectos con criterio BIM, sin perder velocidad ni control.
+        </p>
+        <blockquote className="border-l border-ink pl-7">
+          <p
+            className="text-[28px] leading-[1.18] font-light text-ink"
             style={{ letterSpacing: "-0.035em" }}
           >
-            No reemplaza tu criterio. Lo ordena.
-          </h2>
-          <p className="text-lg font-light text-deep leading-[1.65] mb-8">
-            Disponible dentro del Bootcamp CAD→BIM, el agente acompaña
-            cada semana del proceso. Responde dudas técnicas, ayuda a
-            priorizar decisiones y te orienta sin sacarte del proyecto.
+            Tu manera de trabajar tiene valor. No hay que destruirla. Hay que
+            volverla más inteligente.
           </p>
-          <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
-            Incluido en Bootcamp CAD→BIM
-          </p>
-        </div>
-
-        <div className="bg-white border border-line p-6 md:p-8">
-          <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone mb-6">
-            Simulación de conversación
-          </p>
-          <div className="flex flex-col gap-5">
-            {messages.map((msg, i) =>
-              msg.role === "user" ? (
-                <div
-                  key={i}
-                  className="bg-muted px-4 py-3 ml-10 text-sm font-light text-deep leading-relaxed"
-                >
-                  {msg.text}
-                </div>
-              ) : (
-                <div key={i} className="border-l border-ink pl-4">
-                  <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-2">
-                    forastero · bim
-                  </p>
-                  <p className="text-sm font-light text-deep leading-relaxed">
-                    {msg.text}
-                  </p>
-                </div>
-              )
-            )}
-          </div>
-        </div>
+        </blockquote>
       </div>
     </section>
   );
 }
 
-/* ─── Pricing ────────────────────────────────────────────────────────────── */
+/* ─── Products ──────────────────────────────────────────────────────────── */
 
-function PricingSection() {
+function ProductsSection() {
   return (
-    <section id="precios" className="px-8 md:px-14 py-24 border-b border-line">
+    <section id="formaciones" className="px-8 md:px-14 py-24 border-b border-line">
       <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
-        Precios
+        Formaciones
       </p>
       <h2
         className="text-[44px] leading-[1.04] font-light text-ink mb-14"
         style={{ letterSpacing: "-0.035em" }}
       >
-        Acceso de por vida. Sin suscripción.
+        Elegí tu punto de entrada.
       </h2>
 
-      {/* Grupo A · Fundamentos */}
-      <div className="mb-20">
-        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-6">
-          Fundamentos · punto de entrada
-        </p>
-        <div className="grid md:grid-cols-3 gap-0 border border-line">
-          <PriceCard
-            compact
-            title="Taller de Documentación de Obras"
-            description="Sistema de trabajo para documentar obras en CAD. Layers, CTBs, referencias, planillas."
-            price="USD 100"
-            cta="Comprar el Taller"
-            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_TALLER!}
-          />
-          <PriceCard
-            compact
-            title="Workshop Cotización de Obras"
-            description="Cómputo y presupuesto de obra. Excel con sistema de ítems, planilla de cotización detallada."
-            price="USD 80"
-            cta="Comprar el Workshop"
-            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_WORKSHOP!}
-          />
-          <PriceCard
-            compact
-            title="Pack CAD Management"
-            description="Taller de Documentación + Workshop Cotización. Los dos juntos."
-            price="USD 150"
-            cta="Comprar el Pack CAD"
-            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
-          />
-        </div>
-      </div>
+      <div className="border border-line">
+        {/* Fila 1: Taller + Workshop lado a lado */}
+        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-line">
+          {/* Card 1 · Taller de Documentación de Obras · Blanco */}
+          <div className="bg-white p-8 md:p-10 flex flex-col border-b md:border-b-0 md:border-r border-line">
+            <h3
+              className="text-[22px] font-light text-ink mb-1 leading-snug"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              Taller de Documentación de Obras
+            </h3>
+            <p
+              className="text-[36px] font-light text-ink mb-6 leading-none"
+              style={{ letterSpacing: "-0.05em" }}
+            >
+              USD 100
+            </p>
+            <p className="text-sm font-light text-stone leading-relaxed mb-6 flex-1">
+              Un sistema de trabajo para tener tu estudio y tus proyectos
+              ordenados. Aprendés a dibujar planos ejecutivos profesionales y a
+              estructurar el método que se aplica a cualquier proyecto.
+            </p>
+            <ul className="flex flex-col gap-2 mb-8">
+              {[
+                "Método aplicable desde el primer proyecto",
+                "Ahorrás 2-4 horas por semana solo con plantillas y CTBs",
+                "Acceso de por vida + actualizaciones incluidas",
+              ].map((b, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 text-sm font-light text-stone"
+                >
+                  <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <BuyButton
+              checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_TALLER!}
+              className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors w-fit"
+            >
+              Empezar
+            </BuyButton>
+          </div>
 
-      {/* Grupo B · Bootcamp */}
-      <div>
-        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-6">
-          Bootcamp · profundización
-        </p>
-        <div className="grid md:grid-cols-2 gap-0 border border-line">
-          <PriceCard
-            title="Bootcamp CAD→BIM"
-            description="8 semanas. Pasás de AutoCAD a BIM modelando un proyecto real. Validación IFC por semana. Agente IA incluido."
-            price="USD 349"
-            cta="Comprar el Bootcamp"
+          {/* Card 2 · Workshop Cotización de Obras · Blanco */}
+          <div className="bg-white p-8 md:p-10 flex flex-col">
+            <h3
+              className="text-[22px] font-light text-ink mb-1 leading-snug"
+              style={{ letterSpacing: "-0.03em" }}
+            >
+              Workshop Cotización de Obras
+            </h3>
+            <p
+              className="text-[36px] font-light text-ink mb-6 leading-none"
+              style={{ letterSpacing: "-0.05em" }}
+            >
+              USD 80
+            </p>
+            <p className="text-sm font-light text-stone leading-relaxed mb-6 flex-1">
+              Sistema para presupuestar obras sin trabarte. Aprendés un método
+              claro para computar, valorizar y presentar al cliente, con
+              criterios para decidir qué medir y cómo.
+            </p>
+            <ul className="flex flex-col gap-2 mb-8">
+              {[
+                "Planillas Excel listas para usar y modificar",
+                "Cotización profesional en horas en lugar de días",
+                "Acceso de por vida + actualizaciones incluidas",
+              ].map((b, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 text-sm font-light text-stone"
+                >
+                  <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <BuyButton
+              checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_WORKSHOP!}
+              className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors w-fit"
+            >
+              Empezar
+            </BuyButton>
+          </div>
+        </div>
+
+        {/* Fila 2: CAD Management · Negro · ancho completo */}
+        <div className="bg-ink p-8 md:p-10 border-b border-line">
+          <div className="md:flex md:items-start md:justify-between md:gap-14">
+            <div className="flex-1 mb-8 md:mb-0">
+              <h3
+                className="text-[22px] font-light text-white mb-1 leading-snug"
+                style={{ letterSpacing: "-0.03em" }}
+              >
+                CAD Management
+              </h3>
+              <p className="font-mono text-[10px] tracking-[.08em] uppercase text-white/40 mb-3">
+                Taller + Workshop
+              </p>
+              <p
+                className="text-[36px] font-light text-white mb-6 leading-none"
+                style={{ letterSpacing: "-0.05em" }}
+              >
+                USD 150{" "}
+                <span className="text-sm font-light text-white/40">
+                  (ahorrás USD 30)
+                </span>
+              </p>
+              <p className="text-sm font-light text-white/70 leading-relaxed mb-6 max-w-xl">
+                Los dos métodos juntos: el de cómo trabajar y el de cómo cobrar.
+                Para quien quiere ordenar el estudio de punta a punta — desde
+                cómo producir cada plano hasta cómo cotizar cada obra.
+              </p>
+              <ul className="flex flex-col gap-2 mb-8">
+                {[
+                  "Sistema completo de documentación + cotización",
+                  "Mismo lenguaje en todo: tu estudio funciona como una unidad",
+                  "Pensado para implementar en 30 días sin frenar tu trabajo actual",
+                ].map((b, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-sm font-light text-white/70"
+                  >
+                    <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <BuyButton
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
+            className="inline-block border border-white/40 text-white px-5 py-3 text-sm font-light hover:border-white transition-colors w-fit"
+          >
+            Empezar
+          </BuyButton>
+        </div>
+
+        {/* Fila 3: Bootcamp · Blanco · ancho completo */}
+        <div className="bg-white p-8 md:p-10 border-b border-line">
+          <div className="md:flex md:items-start md:justify-between md:gap-14">
+            <div className="flex-1 mb-8 md:mb-0">
+              <h3
+                className="text-[22px] font-light text-ink mb-1 leading-snug"
+                style={{ letterSpacing: "-0.03em" }}
+              >
+                Bootcamp CAD → BIM
+              </h3>
+              <p className="font-mono text-[10px] tracking-[.08em] uppercase text-stone mb-3">
+                8 semanas
+              </p>
+              <p
+                className="text-[36px] font-light text-ink mb-6 leading-none"
+                style={{ letterSpacing: "-0.05em" }}
+              >
+                USD 350
+              </p>
+              <p className="text-sm font-light text-stone leading-relaxed mb-4 max-w-xl">
+                La transición real a BIM, paso a paso. No teoría suelta — un
+                proyecto profesional completo modelado de principio a fin, con un
+                asistente digital al lado que sabe en qué semana estás y en qué
+                te trabás.
+              </p>
+              <p className="text-sm font-light text-stone leading-relaxed mb-6 max-w-xl">
+                Al final tenés un proyecto BIM terminado, un certificado
+                verificable, y la confianza de saber que podés repetir el proceso
+                con cualquier encargo que llegue al estudio.
+              </p>
+              <ul className="flex flex-col gap-2 mb-8">
+                {[
+                  "8 semanas con dedicación de 30-45 min por día",
+                  "Elegís entre 2 proyectos guía (refugio alpino o cabina patagónica)",
+                  "Asistente IA disponible 24/7 con conocimiento de tu proyecto",
+                  "Validación profesional al cierre de cada semana",
+                  "Certificado verificable al completar el bootcamp",
+                  "Acceso de por vida + actualizaciones incluidas",
+                ].map((b, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-sm font-light text-stone"
+                  >
+                    <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <BuyButton
             checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP!}
-          />
-          <PriceCard
-            title="Pack CAD Management + Bootcamp"
-            description="Todo Forastero en un solo acceso."
-            price="USD 449"
-            cta="Comprar el Pack Completo"
+            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors w-fit"
+          >
+            Empezar
+          </BuyButton>
+        </div>
+
+        {/* Fila 4: Pack Completo · Negro · ancho completo */}
+        <div className="bg-ink p-8 md:p-10">
+          <h3
+            className="text-[22px] font-light text-white mb-1 leading-snug"
+            style={{ letterSpacing: "-0.03em" }}
+          >
+            Pack Completo
+          </h3>
+          <p className="font-mono text-[10px] tracking-[.08em] uppercase text-white/40 mb-3">
+            CAD Management + Bootcamp
+          </p>
+          <p
+            className="text-[36px] font-light text-white mb-6 leading-none"
+            style={{ letterSpacing: "-0.05em" }}
+          >
+            USD 450{" "}
+            <span className="text-sm font-light text-white/40">
+              (ahorrás USD 50)
+            </span>
+          </p>
+          <p className="text-sm font-light text-white/70 leading-relaxed mb-4 max-w-xl">
+            Todo. El orden completo del estudio y la transición técnica a BIM en
+            un solo paquete. Para quien decide hacer el cambio en serio y de una
+            vez.
+          </p>
+          <p className="text-sm font-light text-white/70 leading-relaxed mb-6 max-w-xl">
+            Empezás ordenando lo que ya hacés con CAD, y mientras tanto modelás
+            tu primer proyecto BIM con acompañamiento profesional. Cuando
+            termines, tu estudio funciona de manera distinta.
+          </p>
+          <ul className="flex flex-col gap-2 mb-8">
+            {[
+              "Las dos formaciones completas con acceso simultáneo",
+              "Podés combinarlas: aplicar el Taller al proyecto del Bootcamp",
+              "Mejor relación entre inversión y resultado",
+              "Certificado del Bootcamp incluido",
+            ].map((b, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-3 text-sm font-light text-white/70"
+              >
+                <span className="mt-1.5 w-1 h-1 rounded-full shrink-0 bg-current" />
+                {b}
+              </li>
+            ))}
+          </ul>
+          <BuyButton
             checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
-            featured
-          />
+            className="inline-block border border-white/40 text-white px-5 py-3 text-sm font-light hover:border-white transition-colors w-fit"
+          >
+            Empezar
+          </BuyButton>
         </div>
       </div>
     </section>
   );
 }
 
-function PriceCard({
-  title,
-  description,
-  price,
-  cta,
-  checkoutUrl,
-  featured = false,
-  compact = false,
-}: {
-  title: string;
-  description: string;
-  price: string;
-  cta: string;
-  checkoutUrl: string;
-  featured?: boolean;
-  compact?: boolean;
-}) {
-  return (
-    <div
-      className={`${compact ? "p-6" : "p-8"} flex flex-col border-r border-line last:border-r-0 ${
-        featured ? "bg-ink" : "bg-white"
-      }`}
-    >
-      <h3
-        className={`${compact ? "text-sm" : "text-base"} font-light mb-3 leading-snug ${
-          featured ? "text-white" : "text-ink"
-        }`}
-        style={{ letterSpacing: "-0.02em" }}
-      >
-        {title}
-      </h3>
-      <p
-        className={`text-sm font-light leading-relaxed mb-6 flex-1 ${
-          featured ? "text-white/60" : "text-stone"
-        }`}
-      >
-        {description}
-      </p>
-      <p
-        className={`${compact ? "text-[28px]" : "text-[42px]"} font-light leading-none mb-8 ${
-          featured ? "text-white" : "text-ink"
-        }`}
-        style={{ letterSpacing: "-0.05em" }}
-      >
-        {price}
-      </p>
-      <BuyButton
-        checkoutUrl={checkoutUrl}
-        className={`inline-block border px-5 py-3 text-sm font-light text-center transition-colors ${
-          featured
-            ? "border-white/40 text-white hover:border-white"
-            : "border-ink text-ink hover:border-rust hover:text-rust"
-        }`}
-      >
-        {cta}
-      </BuyButton>
-    </div>
-  );
-}
+/* ─── Conversación ──────────────────────────────────────────────────────── */
 
-/* ─── Bio ────────────────────────────────────────────────────────────────── */
+function ConversationSection() {
+  const messages = [
+    {
+      role: "user" as const,
+      text: "Estoy con AutoCAD® desde hace años. ¿Cuánto tiempo me lleva aprender BIM realmente? No tengo seis meses libres.",
+    },
+    {
+      role: "agent" as const,
+      text: "Si ya manejás AutoCAD® a nivel profesional, en 4 semanas estás haciendo plantas BIM básicas funcionales. En 8 semanas estás entregando un proyecto BIM completo con documentación.\n\nNo necesitás dejar tu trabajo. El programa está pensado para 30-45 minutos por día. Mucha gente lo hace al final de la jornada, antes de cerrar la compu.",
+    },
+    {
+      role: "user" as const,
+      text: "¿Y si me trabo? No tengo a quién preguntarle.",
+    },
+    {
+      role: "agent" as const,
+      text: "Tenés un asistente IA del bootcamp disponible 24/7 que sabe en qué semana estás, qué proyecto modelás, qué software usás. Cuando te trabás, le mostrás el problema y te guía con criterio profesional, no con tutoriales genéricos.\n\nEstá integrado en cada semana del bootcamp y te acompaña de principio a fin.",
+    },
+  ];
 
-function BioSection() {
   return (
-    <section id="quien-soy" className="px-8 md:px-14 py-24 border-b border-line">
-      <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-5">
-        Quién soy
-      </p>
-      <div className="grid md:grid-cols-[1fr_2fr] gap-14 items-start max-w-4xl">
-        <div>
-          <div className="w-full aspect-square bg-muted border border-line max-w-[200px]" />
-        </div>
-        <div>
-          <p className="text-base font-light text-deep leading-[1.65] mb-6">
-            Soy Ariel Fragosa, arquitecto. Estudié en La Plata, me especialicé en Valencia,
-            trabajé en estudios de Argentina, España, Italia y Suiza. Desde 2022 vivo en
-            Grono, en los Alpes del Cantón Graubünden.
-          </p>
-          <p className="text-base font-light text-deep leading-[1.65] mb-6">
-            Después de más de diez años realizando colaboraciones en otros estudios, empecé
-            Forastero. La idea es simple: pasar lo que aprendí en el oficio real. No la
-            teoría — la práctica de trabajar en estudios, lidiar con plazos, mantener el
-            modelo en orden cuando las cosas se complican, y llegar a obra con documentación
-            que se entienda.
-          </p>
-          <p className="text-base font-light text-deep leading-[1.65]">
-            Forastero es la versión ordenada de lo que normalmente se aprende a base de errores.
-          </p>
+    <section className="px-8 md:px-14 py-24 border-b border-line">
+      <div className="max-w-2xl">
+        <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone mb-8">
+          Simulación de conversación
+        </p>
+        <div className="flex flex-col gap-6">
+          {messages.map((msg, i) =>
+            msg.role === "user" ? (
+              <div
+                key={i}
+                className="bg-muted px-5 py-4 ml-8 text-sm font-light text-deep leading-relaxed"
+              >
+                {msg.text}
+              </div>
+            ) : (
+              <div key={i} className="border-l border-ink pl-5">
+                <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-2">
+                  forastero · asistente
+                </p>
+                {msg.text.split("\n\n").map((para, j) => (
+                  <p
+                    key={j}
+                    className={`text-sm font-light text-deep leading-relaxed ${j > 0 ? "mt-3" : ""}`}
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+            )
+          )}
         </div>
       </div>
     </section>
@@ -497,44 +437,24 @@ function BioSection() {
 
 const FAQ_ITEMS = [
   {
-    q: "¿Cuándo arranca el Bootcamp?",
-    a: "No tiene fecha fija. Comprás cuando querés y arrancás cuando querés. La Semana 1 se desbloquea al confirmar tu pago.",
+    q: "¿Y si compro y después no me da el tiempo?",
+    a: "Tenés 7 días para pedir reembolso si algo no encaja. El acceso al material es de por vida, así que si te trabás un mes (o varios), podés retomar cuando puedas. No hay cohortes ni fechas fijas.",
   },
   {
-    q: "¿En cuánto tiempo termino el Bootcamp?",
-    a: "Está diseñado para 8 semanas con dedicación de ~8 horas/semana. Pero podés ir a tu ritmo: las semanas se desbloquean a medida que completás la validación IFC de la anterior.",
+    q: "No sé si necesito Revit® o ArchiCAD®. ¿Cómo lo decido?",
+    a: "El bootcamp incluye una guía corta para decidir según tu mercado, tu equipo y tu presupuesto. Si vas a trabajar internacionalmente o con grandes estudios, Revit®. Si estás en Europa o LATAM y trabajás solo o con un equipo chico, ArchiCAD®. Ambos funcionan para el bootcamp.",
   },
   {
-    q: "¿Necesito experiencia previa con Revit o ArchiCAD?",
-    a: "No. La Semana 0 (opcional) cubre los fundamentos del software con material oficial de Autodesk y Graphisoft. Si ya manejás uno de los dos, saltala.",
-  },
-  {
-    q: "¿Cuál es mejor: Revit o ArchiCAD?",
-    a: "Ambos funcionan. Lo importante es la lógica BIM, no el software. En la Semana 0 hay una guía para elegir según tu mercado y contexto.",
-  },
-  {
-    q: "¿Qué pasa si me trabo?",
-    a: "Tenés un agente IA disponible 24/7 que sabe en qué semana estás y qué proyecto elegiste. Te guía con preguntas concretas y referencias al material.",
-  },
-  {
-    q: "¿Cómo se valida el avance?",
-    a: "Al final de cada semana exportás un IFC del modelo. El agente lo valida automáticamente y te da feedback verde, amarillo o rojo. Si está en verde o amarillo, desbloqueás la siguiente semana.",
+    q: "¿Mis archivos viejos de AutoCAD® se pierden?",
+    a: "No. AutoCAD® sigue siendo parte de tu flujo de trabajo incluso cuando trabajés con BIM. Los planos antiguos los seguís leyendo y modificando como siempre. BIM se suma a tus herramientas, no las reemplaza.",
   },
   {
     q: "¿El certificado tiene validez profesional?",
-    a: "Es un certificado emitido por Forastero, no por Autodesk ni Graphisoft. Refleja que completaste un proyecto BIM profesional completo, verificable públicamente con su ID. Cada estudio decide cuánto peso le da.",
+    a: "Es un certificado emitido por forastero con ID único verificable públicamente. Refleja que completaste un proyecto BIM completo a nivel profesional. No reemplaza una matrícula universitaria, pero sirve para mostrar a clientes y a empleadores que tenés capacidad práctica real.",
   },
   {
-    q: "¿Puedo combinar el Taller, el Workshop y el Bootcamp?",
-    a: "Sí. El Pack CAD Management + Bootcamp incluye todo con un 22% de descuento sobre la compra separada.",
-  },
-  {
-    q: "¿Hay reembolso si no me convence?",
-    a: "14 días desde la compra sin justificación. Para el Bootcamp, además, siempre que no hayas completado más de 2 validaciones IFC. Detalle completo en la Política de Reembolso.",
-  },
-  {
-    q: "¿Cómo me contacto si tengo dudas antes de comprar?",
-    a: "info@forastero.studio — respuesta en 24-48 horas hábiles.",
+    q: "¿Qué hago si quiero algo personalizado para mi estudio?",
+    a: "Para asesoría o trabajos a medida sobre flujos de trabajo específicos, escribime a info@forastero.studio. forastero ofrece consultoría puntual para estudios además de los productos formativos.",
   },
 ];
 
@@ -576,38 +496,38 @@ function FaqSection() {
 
 function Footer() {
   return (
-    <footer className="px-8 md:px-14 py-16 border-t border-line">
-      <div className="grid md:grid-cols-[2fr_1fr] gap-10 mb-10">
-        <p className="text-sm font-light text-stone leading-relaxed max-w-md">
-          Forastero lo lleva Ariel Fragosa, arquitecto. Argentino-italiano, formado en
-          La Plata y Valencia, con experiencia profesional en Argentina, España, Italia y
-          Suiza. Actualmente en Grono, Cantón Graubünden.{" "}
+    <footer className="px-8 md:px-14 py-16">
+      <p
+        className="text-2xl font-light text-ink mb-8"
+        style={{ letterSpacing: "0.05em" }}
+      >
+        forastero
+      </p>
+      <div className="h-px bg-line mb-6" />
+      <a
+        href="mailto:info@forastero.studio"
+        className="text-sm font-light text-stone hover:text-ink transition-colors block mb-6"
+      >
+        info@forastero.studio
+      </a>
+      <div className="flex flex-wrap gap-6 mb-8">
+        {[
+          { href: "/legal/terminos-y-condiciones", label: "Términos y Condiciones" },
+          { href: "/legal/privacidad", label: "Política de Privacidad" },
+          { href: "/legal/reembolso", label: "Política de Reembolso" },
+        ].map((l) => (
           <a
-            href="mailto:info@forastero.studio"
-            className="text-ink hover:text-stone transition-colors"
+            key={l.href}
+            href={l.href}
+            className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
           >
-            info@forastero.studio
+            {l.label}
           </a>
-        </p>
-        <div className="flex flex-col gap-3">
-          {[
-            { href: "/legal/terminos-y-condiciones", label: "Términos y condiciones" },
-            { href: "/legal/privacidad", label: "Política de privacidad" },
-            { href: "/legal/reembolso", label: "Política de reembolso" },
-          ].map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
+        ))}
       </div>
       <div className="h-px bg-line mb-6" />
       <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
-        © Forastero 2026
+        © forastero 2026 · Grono, Cantón Graubünden, Suiza
       </p>
     </footer>
   );
