@@ -523,8 +523,8 @@ function BioSection() {
 
 const FAQ_ITEMS = [
   {
-    q: "¿Y si compro y después no me da el tiempo?",
-    a: "Tenés 7 días para pedir reembolso si algo no encaja. El acceso al material es de por vida, así que si te trabás un mes (o varios), podés retomar cuando puedas. No hay cohortes ni fechas fijas.",
+    q: "¿Necesito alguna preparación previa antes de empezar?",
+    a: "Para el Taller de Documentación, alcanza con manejar AutoCAD® a nivel intermedio. Para el Bootcamp, lo ideal es haber pasado antes por el Taller o tener experiencia equivalente. El Workshop de Cotización es independiente y no requiere conocimiento previo de CAD.",
   },
   {
     q: "No sé si necesito Revit® o ArchiCAD®. ¿Cómo lo decido?",
@@ -599,7 +599,6 @@ function Footer() {
           {[
             { href: "/legal/terminos-y-condiciones", label: "Términos y condiciones" },
             { href: "/legal/privacidad", label: "Política de privacidad" },
-            { href: "/legal/reembolso", label: "Política de reembolso" },
           ].map((l) => (
             <a
               key={l.href}

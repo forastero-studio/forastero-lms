@@ -11,7 +11,6 @@ export async function generateStaticParams() {
   return [
     { documento: "terminos-y-condiciones" },
     { documento: "privacidad" },
-    { documento: "reembolso" },
   ];
 }
 
@@ -52,7 +51,6 @@ export default async function LegalPage({ params }: Props) {
           {[
             { href: "/legal/terminos-y-condiciones", label: "Términos" },
             { href: "/legal/privacidad", label: "Privacidad" },
-            { href: "/legal/reembolso", label: "Reembolso" },
           ].map((l) => (
             <Link
               key={l.href}

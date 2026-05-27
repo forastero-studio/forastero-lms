@@ -86,7 +86,6 @@ export type LegalPage = {
 const LEGAL_SLUGS: Record<string, string> = {
   "terminos-y-condiciones": "terminos-y-condiciones",
   privacidad: "politica-privacidad",
-  reembolso: "politica-reembolso",
 };
 
 export function getLegalPage(slug: string): LegalPage | null {

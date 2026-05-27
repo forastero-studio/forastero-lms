@@ -68,16 +68,12 @@ Los recursos de trabajo (planos DWG, planillas) son de propiedad intelectual de 
 forastero puede suspender o cancelar tu cuenta en caso de:
 
 - Incumplimiento grave de estos términos, incluyendo el uso comercial no autorizado del contenido.
-- Conducta abusiva o fraudulenta (incluyendo chargebacks injustificados).
+- Conducta abusiva o fraudulenta.
 - A solicitud del propio alumno (cancelación voluntaria).
 
-La cancelación voluntaria no implica reembolso automático. Aplican las condiciones de la Política de Reembolso.
+La cancelación voluntaria no genera derecho a reembolso.
 
-## 8 · Reembolsos
-
-Las condiciones específicas de reembolso están detalladas en la **Política de Reembolso** publicada en forastero-lms.vercel.app/legal/reembolso. La ventana de reembolso es de **7 días** con motivo declarado. Esta política forma parte integral de estos términos.
-
-## 9 · Limitación de responsabilidad
+## 8 · Limitación de responsabilidad
 
 forastero ofrece contenido educativo en arquitectura técnica. No constituye asesoramiento profesional vinculante para casos concretos. Cada profesional es responsable de adaptar lo aprendido a su contexto normativo y a las particularidades de su proyecto.
 
@@ -89,17 +85,17 @@ forastero no es responsable por:
 
 La responsabilidad máxima de forastero frente al alumno se limita al importe efectivamente pagado por el producto en cuestión, según lo permita la legislación aplicable.
 
-## 10 · Datos personales
+## 9 · Datos personales
 
 El tratamiento de datos personales se rige por la **Política de Privacidad** publicada en forastero-lms.vercel.app/legal/privacidad.
 
-## 11 · Modificaciones a los términos
+## 10 · Modificaciones a los términos
 
 forastero puede modificar estos términos. Cualquier cambio se publica en esta misma página con la fecha de actualización correspondiente. Si los cambios son sustanciales y afectan negativamente al alumno, se comunican por email a las cuentas activas con al menos 30 días de antelación.
 
 El uso continuado de la plataforma después de la publicación de cambios implica la aceptación de los términos actualizados.
 
-## 12 · Jurisdicción aplicable
+## 11 · Jurisdicción aplicable
 
 Estos términos se interpretan de buena fe. En caso de conflicto:
 
@@ -108,6 +104,6 @@ Estos términos se interpretan de buena fe. En caso de conflicto:
 
 Antes de iniciar cualquier acción legal, ambas partes intentarán una resolución amistosa por escrito durante al menos 30 días.
 
-## 13 · Contacto
+## 12 · Contacto
 
 Cualquier consulta sobre estos términos, reclamo o ejercicio de derechos: **info@forastero.studio**.

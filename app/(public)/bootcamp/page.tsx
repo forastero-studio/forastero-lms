@@ -300,10 +300,6 @@ export default async function BootcampProductPage() {
               a: "Tenés acceso al asistente IA del bootcamp 24/7. Sabe en qué semana estás y qué proyecto modelás. Te guía con criterio profesional hasta que resuelvas el bloqueo.",
             },
             {
-              q: "¿Y si después de comprar no me convence?",
-              a: "Tenés 7 días para pedir reembolso, con motivo declarado.",
-            },
-            {
               q: "¿Puedo usar mi propio proyecto en lugar de los dos proyectos guía?",
               a: "Para el material formal del bootcamp se trabaja sobre uno de los dos proyectos guía. Pero podés aplicar en paralelo todo lo que aprendés a un proyecto tuyo. Mucha gente lo hace y acelera el aprendizaje.",
             },
