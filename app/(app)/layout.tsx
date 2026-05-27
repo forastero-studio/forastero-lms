@@ -1,7 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
-import { hasAccess } from "@/lib/db";
+import { hasAccess, getPurchases } from "@/lib/db";
+import { getTallerModules, getWorkshopModules, getBootcampWeeks } from "@/lib/content";
 import Sidebar from "@/components/Sidebar";
 import AgentDrawer from "@/components/AgentDrawer";
+import PlatformTourManager from "@/components/PlatformTourManager";
 
 export default async function AppLayout({
   children,
@@ -10,23 +12,49 @@ export default async function AppLayout({
 }) {
   const { userId } = await auth();
 
-  let hasTaller = false;
-  let hasWorkshop = false;
-  let hasBootcamp = false;
+  let sidebarProps = {
+    purchaseSlugs: [] as string[],
+    hasTaller: false,
+    hasWorkshop: false,
+    hasBootcamp: false,
+    tallerModules: [] as { slug: string; title: string }[],
+    workshopModules: [] as { slug: string; title: string }[],
+    bootcampWeeks: [] as { slug: string; title: string; semana?: number }[],
+  };
 
   if (userId) {
-    [hasTaller, hasWorkshop, hasBootcamp] = await Promise.all([
+    const [purchases, hasTaller, hasWorkshop, hasBootcamp] = await Promise.all([
+      getPurchases(userId),
       hasAccess(userId, "cad-management"),
       hasAccess(userId, "workshop-cotizacion"),
       hasAccess(userId, "bootcamp"),
     ]);
+
+    sidebarProps = {
+      purchaseSlugs: purchases.map((p) => p.product_slug),
+      hasTaller,
+      hasWorkshop,
+      hasBootcamp,
+      tallerModules: hasTaller
+        ? getTallerModules().map((m) => ({ slug: m.slug, title: m.title }))
+        : [],
+      workshopModules: hasWorkshop
+        ? getWorkshopModules().map((m) => ({ slug: m.slug, title: m.title }))
+        : [],
+      bootcampWeeks: hasBootcamp
+        ? getBootcampWeeks()
+            .filter((w) => (w.semana ?? 0) >= 1)
+            .map((w) => ({ slug: w.slug, title: w.title, semana: w.semana }))
+        : [],
+    };
   }
 
   return (
     <div className="flex min-h-screen bg-paper">
-      <Sidebar hasTaller={hasTaller} hasWorkshop={hasWorkshop} hasBootcamp={hasBootcamp} />
+      <Sidebar {...sidebarProps} />
       <main className="flex-1 overflow-y-auto">{children}</main>
       <AgentDrawer />
+      <PlatformTourManager />
     </div>
   );
 }

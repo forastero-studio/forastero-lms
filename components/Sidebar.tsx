@@ -3,160 +3,314 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useUser, SignOutButton } from "@clerk/nextjs";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Wordmark from "@/components/ui/Wordmark";
+
+type Module = { slug: string; title: string };
+type Week = { slug: string; title: string; semana?: number };
 
 type SidebarProps = {
+  purchaseSlugs?: string[];
   hasTaller?: boolean;
   hasWorkshop?: boolean;
   hasBootcamp?: boolean;
+  tallerModules?: Module[];
+  workshopModules?: Module[];
+  bootcampWeeks?: Week[];
 };
 
+const STORAGE_KEY = "forastero-sidebar-expanded";
+
+function loadExpanded(): Record<string, boolean> {
+  if (typeof window === "undefined") return {};
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function saveExpanded(state: Record<string, boolean>) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {}
+}
+
 export default function Sidebar({
+  purchaseSlugs = [],
   hasTaller = false,
   hasWorkshop = false,
   hasBootcamp = false,
+  tallerModules = [],
+  workshopModules = [],
+  bootcampWeeks = [],
 }: SidebarProps) {
   const pathname = usePathname();
   const { user } = useUser();
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
-  const hasCadPack = hasTaller && hasWorkshop && !hasBootcamp;
-  const hasPackCompleto = hasTaller && hasWorkshop && hasBootcamp;
-  const hasTallerOnly = hasTaller && !hasWorkshop;
-  const hasWorkshopOnly = hasWorkshop && !hasTaller;
-  const showBootcampItem = hasBootcamp && !hasPackCompleto;
+  // Load from localStorage on mount + auto-expand active section
+  useEffect(() => {
+    const saved = loadExpanded();
 
-  const cadPackActive =
-    hasCadPack && pathname.startsWith("/cad-management");
-  const packCompletoActive =
-    hasPackCompleto &&
-    (pathname.startsWith("/cad-management") || pathname.startsWith("/bootcamp"));
+    const autoExpand: Record<string, boolean> = { ...saved };
+    if (pathname.startsWith("/cad-management")) {
+      const isWorkshop =
+        pathname.includes("workshop-cotizacion") ||
+        pathname.includes("workshop-computo");
+      if (isWorkshop) {
+        autoExpand["workshop"] = true;
+      } else {
+        autoExpand["taller"] = true;
+      }
+      autoExpand["pack-cad"] = true;
+      autoExpand["pack-completo"] = true;
+    }
+    if (
+      pathname.startsWith("/bootcamp") ||
+      pathname.startsWith("/dashboard/guia-taller") ||
+      pathname.startsWith("/dashboard/guia-workshop")
+    ) {
+      autoExpand["bootcamp"] = true;
+      autoExpand["pack-completo"] = true;
+    }
 
-  const [cadPackOpen, setCadPackOpen] = useState(cadPackActive);
-  const [packCompletoOpen, setPackCompletoOpen] = useState(packCompletoActive);
+    setExpanded(autoExpand);
+  }, [pathname]);
+
+  const toggle = (key: string) => {
+    setExpanded((prev) => {
+      const next = { ...prev, [key]: !prev[key] };
+      saveExpanded(next);
+      return next;
+    });
+  };
 
   const displayName =
     user?.firstName ||
     user?.emailAddresses[0]?.emailAddress?.split("@")[0] ||
     "Estudiante";
 
-  function isActive(href: string): boolean {
-    if (href === "/dashboard") return pathname === "/dashboard";
-    if (href === "/bootcamp/guia") return pathname === "/bootcamp/guia";
+  // Purchase-based pack detection
+  const hasPackCompleto = purchaseSlugs.some((s) => s === "pack-completo");
+  const hasCadPack =
+    !hasPackCompleto &&
+    purchaseSlugs.some((s) => s === "pack-cad-management");
+  const showTallerIndiv = hasTaller && !hasCadPack && !hasPackCompleto;
+  const showWorkshopIndiv = hasWorkshop && !hasCadPack && !hasPackCompleto;
+  const showBootcampIndiv = hasBootcamp && !hasPackCompleto;
+
+  // Active link helpers
+  function isExact(href: string) {
+    return pathname === href;
+  }
+  function isUnder(href: string) {
     return pathname === href || pathname.startsWith(href + "/");
   }
 
-  function NavLink({ href, label }: { href: string; label: string }) {
-    const active = isActive(href);
-    return (
-      <Link
-        href={href}
-        className={`block py-2 text-sm transition-colors ${
-          active
-            ? "border-l-2 border-rust pl-[10px] pr-3 font-medium text-ink"
-            : "px-3 font-light text-stone hover:text-ink"
-        }`}
-      >
-        {label}
-      </Link>
-    );
-  }
-
-  function SubNavLink({ href, label }: { href: string; label: string }) {
-    const active = isActive(href);
-    return (
-      <Link
-        href={href}
-        className={`block py-1.5 text-xs transition-colors ${
-          active
-            ? "border-l-2 border-rust pl-[26px] pr-3 font-medium text-ink"
-            : "pl-7 pr-3 font-light text-stone hover:text-ink"
-        }`}
-      >
-        {label}
-      </Link>
-    );
-  }
-
-  function PackItem({
+  // Styled link components
+  function NavLink({
+    href,
     label,
-    isOpen,
-    onToggle,
+    depth = 0,
+    onClick,
+  }: {
+    href: string;
+    label: string;
+    depth?: number;
+    onClick?: () => void;
+  }) {
+    const active =
+      href === "/dashboard" || href === "/dashboard/guia"
+        ? isExact(href)
+        : isUnder(href);
+
+    const pl = depth === 0 ? "pl-3" : depth === 1 ? "pl-7" : "pl-11";
+    const activePl =
+      depth === 0 ? "pl-[10px]" : depth === 1 ? "pl-[26px]" : "pl-[42px]";
+    const size = depth === 0 ? "text-sm" : "text-xs";
+
+    return (
+      <Link
+        href={href}
+        onClick={onClick}
+        className={`block py-1.5 ${size} transition-colors ${
+          active
+            ? `${activePl} pr-3 border-l-2 border-rust font-medium text-ink`
+            : `${pl} font-light text-stone hover:text-ink`
+        }`}
+      >
+        {label}
+      </Link>
+    );
+  }
+
+  function ToggleNode({
+    nodeKey,
+    label,
+    depth = 0,
     children,
   }: {
+    nodeKey: string;
     label: string;
-    isOpen: boolean;
-    onToggle: () => void;
+    depth?: number;
     children: React.ReactNode;
   }) {
+    const isOpen = !!expanded[nodeKey];
+    const pl = depth === 0 ? "pl-3" : depth === 1 ? "pl-7" : "pl-11";
+    const size = depth === 0 ? "text-sm" : "text-xs";
+
     return (
       <div>
         <button
-          onClick={onToggle}
-          className="w-full flex items-center justify-between px-3 py-2 text-sm font-light text-stone hover:text-ink transition-colors"
+          onClick={() => toggle(nodeKey)}
+          className={`w-full flex items-center justify-between ${pl} pr-2 py-1.5 ${size} font-light text-stone hover:text-ink transition-colors`}
         >
           {label}
-          <span className="font-mono text-[9px] ml-2 shrink-0">
+          <span className="font-mono text-[8px] shrink-0 ml-1">
             {isOpen ? "▾" : "▸"}
           </span>
         </button>
-        {isOpen && <div className="mb-1">{children}</div>}
+        {isOpen && <div>{children}</div>}
       </div>
     );
   }
 
+  function TallerItems({ depth }: { depth: number }) {
+    return (
+      <>
+        <NavLink
+          href="/dashboard/guia-taller"
+          label="Cómo recorrer el Taller"
+          depth={depth}
+        />
+        {tallerModules.map((m) => (
+          <NavLink
+            key={m.slug}
+            href={`/cad-management/${m.slug}`}
+            label={m.title}
+            depth={depth}
+          />
+        ))}
+      </>
+    );
+  }
+
+  function WorkshopItems({ depth }: { depth: number }) {
+    return (
+      <>
+        <NavLink
+          href="/dashboard/guia-workshop"
+          label="Cómo recorrer el Workshop"
+          depth={depth}
+        />
+        {workshopModules.map((m) => (
+          <NavLink
+            key={m.slug}
+            href={`/cad-management/${m.slug}`}
+            label={m.title}
+            depth={depth}
+          />
+        ))}
+      </>
+    );
+  }
+
+  function BootcampItems({ depth }: { depth: number }) {
+    return (
+      <>
+        <NavLink
+          href="/bootcamp/guia"
+          label="Cómo recorrer el Bootcamp"
+          depth={depth}
+        />
+        {bootcampWeeks.map((w) => (
+          <NavLink
+            key={w.slug}
+            href={`/bootcamp/${w.slug}`}
+            label={w.title}
+            depth={depth}
+          />
+        ))}
+        <NavLink
+          href="/bootcamp/dashboard"
+          label="Certificado"
+          depth={depth}
+        />
+      </>
+    );
+  }
+
   return (
-    <aside className="w-56 shrink-0 border-r border-line bg-paper min-h-screen flex flex-col">
+    <aside className="w-60 shrink-0 border-r border-line bg-paper min-h-screen flex flex-col">
       <div className="px-6 py-5 border-b border-line">
-        <p className="font-display font-light text-base text-ink tracking-[0.05em]">
-          forastero
-        </p>
+        <Wordmark />
         <p className="font-mono text-[9px] tracking-widest uppercase text-stone mt-0.5">
           lms
         </p>
       </div>
 
-      <nav className="flex-1 px-4 py-6 flex flex-col gap-0.5">
-        <NavLink href="/bootcamp/guia" label="Cómo empezar" />
-        <NavLink href="/dashboard" label="Dashboard" />
+      <nav className="flex-1 px-4 py-5 flex flex-col gap-0.5 overflow-y-auto">
+        {/* Always-visible top items */}
+        <button
+          onClick={() =>
+            window.dispatchEvent(new CustomEvent("forastero:show-tour"))
+          }
+          className="block w-full text-left pl-3 py-1.5 text-sm font-light text-stone hover:text-ink transition-colors"
+        >
+          Cómo usar la plataforma
+        </button>
+        <NavLink href="/dashboard" label="Dashboard" depth={0} />
 
-        {hasTallerOnly && (
-          <NavLink href="/cad-management" label="Taller de Documentación" />
-        )}
-        {hasWorkshopOnly && (
-          <NavLink
-            href="/cad-management/workshop-cotizacion"
-            label="Workshop Cotización"
-          />
-        )}
-        {hasCadPack && (
-          <PackItem
-            label="Pack CAD Management"
-            isOpen={cadPackOpen}
-            onToggle={() => setCadPackOpen((o) => !o)}
-          >
-            <SubNavLink href="/cad-management" label="Taller de Documentación" />
-            <SubNavLink
-              href="/cad-management/workshop-cotizacion"
-              label="Workshop Cotización"
-            />
-          </PackItem>
-        )}
+        <div className="h-px bg-line my-2" />
+
+        {/* Pack Completo */}
         {hasPackCompleto && (
-          <PackItem
-            label="Pack Completo"
-            isOpen={packCompletoOpen}
-            onToggle={() => setPackCompletoOpen((o) => !o)}
-          >
-            <SubNavLink href="/cad-management" label="Taller de Documentación" />
-            <SubNavLink
-              href="/cad-management/workshop-cotizacion"
-              label="Workshop Cotización"
-            />
-            <SubNavLink href="/bootcamp/dashboard" label="Bootcamp CAD→BIM" />
-          </PackItem>
+          <ToggleNode nodeKey="pack-completo" label="Pack Completo" depth={0}>
+            <ToggleNode nodeKey="taller" label="Taller de Documentación" depth={1}>
+              <TallerItems depth={2} />
+            </ToggleNode>
+            <ToggleNode nodeKey="workshop" label="Workshop Cotización" depth={1}>
+              <WorkshopItems depth={2} />
+            </ToggleNode>
+            <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD→BIM" depth={1}>
+              <BootcampItems depth={2} />
+            </ToggleNode>
+          </ToggleNode>
         )}
-        {showBootcampItem && (
-          <NavLink href="/bootcamp/dashboard" label="Bootcamp CAD→BIM" />
+
+        {/* Pack CAD Management */}
+        {hasCadPack && (
+          <ToggleNode nodeKey="pack-cad" label="Pack CAD Management" depth={0}>
+            <ToggleNode nodeKey="taller" label="Taller de Documentación" depth={1}>
+              <TallerItems depth={2} />
+            </ToggleNode>
+            <ToggleNode nodeKey="workshop" label="Workshop Cotización" depth={1}>
+              <WorkshopItems depth={2} />
+            </ToggleNode>
+          </ToggleNode>
+        )}
+        {hasCadPack && showBootcampIndiv && (
+          <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD→BIM" depth={0}>
+            <BootcampItems depth={1} />
+          </ToggleNode>
+        )}
+
+        {/* Individual items (no pack) */}
+        {showTallerIndiv && (
+          <ToggleNode nodeKey="taller" label="Taller de Documentación" depth={0}>
+            <TallerItems depth={1} />
+          </ToggleNode>
+        )}
+        {showWorkshopIndiv && (
+          <ToggleNode nodeKey="workshop" label="Workshop Cotización" depth={0}>
+            <WorkshopItems depth={1} />
+          </ToggleNode>
+        )}
+        {showBootcampIndiv && !hasCadPack && (
+          <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD→BIM" depth={0}>
+            <BootcampItems depth={1} />
+          </ToggleNode>
         )}
       </nav>
 
