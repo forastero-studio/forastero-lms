@@ -5,7 +5,7 @@ import { hasAccess } from "@/lib/db";
 import Link from "next/link";
 
 const PRICE = "USD 350";
-const PUBLIC_SLUGS = ["semana-0", "semana-1"];
+const PUBLIC_SLUGS: string[] = [];
 
 export default async function BootcampProductPage() {
   const { userId } = await auth();
@@ -253,7 +253,7 @@ export default async function BootcampProductPage() {
             },
             {
               label: "Conocimiento previo",
-              body: "AutoCAD® a nivel profesional. Si todavía no manejás AutoCAD® a nivel profesional, empezá primero por el Taller de Documentación de Obras.",
+              body: "AutoCAD® a nivel intermedio. Si todavía no manejás AutoCAD® en este nivel, empezá primero por el Taller de Documentación de Obras.",
             },
           ].map((item, i) => (
             <div key={i} className="bg-white p-8 border-r border-line last:border-r-0">
@@ -271,8 +271,8 @@ export default async function BootcampProductPage() {
         <div className="max-w-2xl mb-16">
           <ul className="flex flex-col gap-3">
             {[
-              "Si buscás formación oficial certificada por Autodesk® o Graphisoft® (este es un programa forastero, no afiliado a esas marcas)",
-              "Si tu objetivo es BIM gerencial o BIM management avanzado (este es un programa de modelado profesional, no de coordinación BIM)",
+              "Si buscás formación oficial certificada por Autodesk® o Graphisoft® (este es un programa independiente, no afiliado a esas marcas)",
+              "Si tu objetivo es BIM gerencial o BIM management avanzado (este es un programa de modelado profesional BIM)",
               "Si necesitás acreditación universitaria",
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-sm font-light text-stone">
