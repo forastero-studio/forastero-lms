@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { useUser, SignOutButton } from "@clerk/nextjs";
 
 const navItems = [
+  { label: "Cómo empezar", href: "/bootcamp/guia" },
   { label: "Dashboard", href: "/dashboard" },
   { label: "CAD Management", href: "/cad-management" },
-  { label: "Bootcamp CAD→BIM", href: "/bootcamp/semana-1" },
-  { label: "Cómo arrancar", href: "/bootcamp/guia" },
+  { label: "Bootcamp CAD→BIM", href: "/bootcamp/dashboard" },
 ];
 
 export default function Sidebar() {
