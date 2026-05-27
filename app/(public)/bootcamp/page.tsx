@@ -118,12 +118,12 @@ export default async function BootcampProductPage() {
             </h3>
             <p className="text-sm font-light text-stone leading-relaxed mb-4">
               Pequeño refugio alpino de aproximadamente 32 m², planta única, en
-              mampostería de piedra existente, con cubierta de madera a dos aguas.
+              mampostería de piedra existente, con cubierta de madera a un agua.
             </p>
             <p className="text-sm font-light text-stone leading-relaxed mb-4">
               El proyecto consiste en una intervención cuidadosa sobre la
-              preexistencia: piso técnico nuevo, divisiones internas livianas,
-              sustitución de carpinterías.
+              preexistencia: nueva cubierta, nuevo pavimento, sustitución
+              de carpinterías.
             </p>
             <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-3">
               Ideal si te interesa:
