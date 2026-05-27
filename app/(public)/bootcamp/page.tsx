@@ -158,13 +158,6 @@ export default async function BootcampProductPage() {
               Documentación arquitectónica completa: plantas, cortes, alzados,
               carpinterías, terminaciones y detalles constructivos.
             </p>
-            <p className="text-sm font-light text-stone leading-relaxed mb-4">
-              Sobre las instalaciones: este bootcamp es una introducción a BIM
-              enfocada en el modelo arquitectónico. Las instalaciones (sanitaria,
-              electricidad, gas) se pueden documentar en 2D o las resuelve el
-              asesor especialista por separado, como ocurre habitualmente en
-              proyectos de esta escala.
-            </p>
             <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-3">
               Ideal si te interesa:
             </p>
