@@ -14,7 +14,7 @@ interface Props {
 }
 
 // Semanas con acceso libre, sin login ni compra
-const PUBLIC_SLUGS = ["semana-0", "semana-1"];
+const PUBLIC_SLUGS: string[] = [];
 
 export async function generateStaticParams() {
   const weeks = getBootcampWeeks();
@@ -119,42 +119,6 @@ export default async function SemanaPage({ params }: Props) {
             </div>
           )}
         </div>
-
-        {/* CTA al final de Semana 1 */}
-        {semana === "semana-1" && (
-          <>
-            <div className="h-px bg-line mb-10" />
-            <div className="border border-line p-8 max-w-xl mb-12">
-              <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone mb-4">
-                forastero · bootcamp · vista previa
-              </p>
-              <p className="text-base font-light text-ink mb-2 leading-snug">
-                Hasta acá llega la vista previa.
-              </p>
-              <p className="text-sm font-light text-stone mb-6 leading-relaxed">
-                Si querés seguir con las siguientes 7 semanas —modelado
-                completo del Refugio Alpe di Portola o la Cabina Patagonia,
-                hasta documentación profesional y certificado verificable—
-                accedés al Bootcamp completo.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_BOOTCAMP ?? "/bootcamp"}
-                  className="font-mono text-[10px] tracking-[.1em] uppercase text-paper bg-rust px-5 py-3 hover:opacity-80 transition-opacity"
-                  style={{ background: "var(--rust)" }}
-                >
-                  Ver el Bootcamp completo
-                </a>
-                <Link
-                  href="/bootcamp"
-                  className="font-mono text-[10px] tracking-[.1em] uppercase text-stone border border-line px-5 py-3 hover:border-ink hover:text-ink transition-colors"
-                >
-                  ¿Qué incluye?
-                </Link>
-              </div>
-            </div>
-          </>
-        )}
 
         {/* Navegación entre semanas públicas */}
         <div className="h-px bg-line mb-8" />
