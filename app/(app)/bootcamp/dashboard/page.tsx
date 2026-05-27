@@ -15,7 +15,7 @@ function statusLabel(s: WeekStatus): string {
 }
 
 function statusClass(s: WeekStatus): string {
-  if (s === "completed") return "text-green-700";
+  if (s === "completed") return "text-rust";
   if (s === "available") return "text-ink";
   return "text-stone/50";
 }
@@ -79,7 +79,7 @@ export default async function BootcampDashboard() {
           href="/bootcamp/guia"
           className="font-mono text-[9px] tracking-[.1em] uppercase text-stone border border-line px-4 py-2 hover:border-ink hover:text-ink transition-colors"
         >
-          Cómo arrancar →
+          Cómo empezar →
         </Link>
       </div>
 
