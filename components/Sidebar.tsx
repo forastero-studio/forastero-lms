@@ -31,15 +31,15 @@ export default function Sidebar() {
 
       <nav className="flex-1 px-4 py-6 flex flex-col gap-1">
         {navItems.map((item) => {
-          const isActive = pathname.startsWith(item.href);
+          const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`px-3 py-2 text-sm font-light transition-colors ${
+              className={`block py-2 text-sm transition-colors ${
                 isActive
-                  ? "text-ink bg-muted"
-                  : "text-stone hover:text-ink hover:bg-muted/50"
+                  ? "border-l-2 border-rust pl-[10px] pr-3 font-medium text-ink"
+                  : "px-3 font-light text-stone hover:text-ink"
               }`}
             >
               {item.label}
