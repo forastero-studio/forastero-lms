@@ -28,22 +28,6 @@ export default async function CadManagementProductPage() {
           Documentación de obras + Cotización profesional.
         </p>
 
-        {/* Precio */}
-        {!access && (
-          <p
-            className="text-[44px] font-light text-ink leading-none mb-4"
-            style={{ letterSpacing: "-0.05em" }}
-          >
-            USD 150
-          </p>
-        )}
-        {!access && (
-          <p className="text-sm font-light text-stone mb-8">
-            Pack que incluye Taller + Workshop · ahorrás USD 30 vs comprarlos por
-            separado
-          </p>
-        )}
-
         {/* CTA */}
         {!access ? (
           <BuyButton

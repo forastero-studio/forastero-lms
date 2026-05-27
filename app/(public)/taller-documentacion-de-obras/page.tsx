@@ -34,20 +34,12 @@ export default async function TallerPage() {
         </p>
 
         {!access && (
-          <>
-            <p
-              className="text-[44px] font-light text-ink leading-none mb-4"
-              style={{ letterSpacing: "-0.05em" }}
-            >
-              USD 100
-            </p>
-            <BuyButton
-              checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_TALLER!}
-              className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
-            >
-              Acceder al Taller · USD 100
-            </BuyButton>
-          </>
+          <BuyButton
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_TALLER!}
+            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
+          >
+            Acceder al Taller · USD 100
+          </BuyButton>
         )}
         {access && (
           <Link

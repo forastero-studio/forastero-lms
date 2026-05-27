@@ -36,23 +36,12 @@ export default async function PackCompletoPage() {
         </p>
 
         {!access && (
-          <>
-            <p
-              className="text-[44px] font-light text-ink leading-none mb-2"
-              style={{ letterSpacing: "-0.05em" }}
-            >
-              USD 450
-            </p>
-            <p className="text-sm font-light text-stone mb-8">
-              ahorrás USD 50 vs comprar CAD Management + Bootcamp por separado
-            </p>
-            <BuyButton
-              checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
-              className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
-            >
-              Acceder al pack · USD 450
-            </BuyButton>
-          </>
+          <BuyButton
+            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
+            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
+          >
+            Acceder al pack · USD 450
+          </BuyButton>
         )}
         {access && (
           <div className="flex flex-wrap gap-4 mb-20">

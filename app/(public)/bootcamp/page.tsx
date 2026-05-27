@@ -35,16 +35,6 @@ export default async function BootcampProductPage() {
           profesional completo.
         </p>
 
-        {/* Precio */}
-        {!access && (
-          <p
-            className="text-[44px] font-light text-ink leading-none mb-8"
-            style={{ letterSpacing: "-0.05em" }}
-          >
-            {PRICE}
-          </p>
-        )}
-
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 mb-20">
           {!access && (
