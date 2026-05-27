@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import { auth } from "@clerk/nextjs/server";
 
 export default function LandingPage() {
   return (
@@ -18,7 +19,9 @@ export default function LandingPage() {
 
 /* ─── Nav ─────────────────────────────────────────────────────────────── */
 
-function Nav() {
+async function Nav() {
+  const { userId } = await auth();
+
   return (
     <nav className="flex items-center justify-between px-8 md:px-14 py-5 border-b border-line">
       <p className="text-sm font-light text-ink" style={{ letterSpacing: "0.05em" }}>
@@ -37,12 +40,21 @@ function Nav() {
             {l.label}
           </a>
         ))}
-        <Link
-          href="/sign-in"
-          className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
-        >
-          Iniciar sesión
-        </Link>
+        {userId ? (
+          <Link
+            href="/dashboard"
+            className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+          >
+            Mi perfil
+          </Link>
+        ) : (
+          <Link
+            href="/sign-in"
+            className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+          >
+            Iniciar sesión
+          </Link>
+        )}
       </div>
     </nav>
   );
