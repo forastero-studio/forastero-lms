@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { auth } from "@clerk/nextjs/server";
+import Wordmark from "@/components/ui/Wordmark";
 
 export default function LandingPage() {
   return (
@@ -24,9 +25,7 @@ async function Nav() {
 
   return (
     <nav className="flex items-center justify-between px-8 md:px-14 py-5 border-b border-line">
-      <p className="text-sm font-light text-ink" style={{ letterSpacing: "0.05em" }}>
-        forastero
-      </p>
+      <Wordmark />
       <div className="hidden md:flex items-center gap-8">
         {[
           { label: "Formaciones", href: "#precios" },
