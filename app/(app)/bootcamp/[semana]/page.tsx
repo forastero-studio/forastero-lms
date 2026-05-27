@@ -16,6 +16,16 @@ interface Props {
 // Semanas con acceso libre, sin login ni compra
 const PUBLIC_SLUGS: string[] = [];
 
+const DEFAULT_WEEK_MATERIALS = [
+  "Proyecto recordatorio · qué modelás esta semana",
+  "Lectura de concepto · marco teórico y criterios",
+  "Paso a paso · Revit®",
+  "Paso a paso · ArchiCAD®",
+  "Del CAD al BIM · cambio de criterio",
+  "Tabla de equivalencias Revit® ↔ ArchiCAD®",
+  "Validación IFC · checkpoint de la semana",
+];
+
 export async function generateStaticParams() {
   const weeks = getBootcampWeeks();
   return weeks.map((w) => ({ semana: w.slug }));
@@ -160,29 +170,54 @@ export default async function SemanaPage({ params }: Props) {
     const dripStatus = computeDripStatus(completedSlugs);
     const weekDrip = dripStatus[content.semana - 1];
     if (weekDrip && weekDrip.status === "locked_prev") {
-      const lockReason = `Completá la validación IFC de Semana ${content.semana - 1} para desbloquear esta semana.`;
+      const materials: string[] = content.descargables?.length
+        ? content.descargables.map((d) => d.nombre)
+        : DEFAULT_WEEK_MATERIALS;
+
       return (
         <ContentArea>
           <p className="eyebrow mb-6">Bootcamp CAD→BIM</p>
           <h1
-            className="font-display text-4xl font-light text-ink mb-4"
+            className="font-display text-4xl font-light text-ink mb-2"
             style={{ letterSpacing: "-0.02em" }}
           >
             {content.title}
           </h1>
-          <div className="h-px bg-line my-8" />
-          <div className="max-w-md">
-            <p className="text-base font-light text-ink mb-2">
-              Semana no disponible todavía.
+          {content.duracion_estimada && (
+            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mt-2">
+              {content.duracion_estimada}
             </p>
-            <p className="text-sm font-light text-stone mb-6">{lockReason}</p>
-            <Link
-              href="/bootcamp/dashboard"
-              className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
-            >
-              ← Volver al progreso
-            </Link>
+          )}
+          <div className="h-px bg-line my-8" />
+
+          <div className="border border-line bg-muted px-6 py-4 max-w-lg mb-10">
+            <p className="text-sm font-light text-stone leading-relaxed">
+              Esta semana se desbloquea cuando completes la validación IFC de
+              Semana {content.semana - 1}.
+            </p>
           </div>
+
+          <p className="eyebrow mb-5">Contenido de la semana</p>
+          <div className="flex flex-col gap-3 max-w-lg mb-12">
+            {materials.map((nombre, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="font-mono text-[10px] text-stone/40 mt-0.5 shrink-0 select-none">
+                  ⊘
+                </span>
+                <p className="text-sm font-light text-stone/50 leading-snug">
+                  {nombre}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="h-px bg-line mb-8" />
+          <Link
+            href="/bootcamp/dashboard"
+            className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+          >
+            ← Volver al progreso
+          </Link>
         </ContentArea>
       );
     }
