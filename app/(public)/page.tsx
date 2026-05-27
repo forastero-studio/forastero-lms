@@ -27,7 +27,6 @@ function Nav() {
       <div className="hidden md:flex items-center gap-8">
         {[
           { label: "Formaciones", href: "#precios" },
-          { label: "Agente", href: "#agente" },
           { label: "Precios", href: "#precios" },
         ].map((l) => (
           <a
@@ -38,6 +37,12 @@ function Nav() {
             {l.label}
           </a>
         ))}
+        <Link
+          href="/sign-in"
+          className="font-mono text-[10px] tracking-[.1em] uppercase text-stone hover:text-ink transition-colors"
+        >
+          Iniciar sesión
+        </Link>
       </div>
     </nav>
   );
