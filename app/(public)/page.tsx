@@ -228,7 +228,7 @@ function PricingSection() {
 
       {/* Grupo A · Fundamentos */}
       <div className="mb-4">
-        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-6">
+        <p className="font-mono text-[14px] tracking-[.1em] uppercase text-stone mb-6">
           Fundamentos · documentación y cotización
         </p>
         <div className="grid md:grid-cols-2 gap-0 border border-line">
@@ -365,7 +365,7 @@ function PricingSection() {
 
       {/* Grupo B · Bootcamp */}
       <div>
-        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-6">
+        <p className="font-mono text-[14px] tracking-[.1em] uppercase text-stone mb-6">
           Bootcamp · transición BIM
         </p>
         <div className="border border-line">
