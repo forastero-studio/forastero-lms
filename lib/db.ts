@@ -53,11 +53,13 @@ const ACCESS_GRANTS: Record<string, string[]> = {
     "pack-completo",
     "cad-management", // backward compat
     "pack",           // backward compat
+    "taller",         // backward compat (old webhook slug)
   ],
   "workshop-cotizacion": [
     "workshop-cotizacion",
     "pack-cad-management",
     "pack-completo",
+    "workshop",       // backward compat (old webhook slug)
   ],
   "bootcamp": [
     "bootcamp",
@@ -73,6 +75,7 @@ const ACCESS_GRANTS: Record<string, string[]> = {
     "taller-documentacion",
     "pack-cad-management",
     "pack-completo",
+    "taller",         // backward compat
   ],
 };
 

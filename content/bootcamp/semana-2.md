@@ -10,4 +10,4 @@ semana: 2
 
 Modelá la envolvente principal de tu proyecto. Para el Refugio: fases existente/nuevo. Para la Cabina: muros compuestos con capas de aislación.
 
-> Contenido completo disponible al inicio de Cohorte 0 (7 de julio de 2026).
+> Contenido completo próximamente.

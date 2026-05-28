@@ -10,4 +10,4 @@ semana: 1
 
 Creá tu archivo BIM, configurá los niveles según las cotas reales de tu proyecto, e importá los planos CAD de referencia.
 
-> Contenido completo disponible al inicio de Cohorte 0 (7 de julio de 2026).
+> Contenido completo próximamente.

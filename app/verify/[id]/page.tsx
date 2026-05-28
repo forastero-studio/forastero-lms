@@ -55,7 +55,7 @@ export default async function VerifyPage({ params }: Props) {
           <div className="grid grid-cols-2 gap-8 mb-8">
             <div>
               <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-1">
-                Cohorte
+                Año
               </p>
               <p className="text-sm font-light text-ink">{cert.cohort_number}</p>
             </div>

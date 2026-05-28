@@ -99,7 +99,7 @@ export default async function ModuloPage({ params }: Props) {
                 href="mailto:info@forastero.studio"
                 className="text-ink hover:text-rust transition-colors"
               >
-                hola@forastero.studio
+                info@forastero.studio
               </a>
             </p>
           </div>
