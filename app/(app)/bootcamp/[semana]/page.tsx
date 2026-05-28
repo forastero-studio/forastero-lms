@@ -6,7 +6,7 @@ import ModuleCard from "@/components/ModuleCard";
 import MarkdownBody from "@/components/ui/MarkdownBody";
 import { getBootcampWeek, getBootcampWeeks } from "@/lib/content";
 import { hasAccess, getProgress } from "@/lib/db";
-import { computeDripStatus } from "@/lib/bootcamp";
+import { computeDripStatus, TESTING_MODE } from "@/lib/bootcamp";
 import Link from "next/link";
 
 interface Props {
@@ -164,8 +164,8 @@ export default async function SemanaPage({ params }: Props) {
   const { userId } = await auth();
   const access = userId ? await hasAccess(userId, "bootcamp") : false;
 
-  // Drip check
-  if (access && userId && content.semana) {
+  // Drip check (salteado si TESTING_MODE = true)
+  if (!TESTING_MODE && access && userId && content.semana) {
     const completedSlugs = await getProgress(userId, "bootcamp");
     const dripStatus = computeDripStatus(completedSlugs);
     const weekDrip = dripStatus[content.semana - 1];
