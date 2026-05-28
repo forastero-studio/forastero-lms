@@ -2,9 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 export default function AgentDrawer() {
   const pathname = usePathname();
+  const { user } = useUser();
   const [open, setOpen] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -16,7 +18,15 @@ export default function AgentDrawer() {
   const weekNum = weekMatch ? parseInt(weekMatch[1]) : 0;
 
   const agentBase = "https://forastero-bim.vercel.app";
-  const agentUrl = `${agentBase}?lms=true${weekNum ? `&week=${weekNum}` : ""}&lmsPage=${encodeURIComponent(pathname || "")}`;
+  const agentUrl = `${agentBase}?lms=true${weekNum ? `&week=${weekNum}` : ""}${user?.id ? `&userId=${encodeURIComponent(user.id)}` : ""}&lmsPage=${encodeURIComponent(pathname || "")}`;
+
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
   useEffect(() => {
     function handleMessage(e: MessageEvent) {
@@ -24,13 +34,29 @@ export default function AgentDrawer() {
         setOpen(false);
       }
       if (e.data?.type === "forastero_ifc_validated") {
-        // Reload para refrescar progreso cuando el agente valida un IFC
-        window.location.reload();
+        const { week, color, profile } = e.data;
+        // Sync to Supabase via LMS backend
+        if (user?.id && week && color) {
+          fetch("/api/bootcamp/complete-week", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: user.id, week, validationColor: color }),
+          }).catch(() => {});
+        }
+        if (user?.id && profile) {
+          fetch("/api/agent/sync-profile", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: user.id, profile }),
+          }).catch(() => {});
+        }
+        // Reload to refresh progress dashboard
+        setTimeout(() => window.location.reload(), 800);
       }
     }
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, []);
+  }, [user?.id]);
 
   if (!isBootcamp || isPublicWeek) return null;
 
@@ -39,8 +65,8 @@ export default function AgentDrawer() {
       {/* Botón flotante */}
       <button
         onClick={() => setOpen(true)}
-        style={{ width: 80, height: 32, bottom: 24, right: 24 }}
-        className="fixed z-40 bg-ink text-paper font-mono text-[9px] tracking-[.1em] uppercase hover:bg-stone transition-colors"
+        style={{ width: 80, height: 32, bottom: 24, right: 24, borderRadius: 2 }}
+        className="fixed z-40 bg-paper text-ink font-mono text-[9px] tracking-[.1em] uppercase border border-ink hover:bg-ink hover:text-paper transition-colors duration-150"
       >
         Agente
       </button>
