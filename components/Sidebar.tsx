@@ -267,13 +267,13 @@ export default function Sidebar({
         {/* Pack Completo */}
         {hasPackCompleto && (
           <ToggleNode nodeKey="pack-completo" label="Pack Completo" depth={0}>
-            <ToggleNode nodeKey="taller" label="Taller de Documentación" depth={1}>
+            <ToggleNode nodeKey="taller" label="Taller de Documentación de Obras" depth={1}>
               <TallerItems depth={2} />
             </ToggleNode>
-            <ToggleNode nodeKey="workshop" label="Workshop Cotización" depth={1}>
+            <ToggleNode nodeKey="workshop" label="Workshop Cotización de Obras" depth={1}>
               <WorkshopItems depth={2} />
             </ToggleNode>
-            <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD→BIM" depth={1}>
+            <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD → BIM" depth={1}>
               <BootcampItems depth={2} />
             </ToggleNode>
           </ToggleNode>
@@ -282,33 +282,33 @@ export default function Sidebar({
         {/* Pack CAD Management */}
         {hasCadPack && (
           <ToggleNode nodeKey="pack-cad" label="Pack CAD Management" depth={0}>
-            <ToggleNode nodeKey="taller" label="Taller de Documentación" depth={1}>
+            <ToggleNode nodeKey="taller" label="Taller de Documentación de Obras" depth={1}>
               <TallerItems depth={2} />
             </ToggleNode>
-            <ToggleNode nodeKey="workshop" label="Workshop Cotización" depth={1}>
+            <ToggleNode nodeKey="workshop" label="Workshop Cotización de Obras" depth={1}>
               <WorkshopItems depth={2} />
             </ToggleNode>
           </ToggleNode>
         )}
         {hasCadPack && showBootcampIndiv && (
-          <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD→BIM" depth={0}>
+          <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD → BIM" depth={0}>
             <BootcampItems depth={1} />
           </ToggleNode>
         )}
 
         {/* Individual items (no pack) */}
         {showTallerIndiv && (
-          <ToggleNode nodeKey="taller" label="Taller de Documentación" depth={0}>
+          <ToggleNode nodeKey="taller" label="Taller de Documentación de Obras" depth={0}>
             <TallerItems depth={1} />
           </ToggleNode>
         )}
         {showWorkshopIndiv && (
-          <ToggleNode nodeKey="workshop" label="Workshop Cotización" depth={0}>
+          <ToggleNode nodeKey="workshop" label="Workshop Cotización de Obras" depth={0}>
             <WorkshopItems depth={1} />
           </ToggleNode>
         )}
         {showBootcampIndiv && !hasCadPack && (
-          <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD→BIM" depth={0}>
+          <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD → BIM" depth={0}>
             <BootcampItems depth={1} />
           </ToggleNode>
         )}
