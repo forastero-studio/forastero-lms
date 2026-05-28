@@ -58,15 +58,16 @@ const ACCESS_GRANTS: Record<string, string[]> = {
   "workshop-cotizacion": [
     "workshop-cotizacion",
     "pack-cad-management",
+    "cad-management",  // backward compat (old pack slug)
     "pack-completo",
-    "workshop",       // backward compat (old webhook slug)
+    "workshop",        // backward compat (old webhook slug)
   ],
   "bootcamp": [
     "bootcamp",
     "pack-completo",
     "pack", // backward compat
   ],
-  "pack-cad-management": ["pack-cad-management", "pack-completo"],
+  "pack-cad-management": ["pack-cad-management", "cad-management", "pack-completo"],
   "pack-completo": ["pack-completo"],
   // Legacy slug — acceso equivalente al taller original
   "cad-management": [

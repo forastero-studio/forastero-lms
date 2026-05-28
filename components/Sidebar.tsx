@@ -95,7 +95,7 @@ export default function Sidebar({
   const hasPackCompleto = purchaseSlugs.some((s) => s === "pack-completo");
   const hasCadPack =
     !hasPackCompleto &&
-    purchaseSlugs.some((s) => s === "pack-cad-management");
+    purchaseSlugs.some((s) => s === "pack-cad-management" || s === "cad-management");
   const showTallerIndiv = hasTaller && !hasCadPack && !hasPackCompleto;
   const showWorkshopIndiv = hasWorkshop && !hasCadPack && !hasPackCompleto;
   const showBootcampIndiv = hasBootcamp && !hasPackCompleto;
