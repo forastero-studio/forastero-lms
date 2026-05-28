@@ -18,7 +18,7 @@ export default function AgentDrawer() {
   const weekNum = weekMatch ? parseInt(weekMatch[1]) : 0;
 
   const agentBase = "https://forastero-bim.vercel.app";
-  const agentUrl = `${agentBase}?lms=true${weekNum ? `&week=${weekNum}` : ""}${user?.id ? `&userId=${encodeURIComponent(user.id)}` : ""}&lmsPage=${encodeURIComponent(pathname || "")}`;
+  const agentUrl = `${agentBase}?context=lms-drawer${weekNum ? `&currentWeek=${weekNum}` : ""}&currentRoute=${encodeURIComponent(pathname || "")}`;
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
