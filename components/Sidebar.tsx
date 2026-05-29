@@ -164,7 +164,7 @@ export default function Sidebar({
       <div>
         <button
           onClick={() => toggle(nodeKey)}
-          className={`w-full flex items-center justify-between ${pl} pr-2 py-1.5 ${size} font-light text-stone hover:text-ink transition-colors`}
+          className={`w-full text-left flex items-center justify-between ${pl} pr-2 py-1.5 ${size} font-light text-stone hover:text-ink transition-colors`}
         >
           {label}
           <span className="font-mono text-[8px] shrink-0 ml-1">
