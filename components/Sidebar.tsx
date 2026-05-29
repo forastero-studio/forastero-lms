@@ -134,7 +134,7 @@ export default function Sidebar({
       <Link
         href={href}
         onClick={onClick}
-        className={`block py-1.5 ${size} transition-colors ${
+        className={`block text-left py-1.5 ${size} transition-colors ${
           active
             ? `${activePl} pr-3 border-l-2 border-rust font-medium text-ink`
             : `${pl} font-light text-stone hover:text-ink`
@@ -245,9 +245,6 @@ export default function Sidebar({
     <aside className="w-60 shrink-0 border-r border-line bg-paper min-h-screen flex flex-col">
       <div className="px-6 py-5 border-b border-line">
         <Wordmark />
-        <p className="font-mono text-[9px] tracking-widest uppercase text-stone mt-0.5">
-          lms
-        </p>
       </div>
 
       <nav className="flex-1 px-4 py-5 flex flex-col gap-0.5 overflow-y-auto">
