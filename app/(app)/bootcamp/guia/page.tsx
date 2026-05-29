@@ -67,7 +67,7 @@ export default async function GuiaPage() {
     <ContentArea>
       <p className="technical-header mb-8">forastero · bootcamp · guía del alumno</p>
 
-      <h1 className="font-display text-4xl font-light text-ink mb-2 tracking-tight">
+      <h1 className="text-4xl font-light text-ink mb-2 tracking-tight">
         Cómo recorrer el Bootcamp
       </h1>
       <p className="text-sm text-stone font-light mb-12">

@@ -19,7 +19,7 @@ export default async function GuiaTallerPage() {
       <p className="technical-header mb-8">forastero · taller · guía del alumno</p>
 
       <h1
-        className="font-display text-4xl font-light text-ink mb-2 tracking-tight"
+        className="text-4xl font-light text-ink mb-2 tracking-tight"
         style={{ letterSpacing: "-0.02em" }}
       >
         Cómo recorrer el Taller
