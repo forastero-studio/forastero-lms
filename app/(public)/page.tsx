@@ -592,11 +592,8 @@ function FaqSection() {
 function Footer() {
   return (
     <footer className="px-8 md:px-14 py-16 border-t border-line">
-      <p
-        className="text-2xl font-light text-ink mb-8"
-        style={{ letterSpacing: "0.05em" }}
-      >
-        forastero
+      <p className="mb-8">
+        <Wordmark />
       </p>
       <div className="h-px bg-line mb-6" />
       <div className="grid md:grid-cols-[2fr_1fr] gap-10 mb-8">
