@@ -55,7 +55,9 @@ export function getTallerModules(): ContentFile[] {
 }
 
 export function getWorkshopModules(): ContentFile[] {
-  return readMarkdownFiles("cad-management/workshop");
+  return readMarkdownFiles("cad-management/workshop").sort(
+    (a, b) => (a.clase ?? 99) - (b.clase ?? 99)
+  );
 }
 
 export function getCadManagementModules(): ContentFile[] {
