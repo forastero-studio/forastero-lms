@@ -1,4 +1,4 @@
----
+﻿---
 title: "Módulo D · Terminaciones, cielorrasos y marmolería"
 clase: 3
 parte: "A"
@@ -6,7 +6,7 @@ moduloLetra: "D"
 slug: "modulo-d"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
-videoDriveId: "1CGVsObj0qmmqnYcd7ilNWn22KsFSM7BO"
+videoDriveId: "1xdVvSeEp9cs2Tua8v5aEcHyH5DycBOZe"
 descargables:
   - nombre: "00.BLOQUES.CR.MA.dwg"
     fileId: "1NtSC-O7xQvtp05OCWhsMTbzLEhPsQozw"
@@ -51,10 +51,10 @@ descargables:
     fileId: "1ZDmCy-lh3WRHfaoE5VDVA045Pw7hW-RD"
     tipo: inline
   - nombre: "ANEXO AUTOCAD-LAYOUT.pdf"
-    fileId: "1KEVd1pAGwJvisTH0U6Ac6SvMsi-F664R"
+    fileId: "1kOv5IsQvIBc1yvnJ_loUlZGXMoes9d-R"
     tipo: inline
   - nombre: "GUÍA PRACTICA D.pdf"
-    fileId: "1XwbohZcUOLd_LQhxgXvGabi8J6SS9SVQ"
+    fileId: "1P8w-HFKZ7Q4cKyjE7elKuMYHcp4aNlVw"
     tipo: inline
 guiaPracticaPdf: "modulo-d/guia-practica-d.pdf"
 prevModulo: "modulo-c"

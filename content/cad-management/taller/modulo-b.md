@@ -1,4 +1,4 @@
----
+﻿---
 title: "Módulo B · Estructura, XREFs y replanteo de muros"
 clase: 2
 parte: "A"
@@ -6,7 +6,7 @@ moduloLetra: "B"
 slug: "modulo-b"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
-videoDriveId: "11Ytf3_R5vnsGWpcgjveapG3IdteVRLRj"
+videoDriveId: "1_nqP9EkyVHTFdM0unYf8N6q4kqEK2cWP"
 descargables:
   - nombre: "00.ESTRUCTURA.dwg"
     fileId: "1NnW7EeASwTuEeKJhjXIRERdRgnCL-DOY"
@@ -57,10 +57,10 @@ descargables:
     fileId: "1VMfHvllvIcTphqsWMngliN_GDD2f36a0"
     tipo: inline
   - nombre: "ANEXO AUTOCAD-XREF.pdf"
-    fileId: "1iUgPA7O_uAo46DAlGVKiAN36ZoS8gftJ"
+    fileId: "1q8qjYwpz4uhKKR2tCa94EK6GNpOuN9Q6"
     tipo: inline
   - nombre: "GUÍA PRACTICA B.pdf"
-    fileId: "1E_tkbrwI4QV-YNjxggexIv1CFAQk-8hU"
+    fileId: "1iwP9P3_pnKcrbb8KMaflu2_EE-B552_u"
     tipo: inline
 guiaPracticaPdf: "modulo-b/guia-practica-b.pdf"
 prevModulo: "modulo-a"

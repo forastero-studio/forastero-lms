@@ -1,4 +1,4 @@
----
+﻿---
 title: "Módulo C · Instalaciones sanitarias y gas"
 clase: 2
 parte: "B"
@@ -6,7 +6,7 @@ moduloLetra: "C"
 slug: "modulo-c"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
-videoDriveId: "1IHs3TnHUPU6MyN6pRBP5vj1skGEeStng"
+videoDriveId: "14F_QDQnNwE97kiIF947KZ-kA7vfRwNUE"
 descargables:
   - nombre: "00.BLOQUES INSTALACIONES.dwg"
     fileId: "10rULeFxk5DpcAJ6DwaTNq1b_xmZ_BqIZ"
@@ -63,7 +63,7 @@ descargables:
     fileId: "1KgcWylaTiNACtFb3j-8ezAi6htOwU-7D"
     tipo: download
   - nombre: "GUÍA PRACTICA C.pdf"
-    fileId: "1jB1LI3Va2gsB-cbnhY4XJyvEL72Zu-QX"
+    fileId: "1jaOleXaLCwubYg62ToUdxim4oe9zEZB9"
     tipo: inline
 guiaPracticaPdf: "modulo-c/guia-practica-c.pdf"
 prevModulo: "modulo-b"

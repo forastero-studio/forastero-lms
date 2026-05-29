@@ -1,4 +1,4 @@
----
+﻿---
 title: "Módulo F · Locales húmedos y detalles constructivos"
 clase: 4
 parte: "A"
@@ -6,7 +6,7 @@ moduloLetra: "F"
 slug: "modulo-f"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
-videoDriveId: "1wiXPMu_uT1HdAFvcHg91ZvJ_EnMfWNoL"
+videoDriveId: "1iz1e7ItabBoscyz20ReyEWcvs2WrAv4r"
 descargables:
   - nombre: "00.BLOQUES DETALLES.dwg"
     fileId: "1wSs8gie-U9Q_vrld92wT5GoTDALXCde4"
@@ -39,7 +39,7 @@ descargables:
     fileId: "1_wl1RawWlbk2pAQTPPp9WjLLHtWhIpcF"
     tipo: inline
   - nombre: "GUÍA PRACTICA F.pdf"
-    fileId: "1klIMGsqEgP3v89EGPEbwvkCKxCcPY6lP"
+    fileId: "1KkkkBWiQhYICVoBXv2WKizTkKqRT_Deg"
     tipo: inline
 guiaPracticaPdf: "modulo-f/guia-practica-f.pdf"
 prevModulo: "modulo-e"

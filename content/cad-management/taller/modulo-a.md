@@ -1,4 +1,4 @@
----
+﻿---
 title: "Módulo A · Planos de arquitectura"
 clase: 1
 moduloLetra: "A"
@@ -38,10 +38,10 @@ descargables:
     fileId: "1qaiFpM_Oxn4TxtjXwcCAWC0HPcu9nG21"
     tipo: inline
   - nombre: "ANEXO ORGANIZACIÓN INTERNA.pdf"
-    fileId: "1X2oM2jICebAxs14Q7hsT-E3TDgKS3cat"
+    fileId: "1ol5RiGGS2IoltEBGIyNxABnUe75WLmoP"
     tipo: inline
   - nombre: "GUÍA PRACTICA A.pdf"
-    fileId: "1uBkAO2BWeu16GakNIm6g64guVdKl8DcQ"
+    fileId: "1KP966PnsF-F821xPIJFqYLPO0Q4mlcRP"
     tipo: inline
 guiaPracticaPdf: "modulo-a/guia-practica-a.pdf"
 prevModulo: null

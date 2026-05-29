@@ -1,4 +1,4 @@
----
+﻿---
 title: "Módulo E · Instalación eléctrica y termomecánica"
 clase: 3
 parte: "B"
@@ -6,7 +6,7 @@ moduloLetra: "E"
 slug: "modulo-e"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
-videoDriveId: "1-Xmqxpam_X9Ms02TdVjAUUEhAprBe5-S"
+videoDriveId: "1uDUPy4fK3QGDPF4Dyv47bGCgDBDEuMXJ"
 descargables:
   - nombre: "00.BLOQUES INSTALACIONES.dwg"
     fileId: "1gADoWeJWhwm7G5nA3IRPAinseMkNyFcF"
@@ -39,13 +39,13 @@ descargables:
     fileId: "1QrElT76cwgA1QNjKMkWQbUPELwLoSpXL"
     tipo: inline
   - nombre: "ANEXO AUTOCAD-CTB.pdf"
-    fileId: "12qYtV8jDjnhj5MWk5-tjzkp50CTQfQBw"
+    fileId: "1klrYihVkTSHShTr-AhNsGlxY3tiVfJ4f"
     tipo: inline
   - nombre: "ANEXO AUTOCAD-IMPRESION.pdf"
-    fileId: "1GVeipZvrk8XuksCeJfdax0bMNIsNUpKT"
+    fileId: "1z2wse_xpWJvT_HWjM8hpeKImxKwqnD6I"
     tipo: inline
   - nombre: "GUÍA PRACTICA E.pdf"
-    fileId: "1dIpMWi-3fEBKQwhOfH_vuu3FkXJ3Bl94"
+    fileId: "1WhSU-3SMgq9KkHFbDFmlmo-jlKy-TBDS"
     tipo: inline
 guiaPracticaPdf: "modulo-e/guia-practica-e.pdf"
 prevModulo: "modulo-d"

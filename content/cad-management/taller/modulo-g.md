@@ -1,4 +1,4 @@
----
+﻿---
 title: "Módulo G · Planillas de carpinterías, locales e itemizado"
 clase: 4
 parte: "B"
@@ -6,7 +6,7 @@ moduloLetra: "G"
 slug: "modulo-g"
 duracion_estimada: "2 a 3 horas"
 videoUrl: ""
-videoDriveId: "1TSaQb0plcGVU9-VohDfe2nqZe_bh4Efx"
+videoDriveId: "1ifds7aSNe5kNAFS19KXg0FjUhia-Kt_8"
 descargables:
   - nombre: "00.ITEMIZADO.xlsx"
     fileId: "1HjS-qjOhVZjwYZU_hN8c2GOgCQto4ZwC"
@@ -36,7 +36,7 @@ descargables:
     fileId: "1E3jdW4CNjyWrZEHasJtbku88ZdEqHpn1"
     tipo: inline
   - nombre: "GUÍA PRACTICA G.pdf"
-    fileId: "1mjC8YzrYzln9gQJSJFkrhBNpciDCNI_d"
+    fileId: "10BKhnAWDr8XVXYcRZvETvfMrZ-XWNwlY"
     tipo: inline
 guiaPracticaPdf: "modulo-g/guia-practica-g.pdf"
 prevModulo: "modulo-f"
