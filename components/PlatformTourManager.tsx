@@ -1,8 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Wordmark from "@/components/ui/Wordmark";
 
 const TOUR_KEY = "forastero-platform-tour-completed";
+
+// translateX applied to the card per step — shifts it toward the element it describes
+const CARD_TRANSFORMS = [
+  "translateX(0)",       // 01 bienvenida   → centrado
+  "translateX(-280px)",  // 02 formaciones  → izquierda, cerca del sidebar
+  "translateX(-280px)",  // 03 expande      → izquierda, sidebar
+  "translateX(200px)",   // 04 videos       → centro/derecha, área de contenido
+  "translateX(0)",       // 05 soporte      → centrado
+];
 
 const steps = [
   {
@@ -11,12 +21,7 @@ const steps = [
     body: "Te explicamos cómo moverte en la plataforma en 4 pantallas.",
     visual: (
       <div className="flex items-center justify-center h-20">
-        <span
-          className="font-display font-light text-2xl text-ink"
-          style={{ letterSpacing: "0.05em" }}
-        >
-          forastero
-        </span>
+        <Wordmark />
       </div>
     ),
   },
@@ -106,11 +111,9 @@ export default function PlatformTourManager() {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    // Show automatically on first visit
     const completed = localStorage.getItem(TOUR_KEY);
     if (!completed) setShow(true);
 
-    // Listen for manual trigger from sidebar
     const handler = () => {
       setStep(0);
       setShow(true);
@@ -137,11 +140,14 @@ export default function PlatformTourManager() {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center"
-      style={{ background: "rgba(0,0,0,0.2)" }}
+      style={{ background: "rgba(0,0,0,0.5)" }}
     >
       <div
         className="bg-paper border border-line w-full max-w-lg mx-4 flex flex-col"
-        style={{ animation: "fadeSlideIn 200ms ease-out" }}
+        style={{
+          transform: CARD_TRANSFORMS[step],
+          transition: "transform 300ms ease",
+        }}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-8 pt-8 pb-4">
@@ -172,7 +178,6 @@ export default function PlatformTourManager() {
 
         {/* Footer */}
         <div className="px-8 pb-8 flex items-center justify-between">
-          {/* Dots */}
           <div className="flex gap-1.5">
             {steps.map((_, i) => (
               <button
@@ -185,7 +190,6 @@ export default function PlatformTourManager() {
             ))}
           </div>
 
-          {/* Navigation */}
           <div className="flex gap-3">
             {step > 0 && (
               <button
@@ -214,13 +218,6 @@ export default function PlatformTourManager() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes fadeSlideIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </div>
   );
 }
