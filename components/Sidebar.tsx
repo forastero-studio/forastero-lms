@@ -268,7 +268,7 @@ export default function Sidebar({
   return (
     <aside className="w-60 shrink-0 border-r border-line bg-paper min-h-screen flex flex-col">
       <div className="px-6 py-5 border-b border-line">
-        <Wordmark suffix=".lms" />
+        <Wordmark />
       </div>
 
       <nav className="flex-1 px-4 py-5 flex flex-col gap-0.5 overflow-y-auto">

@@ -53,7 +53,7 @@ export default function WelcomeToast() {
             : "opacity 400ms ease, transform 400ms ease",
         }}
       >
-        <Wordmark suffix=".lms" />
+        <Wordmark />
       </div>
     </div>
   );
