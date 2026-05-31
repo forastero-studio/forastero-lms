@@ -92,10 +92,7 @@ export async function POST(req: NextRequest) {
         details: error.details,
         hint: error.hint,
       });
-      return NextResponse.json(
-        { error: "DB error", code: error.code, message: error.message, details: error.details },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "internal error" }, { status: 500 });
     }
 
     // Lógica de habilitación según producto
