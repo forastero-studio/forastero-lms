@@ -29,18 +29,18 @@ export function buildBienvenidaEmail(
 
   const html = `
 <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#111;background:#f7f5ef;padding:40px 32px;">
-  <p style="font-family:monospace;font-size:10px;color:#888;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 24px;">forastero</p>
-  <h1 style="font-size:22px;font-weight:300;margin:0 0 16px;">Bienvenido a forastero</h1>
-  <p style="font-size:14px;font-weight:300;line-height:1.6;margin:0 0 8px;">Acabás de comprar: ${product}.</p>
-  <p style="font-size:14px;font-weight:300;line-height:1.6;margin:0 0 16px;color:#444;">Tu acceso ya está activo. Entrá con el email ${customerEmail}:</p>
+  <p style="font-family:monospace;font-size:10px;color:#888;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 24px;">forastero.lms</p>
+  <h1 style="font-size:22px;font-weight:300;margin:0 0 16px;">Te damos la bienvenida a forastero.lms</h1>
+  <p style="font-size:14px;font-weight:300;line-height:1.6;margin:0 0 16px;">Gracias por sumarte.</p>
+  <p style="font-size:14px;font-weight:300;line-height:1.6;margin:0 0 16px;color:#444;">Ya tenés acceso a ${product}. Para entrar, andá a tu panel e iniciá sesión con el mismo email con el que compraste.</p>
   <a href="${DASHBOARD_URL}" style="display:inline-block;border:1px solid #111;color:#111;text-decoration:none;padding:10px 18px;font-family:monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;">Acceder al LMS →</a>
   ${bootcampHint}
-  <p style="font-size:13px;font-weight:300;color:#555;margin:0 0 4px;">Cualquier duda: <a href="mailto:info@forastero.studio" style="color:#111;">info@forastero.studio</a></p>
-  <p style="font-size:11px;color:#aaa;margin-top:32px;">forastero · Grono, Cantón Graubünden</p>
+  <p style="font-size:13px;font-weight:300;color:#555;margin:0 0 4px;">Ante cualquier duda, escribinos a <a href="mailto:info@forastero.studio" style="color:#111;">info@forastero.studio</a></p>
+  <p style="font-size:11px;color:#aaa;margin-top:32px;">forastero.lms · info@forastero.studio</p>
 </div>`;
 
   return {
-    subject: `Bienvenido a forastero · ${product}`,
+    subject: `Te damos la bienvenida a forastero.lms · ${product}`,
     html,
   };
 }
