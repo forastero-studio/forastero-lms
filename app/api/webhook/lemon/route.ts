@@ -5,11 +5,11 @@ import { buildBienvenidaEmail } from "@/lib/emails/bienvenida";
 
 // variant_id de Lemon Squeezy → slug interno
 const VARIANT_TO_PRODUCT_MAP: Record<string, string> = {
-  "1086419": "taller-documentacion",
+  "1702373": "taller-documentacion",
   "1702406": "workshop-cotizacion",
-  "1063937": "pack-cad-management",
-  "1063951": "bootcamp",
-  "1063959": "pack-completo",
+  "1667874": "pack-cad-management",
+  "1667893": "bootcamp",
+  "1667903": "pack-completo",
 };
 
 function resolveSlug(variantId: unknown): string | null {
