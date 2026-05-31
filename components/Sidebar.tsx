@@ -119,7 +119,7 @@ export default function Sidebar({
     onClick?: () => void;
   }) {
     const active =
-      href === "/dashboard" || href === "/dashboard/guia"
+      href === "/dashboard"
         ? isExact(href)
         : isUnder(href);
 
@@ -272,15 +272,6 @@ export default function Sidebar({
       </div>
 
       <nav className="flex-1 px-4 py-5 flex flex-col gap-0.5 overflow-y-auto">
-        {/* Always-visible top items */}
-        <button
-          onClick={() =>
-            window.dispatchEvent(new CustomEvent("forastero:show-tour"))
-          }
-          className="block w-full text-left pl-3 py-1.5 text-sm font-light text-stone hover:text-ink transition-colors"
-        >
-          Cómo usar la plataforma
-        </button>
         <NavLink href="/dashboard" label="Dashboard" depth={0} />
 
         <div className="h-px bg-line my-2" />

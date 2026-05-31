@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 import { getTallerModules, getWorkshopModules, getBootcampWeeks } from "@/lib/content";
 import Sidebar from "@/components/Sidebar";
 import AgentDrawer from "@/components/AgentDrawer";
-import PlatformTourManager from "@/components/PlatformTourManager";
+import WelcomeToast from "@/components/WelcomeToast";
 
 export default async function AppLayout({
   children,
@@ -59,7 +59,7 @@ export default async function AppLayout({
       <Sidebar {...sidebarProps} />
       <main className="flex-1 overflow-y-auto">{children}</main>
       <AgentDrawer />
-      <PlatformTourManager />
+      <WelcomeToast />
     </div>
   );
 }
