@@ -421,10 +421,13 @@ function PricingSection() {
             </div>
             <div className="shrink-0">
               <p
-                className="text-[42px] font-light text-ink leading-none mb-8"
+                className="text-[42px] font-light text-ink leading-none mb-2"
                 style={{ letterSpacing: "-0.05em" }}
               >
                 USD 350
+              </p>
+              <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone/50 mb-8">
+                — Próximamente —
               </p>
               <Link
                 href="/bootcamp"
