@@ -96,8 +96,6 @@ export default function Sidebar({
   const hasCadPack =
     !hasPackCompleto &&
     purchaseSlugs.some((s) => s === "pack-cad-management" || s === "cad-management");
-  const showTallerIndiv = hasTaller && !hasCadPack && !hasPackCompleto;
-  const showWorkshopIndiv = hasWorkshop && !hasCadPack && !hasPackCompleto;
   const showBootcampIndiv = hasBootcamp && !hasPackCompleto;
 
   // Active link helpers
@@ -241,6 +239,32 @@ export default function Sidebar({
     );
   }
 
+  function LockedNode({ label }: { label: string }) {
+    return (
+      <div
+        className="flex items-center justify-between pl-3 pr-2 py-1.5 text-sm cursor-default"
+        title="Conseguí esta formación para acceder"
+      >
+        <span className="font-light text-stone/40">{label}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="11"
+          height="11"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-stone/30 shrink-0 ml-2"
+        >
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+      </div>
+    );
+  }
+
   return (
     <aside className="w-60 shrink-0 border-r border-line bg-paper min-h-screen flex flex-col">
       <div className="px-6 py-5 border-b border-line">
@@ -293,17 +317,28 @@ export default function Sidebar({
           </ToggleNode>
         )}
 
-        {/* Individual items (no pack) */}
-        {showTallerIndiv && (
-          <ToggleNode nodeKey="taller" label="Taller de Documentación de Obras" depth={0}>
-            <TallerItems depth={1} />
-          </ToggleNode>
+        {/* Taller: siempre visible cuando no hay pack, bloqueado o accesible */}
+        {!hasCadPack && !hasPackCompleto && (
+          hasTaller ? (
+            <ToggleNode nodeKey="taller" label="Taller de Documentación de Obras" depth={0}>
+              <TallerItems depth={1} />
+            </ToggleNode>
+          ) : (
+            <LockedNode label="Taller de Documentación de Obras" />
+          )
         )}
-        {showWorkshopIndiv && (
-          <ToggleNode nodeKey="workshop" label="Workshop Cotización de Obras" depth={0}>
-            <WorkshopItems depth={1} />
-          </ToggleNode>
+
+        {/* Workshop: siempre visible cuando no hay pack, bloqueado o accesible */}
+        {!hasCadPack && !hasPackCompleto && (
+          hasWorkshop ? (
+            <ToggleNode nodeKey="workshop" label="Workshop Cotización de Obras" depth={0}>
+              <WorkshopItems depth={1} />
+            </ToggleNode>
+          ) : (
+            <LockedNode label="Workshop Cotización de Obras" />
+          )
         )}
+
         {showBootcampIndiv && !hasCadPack && (
           <ToggleNode nodeKey="bootcamp" label="Bootcamp CAD → BIM" depth={0}>
             <BootcampItems depth={1} />

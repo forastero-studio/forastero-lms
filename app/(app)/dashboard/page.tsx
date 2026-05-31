@@ -90,25 +90,17 @@ export default async function DashboardPage() {
           <div className="h-px bg-line mb-8" />
           <div className="max-w-md">
             <p className="text-base font-light text-deep mb-2">
-              Todavía no tenés cursos activos.
+              Todavía no tenés formaciones activas.
             </p>
             <p className="text-sm font-light text-stone mb-6">
-              Explorá las opciones disponibles y empezá.
+              Explorá las formaciones disponibles y empezá cuando quieras.
             </p>
-            <div className="flex gap-4">
-              <Link
-                href="/cad-management"
-                className="font-mono text-[9px] tracking-[.1em] uppercase text-ink border border-ink px-4 py-2 hover:bg-ink hover:text-paper transition-colors"
-              >
-                CAD Management
-              </Link>
-              <Link
-                href="/bootcamp"
-                className="font-mono text-[9px] tracking-[.1em] uppercase text-ink border border-ink px-4 py-2 hover:bg-ink hover:text-paper transition-colors"
-              >
-                Bootcamp
-              </Link>
-            </div>
+            <Link
+              href="/"
+              className="inline-block font-mono text-[9px] tracking-[.1em] uppercase text-ink border border-ink px-4 py-2 hover:bg-ink hover:text-paper transition-colors"
+            >
+              Ver formaciones
+            </Link>
           </div>
         </>
       )}

@@ -4,7 +4,7 @@ import ContentArea from "@/components/ContentArea";
 import ModuleCard from "@/components/ModuleCard";
 import MarkdownBody from "@/components/ui/MarkdownBody";
 import DescargablesList from "@/components/DescargablesList";
-import { getCadManagementModule, getCadManagementModules } from "@/lib/content";
+import { getCadManagementModule, getCadManagementModules, getWorkshopModules } from "@/lib/content";
 import { hasAccess } from "@/lib/db";
 import Link from "next/link";
 
@@ -23,7 +23,9 @@ export default async function ModuloPage({ params }: Props) {
   if (!content) notFound();
 
   const { userId } = await auth();
-  const access = userId ? await hasAccess(userId, "cad-management") : false;
+  const isWorkshopModule = getWorkshopModules().some((m) => m.slug === modulo);
+  const productSlug = isWorkshopModule ? "workshop-cotizacion" : "cad-management";
+  const access = userId ? await hasAccess(userId, productSlug) : false;
 
   if (!access) {
     return (
@@ -38,17 +40,16 @@ export default async function ModuloPage({ params }: Props) {
         <div className="h-px bg-line my-8" />
         <div className="max-w-md">
           <p className="text-base font-light text-deep mb-2">
-            Este contenido es exclusivo para alumnos del Taller CAD Management.
+            No tenés acceso a esta formación todavía.
           </p>
           <p className="text-sm font-light text-stone mb-6">
-            Accedé a los dos módulos completos, materiales de apoyo y
-            actualizaciones futuras del taller.
+            Conseguila desde la página principal.
           </p>
           <Link
-            href="/cad-management"
+            href="/"
             className="inline-block text-xs font-mono tracking-wider uppercase text-paper bg-ink px-5 py-3 hover:bg-rust transition-colors"
           >
-            Comprar CAD Management
+            Ver formaciones
           </Link>
         </div>
       </ContentArea>
