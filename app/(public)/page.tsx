@@ -421,12 +421,12 @@ function PricingSection() {
             </div>
             <div className="shrink-0">
               <p
-                className="text-[42px] font-light text-ink leading-none mb-2"
+                className="text-[42px] font-light text-ink leading-none mb-1 text-left"
                 style={{ letterSpacing: "-0.05em" }}
               >
                 USD 350
               </p>
-              <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone/50 mb-8">
+              <p className="font-mono text-[9px] tracking-[.1em] uppercase text-stone/50 mb-8 text-left">
                 — Próximamente —
               </p>
               <Link
@@ -475,12 +475,15 @@ function PricingSection() {
             </div>
             <div className="shrink-0">
               <p
-                className="text-[42px] font-light text-white leading-none mb-2"
+                className="text-[42px] font-light text-white leading-none mb-1 text-left"
                 style={{ letterSpacing: "-0.05em" }}
               >
                 USD 450
               </p>
-              <p className="text-xs font-light text-white/40 mb-8">
+              <p className="font-mono text-[9px] tracking-[.1em] uppercase text-white/40 mb-1 text-left">
+                — Próximamente —
+              </p>
+              <p className="text-xs font-light text-white/30 mb-8">
                 ahorrás USD 50 vs comprarlos por separado
               </p>
               <Link

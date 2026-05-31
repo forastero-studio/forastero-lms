@@ -36,12 +36,9 @@ export default async function PackCompletoPage() {
         </p>
 
         {!access && (
-          <BuyButton
-            checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
-          >
-            Acceder al pack · USD 450
-          </BuyButton>
+          <span className="inline-block border border-line text-stone/50 px-5 py-3 text-sm font-light cursor-default mb-20">
+            Próximamente
+          </span>
         )}
         {access && (
           <div className="flex flex-wrap gap-4 mb-20">
@@ -190,12 +187,9 @@ export default async function PackCompletoPage() {
         <div className="h-px bg-line mb-10" />
         {!access ? (
           <div className="flex flex-col gap-3 max-w-sm">
-            <BuyButton
-              checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_PACK!}
-              className="border border-ink text-ink px-5 py-4 text-sm font-light hover:border-rust hover:text-rust transition-colors text-center"
-            >
-              Acceder al pack · USD 450
-            </BuyButton>
+            <span className="border border-line text-stone/50 px-5 py-4 text-sm font-light text-center cursor-default">
+              Próximamente
+            </span>
             <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
               Acceso de por vida · certificado del Bootcamp incluido
             </p>

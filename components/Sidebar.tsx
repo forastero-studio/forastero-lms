@@ -320,6 +320,17 @@ export default function Sidebar({
             </span>
           </Link>
         )}
+        {!hasPackCompleto && (
+          <Link
+            href="/pack-completo"
+            className="text-left flex items-center justify-between pl-3 py-1.5 text-sm font-light text-stone hover:text-ink transition-colors"
+          >
+            <span>Pack Completo</span>
+            <span className="font-mono text-[8px] tracking-[.1em] uppercase text-stone/40 shrink-0 ml-2">
+              Próximamente
+            </span>
+          </Link>
+        )}
       </nav>
 
       <div className="px-6 py-5 border-t border-line">
