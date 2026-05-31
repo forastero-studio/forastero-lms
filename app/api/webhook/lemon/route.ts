@@ -86,8 +86,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true });
     }
     if (error) {
-      console.error("[lemon webhook] insert error:", error);
-      return NextResponse.json({ error: "DB error" }, { status: 500 });
+      console.error("[lemon webhook] insert error:", {
+        message: error.message,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+      });
+      return NextResponse.json(
+        { error: "DB error", code: error.code, message: error.message, details: error.details },
+        { status: 500 }
+      );
     }
 
     // Lógica de habilitación según producto
