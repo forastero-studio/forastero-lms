@@ -17,11 +17,11 @@ const CARD_TRANSFORMS = [
 const steps = [
   {
     step: "01",
-    title: "Bienvenido a forastero.",
+    title: "Bienvenido a forastero.lms",
     body: "Te explicamos cómo moverte en la plataforma en 4 pantallas.",
     visual: (
       <div className="flex items-center justify-center h-20">
-        <Wordmark />
+        <Wordmark suffix=".lms" />
       </div>
     ),
   },

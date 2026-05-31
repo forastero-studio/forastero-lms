@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { auth } from "@clerk/nextjs/server";
 import { hasAccess, getPurchases } from "@/lib/db";
+
+export const metadata: Metadata = {
+  title: "forastero.lms",
+};
 import { getTallerModules, getWorkshopModules, getBootcampWeeks } from "@/lib/content";
 import Sidebar from "@/components/Sidebar";
 import AgentDrawer from "@/components/AgentDrawer";
