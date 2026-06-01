@@ -3,20 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --paper: #FAFAF9;        /* paneles / superficies */
   --bg: #F5F4F2;           /* fondo general */
+  --paper: #FAFAF9;        /* paneles / superficies elevadas */
   --ink: #1C1C1A;          /* texto principal */
-  --deep: #0F0F0E;         /* negro más profundo para acentos */
-  --muted: #6B6A66;        /* texto secundario */
-  --surface: #ECEBE8;      /* gris piedra suave */
+  --deep: #0F0F0E;         /* negro profundo */
+  --muted: #ECEBE8;        /* superficie gris piedra (FONDO) */
+  --surface: #ECEBE8;      /* alias de muted */
   --line: #E2E0DB;         /* bordes */
   --line-strong: #CBC8C1;  /* bordes marcados */
-  --stone: #9A9893;        /* labels / texto terciario */
-  --rust: #1C1C1A;         /* acento: tinta oscura */
+  --stone: #6B6A66;        /* texto secundario */
+  --soft: #9A9893;         /* labels / texto terciario */
+  --rust: #1C1C1A;         /* acento = tinta. Nombre conservado por compat */
   --rust-hover: #3D3B37;   /* hover del acento: grafito */
   --rust-light: #ECEBE8;   /* fondo claro del acento */
   --accent: #3D3B37;       /* grafito */
-  --green-ok: #1D9E75;     /* verde solo para validaciones/checkpoints */
+  --green-ok: #1D9E75;     /* SOLO validaciones/checkpoints */
 }
 
 @layer base {

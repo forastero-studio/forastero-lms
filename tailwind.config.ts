@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "var(--paper)",
         bg: "var(--bg)",
+        paper: "var(--paper)",
         ink: "var(--ink)",
         deep: "var(--deep)",
         muted: "var(--muted)",
@@ -18,6 +18,7 @@ const config: Config = {
         line: "var(--line)",
         "line-strong": "var(--line-strong)",
         stone: "var(--stone)",
+        soft: "var(--soft)",
         rust: "var(--rust)",
         "rust-hover": "var(--rust-hover)",
         amber: "var(--rust-light)",
