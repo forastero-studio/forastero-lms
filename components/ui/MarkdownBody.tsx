@@ -48,13 +48,13 @@ const components: Components = {
     const isBlock = className?.includes("language-");
     if (isBlock) {
       return (
-        <pre className="bg-muted border border-line px-5 py-4 my-6 overflow-x-auto">
+        <pre className="bg-surface border border-line px-5 py-4 my-6 overflow-x-auto">
           <code className="font-mono text-xs text-deep">{children}</code>
         </pre>
       );
     }
     return (
-      <code className="font-mono text-xs bg-muted px-1.5 py-0.5 text-deep">
+      <code className="font-mono text-xs bg-surface px-1.5 py-0.5 text-deep">
         {children}
       </code>
     );
@@ -71,7 +71,7 @@ const components: Components = {
   ),
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => (
-    <tr className="border-b border-line/50 hover:bg-muted/60 transition-colors">
+    <tr className="border-b border-line/50 hover:bg-surface/60 transition-colors">
       {children}
     </tr>
   ),

@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Fraunces, Public_Sans, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const publicSans = Public_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -40,17 +33,17 @@ export default function RootLayout({
     <ClerkProvider
       appearance={{
         variables: {
-          colorPrimary: "#0F2A1D",
-          colorText: "#0A0A0A",
-          colorBackground: "#FFFFFF",
-          colorInputBackground: "#FFFFFF",
-          colorInputText: "#0A0A0A",
+          colorPrimary: "#1C1C1A",
+          colorText: "#1C1C1A",
+          colorBackground: "#FAFAF9",
+          colorInputBackground: "#FAFAF9",
+          colorInputText: "#1C1C1A",
           borderRadius: "0px",
-          fontFamily: "Public Sans, sans-serif",
+          fontFamily: "Inter, sans-serif",
         },
       }}
     >
-      <html lang="es" className={`${fraunces.variable} ${publicSans.variable} ${jetbrainsMono.variable}`}>
+      <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable}`}>
         <body className="font-body">{children}</body>
       </html>
     </ClerkProvider>

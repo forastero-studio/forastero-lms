@@ -99,7 +99,7 @@ export default async function SemanaPage({ params }: Props) {
         <div className="h-px bg-line my-8" />
 
         {content.videoDriveId && (
-          <div className="aspect-video w-full overflow-hidden mb-10 bg-muted">
+          <div className="aspect-video w-full overflow-hidden mb-10 bg-surface">
             <iframe
               src={`https://drive.google.com/file/d/${content.videoDriveId}/preview`}
               className="w-full h-full border-0"
@@ -190,7 +190,7 @@ export default async function SemanaPage({ params }: Props) {
           )}
           <div className="h-px bg-line my-8" />
 
-          <div className="border border-line bg-muted px-6 py-4 max-w-lg mb-10">
+          <div className="border border-line bg-surface px-6 py-4 max-w-lg mb-10">
             <p className="text-sm font-light text-stone leading-relaxed">
               Esta semana se desbloquea cuando completes la validación IFC de
               Semana {content.semana - 1}.
@@ -275,7 +275,7 @@ export default async function SemanaPage({ params }: Props) {
         <div className="h-px bg-line my-8" />
 
         {content.videoDriveId && (
-          <div className="aspect-video w-full overflow-hidden mb-10 bg-muted">
+          <div className="aspect-video w-full overflow-hidden mb-10 bg-surface">
             <iframe
               src={`https://drive.google.com/file/d/${content.videoDriveId}/preview`}
               className="w-full h-full border-0"

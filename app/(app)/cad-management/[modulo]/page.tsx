@@ -75,7 +75,7 @@ export default async function ModuloPage({ params }: Props) {
       <div className="h-px bg-line my-8" />
 
       {content.videoDriveId && (
-        <div className="aspect-video w-full rounded-md overflow-hidden mb-10 bg-muted">
+        <div className="aspect-video w-full rounded-md overflow-hidden mb-10 bg-surface">
           <iframe
             src={`https://drive.google.com/file/d/${content.videoDriveId}/preview`}
             className="w-full h-full"

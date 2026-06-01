@@ -195,7 +195,7 @@ function AgentSection() {
               msg.role === "user" ? (
                 <div
                   key={i}
-                  className="bg-muted px-4 py-3 ml-10 text-sm font-light text-deep leading-relaxed"
+                  className="bg-surface px-4 py-3 ml-10 text-sm font-light text-deep leading-relaxed"
                 >
                   {msg.text}
                 </div>
@@ -511,7 +511,7 @@ function BioSection() {
       </p>
       <div className="grid md:grid-cols-[1fr_2fr] gap-14 items-start max-w-4xl">
         <div>
-          <div className="w-full aspect-square bg-muted border border-line max-w-[200px]" />
+          <div className="w-full aspect-square bg-surface border border-line max-w-[200px]" />
         </div>
         <div>
           <p className="text-base font-light text-deep leading-[1.65] mb-6">

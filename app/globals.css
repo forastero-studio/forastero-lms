@@ -3,28 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --paper: #FFFFFF;
-  --ink: #0A0A0A;
-  --deep: #0A0A0A;
-  --muted: #FAFAFA;
-  --line: #E5E5E5;
-  --line-strong: #C8C8C8;
-  --stone: #888888;
-  --rust: #0F2A1D;
-  --rust-hover: #1B4332;
-  --rust-light: #F0F4F1;
+  --paper: #FAFAF9;        /* paneles / superficies */
+  --bg: #F5F4F2;           /* fondo general */
+  --ink: #1C1C1A;          /* texto principal */
+  --deep: #0F0F0E;         /* negro más profundo para acentos */
+  --muted: #6B6A66;        /* texto secundario */
+  --surface: #ECEBE8;      /* gris piedra suave */
+  --line: #E2E0DB;         /* bordes */
+  --line-strong: #CBC8C1;  /* bordes marcados */
+  --stone: #9A9893;        /* labels / texto terciario */
+  --rust: #1C1C1A;         /* acento: tinta oscura */
+  --rust-hover: #3D3B37;   /* hover del acento: grafito */
+  --rust-light: #ECEBE8;   /* fondo claro del acento */
+  --accent: #3D3B37;       /* grafito */
+  --green-ok: #1D9E75;     /* verde solo para validaciones/checkpoints */
 }
 
 @layer base {
   html {
-    background-color: var(--paper);
+    background-color: var(--bg);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: var(--paper);
+    background-color: var(--bg);
     color: var(--ink);
     line-height: 1.6;
   }

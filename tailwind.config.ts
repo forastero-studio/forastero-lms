@@ -10,18 +10,24 @@ const config: Config = {
     extend: {
       colors: {
         paper: "var(--paper)",
+        bg: "var(--bg)",
         ink: "var(--ink)",
         deep: "var(--deep)",
         muted: "var(--muted)",
+        surface: "var(--surface)",
         line: "var(--line)",
+        "line-strong": "var(--line-strong)",
         stone: "var(--stone)",
         rust: "var(--rust)",
+        "rust-hover": "var(--rust-hover)",
         amber: "var(--rust-light)",
+        accent: "var(--accent)",
+        "green-ok": "var(--green-ok)",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
-        body: ["var(--font-body)", "Arial", "sans-serif"],
-        sans: ["var(--font-body)", "Arial", "sans-serif"],
+        display: ["var(--font-body)", "Inter", "sans-serif"],
+        body: ["var(--font-body)", "Inter", "sans-serif"],
+        sans: ["var(--font-body)", "Inter", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       letterSpacing: {

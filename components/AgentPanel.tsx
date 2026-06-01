@@ -37,7 +37,7 @@ export default function AgentPanel() {
           msg.role === "user" ? (
             <div
               key={i}
-              className="bg-muted px-4 py-3 ml-6 text-sm font-light text-deep leading-relaxed"
+              className="bg-surface px-4 py-3 ml-6 text-sm font-light text-deep leading-relaxed"
             >
               {msg.text}
             </div>

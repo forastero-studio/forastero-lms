@@ -29,11 +29,11 @@ function InlineItem({ item }: { item: Descargable }) {
       {open && (
         <div className="pb-4">
           {error ? (
-            <div className="border border-line bg-muted p-4 text-sm font-light text-stone">
+            <div className="border border-line bg-surface p-4 text-sm font-light text-stone">
               {HELP_MSG}
             </div>
           ) : (
-            <div className="relative w-full bg-muted" style={{ paddingBottom: "129%" }}>
+            <div className="relative w-full bg-surface" style={{ paddingBottom: "129%" }}>
               {/* Fallback shown when Drive denies access */}
               <div className="absolute inset-0 flex items-center justify-center p-6">
                 <p className="text-sm font-light text-stone text-center">{HELP_MSG}</p>

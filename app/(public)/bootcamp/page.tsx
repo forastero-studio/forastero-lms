@@ -223,7 +223,7 @@ export default async function BootcampProductPage() {
               <Link
                 key={w.slug}
                 href={`/bootcamp/${w.slug}`}
-                className="hover:bg-muted transition-colors block"
+                className="hover:bg-surface transition-colors block"
               >
                 {rowInner}
               </Link>
