@@ -21,7 +21,6 @@ export default function LandingPage() {
       <PacksSection />
       <TransformationSection />
       <AgentSection />
-      <BioSection />
       <FaqSection />
       <FinalSection />
       <Footer />
@@ -627,64 +626,6 @@ function AgentSection() {
                 Me mostrás el problema y te guío con criterio profesional. Sé en qué semana
                 estás y qué proyecto modelás. Te acompaño de principio a fin.
               </div>
-            </div>
-          </div>
-        </div>
-      </W>
-    </section>
-  );
-}
-
-/* ─── Bio ───────────────────────────────────────────────────────────── */
-
-function BioSection() {
-  return (
-    <section id="quien-soy" className="bg-muted" style={{ padding: "130px 0 160px" }}>
-      <W>
-        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-[26px]">
-          Quién está detrás
-        </p>
-        <div
-          className="grid grid-cols-1 md:grid-cols-[300px_1fr] items-stretch"
-          style={{ gap: "48px" }}
-        >
-          {/* Foto — en mobile altura fija, en desktop estira hasta igualar el texto */}
-          <div className="rounded-[14px] overflow-hidden h-[340px] md:h-auto">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/ariel.jpg"
-              alt="Ariel, arquitecto"
-              className="w-full h-full object-cover object-center"
-              style={{ filter: "grayscale(0.2)" }}
-            />
-          </div>
-
-          {/* Texto */}
-          <div className="flex flex-col justify-start">
-            <h2
-              className="font-medium text-ink mb-[22px]"
-              style={{ fontSize: "34px", lineHeight: "1.1", letterSpacing: "-1px" }}
-            >
-              Soy Ariel
-            </h2>
-            <div className="flex flex-col gap-[16px]">
-              <p className="leading-[1.8] text-stone" style={{ fontSize: "15.5px" }}>
-                Nací en Argentina, y desde que me recibí no paré de moverme.
-                Estudié, trabajé y aprendí en cuatro países —Argentina, España, Italia
-                y Suiza— y cada lugar me dejó algo: una forma de dibujar, una manera de
-                resolver o un premio.
-              </p>
-              <p className="leading-[1.8] text-stone" style={{ fontSize: "15.5px" }}>
-                Me formé como arquitecto en la Universidad Nacional de La Plata,
-                luego hice un posgrado MArch en la Universidad Europea de Valencia y en
-                el medio colaboré en concursos, equipos y proyectos en cada país por
-                donde pasé.
-              </p>
-              <p className="leading-[1.8] text-stone" style={{ fontSize: "15.5px" }}>
-                Lo que enseño no lo saqué de un manual. Es lo que fui ordenando
-                proyecto a proyecto, error tras error, hasta encontrar una forma de
-                trabajar clara. Eso es lo que comparto acá.
-              </p>
             </div>
           </div>
         </div>
