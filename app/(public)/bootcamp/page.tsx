@@ -36,9 +36,9 @@ export default async function BootcampProductPage() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap gap-4 mb-20">
+        <div className="flex flex-col items-start gap-3 mb-20">
           {!access && (
-            <span className="inline-block font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-3 cursor-default">
+            <span className="border border-line font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-3 cursor-default">
               Próximamente
             </span>
           )}
@@ -323,8 +323,8 @@ export default async function BootcampProductPage() {
         {/* CTA final */}
         <div className="h-px bg-line mb-10" />
         {!access ? (
-          <div className="flex flex-col gap-4 max-w-sm">
-            <span className="font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-4 cursor-default text-center">
+          <div className="flex flex-col gap-3 max-w-sm">
+            <span className="border border-line font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-4 cursor-default text-center">
               Próximamente
             </span>
             <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">

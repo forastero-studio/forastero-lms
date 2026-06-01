@@ -36,12 +36,12 @@ export default async function PackCompletoPage() {
         </p>
 
         {!access && (
-          <span className="inline-block font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-3 cursor-default mb-20">
+          <span className="inline-block border border-line font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-3 cursor-default mb-20">
             Próximamente
           </span>
         )}
         {access && (
-          <div className="flex flex-wrap gap-4 mb-20">
+          <div className="flex flex-col items-start gap-3 mb-20">
             <Link
               href="/cad-management"
               className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
@@ -187,7 +187,7 @@ export default async function PackCompletoPage() {
         <div className="h-px bg-line mb-10" />
         {!access ? (
           <div className="flex flex-col gap-3 max-w-sm">
-            <span className="font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-4 cursor-default text-center">
+            <span className="border border-line font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-4 cursor-default text-center">
               Próximamente
             </span>
             <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
@@ -195,7 +195,7 @@ export default async function PackCompletoPage() {
             </p>
           </div>
         ) : (
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col items-start gap-3">
             <Link
               href="/cad-management"
               className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
