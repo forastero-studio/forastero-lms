@@ -8,7 +8,7 @@ export default async function CadManagementProductPage() {
   const access = userId ? await hasAccess(userId, "cad-management") : false;
 
   return (
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-screen bg-bg">
       <div className="px-8 md:px-14 py-20 max-w-5xl mx-auto">
         {/* Hero */}
         <Link
@@ -17,9 +17,9 @@ export default async function CadManagementProductPage() {
         >
           ← forastero
         </Link>
-        <p className="eyebrow mb-6">Pack CAD Management</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-6">Pack CAD Management</p>
         <h1
-          className="text-5xl font-light leading-tight mb-4 text-ink"
+          className="text-5xl font-semibold leading-tight mb-4 text-ink"
           style={{ letterSpacing: "-0.04em" }}
         >
           CAD Management
@@ -32,14 +32,14 @@ export default async function CadManagementProductPage() {
         {!access ? (
           <BuyButton
             checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
+            className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors mb-20"
           >
             Acceder al pack · USD 150
           </BuyButton>
         ) : (
           <Link
             href="/cad-management/modulo-a"
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
+            className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors mb-20"
           >
             Continuar →
           </Link>
@@ -48,7 +48,7 @@ export default async function CadManagementProductPage() {
         <div className="h-px bg-line mb-10" />
 
         {/* Qué incluye */}
-        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-10">
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-10">
           Qué incluye
         </p>
         <p className="text-base font-light text-deep leading-relaxed mb-12 max-w-2xl">
@@ -56,13 +56,13 @@ export default async function CadManagementProductPage() {
         </p>
 
         {/* ── Bloque 1: Taller ── */}
-        <div className="border border-line mb-10">
-          <div className="bg-white p-8 md:p-10 border-b border-line">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
+        <div className="border border-line mb-10 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 md:p-10 border-b border-line">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-3">
               1 · Taller de Documentación de Obras
             </p>
             <h2
-              className="text-2xl font-light text-ink mb-4"
+              className="text-2xl font-semibold text-ink mb-4"
               style={{ letterSpacing: "-0.03em" }}
             >
               Taller de Documentación de Obras
@@ -75,7 +75,7 @@ export default async function CadManagementProductPage() {
               planillas de cierre.
             </p>
 
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               El Taller incluye:
             </p>
             <ul className="flex flex-col gap-2 mb-8">
@@ -99,7 +99,7 @@ export default async function CadManagementProductPage() {
               ))}
             </ul>
 
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
               4 clases · 7 módulos
             </p>
           </div>
@@ -107,8 +107,8 @@ export default async function CadManagementProductPage() {
           {/* Clases del Taller */}
           <div className="divide-y divide-line">
             {/* CLASE 1 */}
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 1
               </p>
               <div className="border-l-2 border-line pl-5">
@@ -124,8 +124,8 @@ export default async function CadManagementProductPage() {
             </div>
 
             {/* CLASE 2 */}
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 2
               </p>
               <div className="flex flex-col gap-5">
@@ -151,8 +151,8 @@ export default async function CadManagementProductPage() {
             </div>
 
             {/* CLASE 3 */}
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 3
               </p>
               <div className="flex flex-col gap-5">
@@ -179,8 +179,8 @@ export default async function CadManagementProductPage() {
             </div>
 
             {/* CLASE 4 */}
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 4
               </p>
               <div className="flex flex-col gap-5">
@@ -208,13 +208,13 @@ export default async function CadManagementProductPage() {
         </div>
 
         {/* ── Bloque 2: Workshop ── */}
-        <div className="border border-line mb-16">
-          <div className="bg-white p-8 md:p-10 border-b border-line">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
+        <div className="border border-line mb-16 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 md:p-10 border-b border-line">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-3">
               2 · Workshop Cotización de Obras
             </p>
             <h2
-              className="text-2xl font-light text-ink mb-4"
+              className="text-2xl font-semibold text-ink mb-4"
               style={{ letterSpacing: "-0.03em" }}
             >
               Workshop Cotización de Obras
@@ -226,7 +226,7 @@ export default async function CadManagementProductPage() {
               cómputo.
             </p>
 
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               El Workshop incluye:
             </p>
             <ul className="flex flex-col gap-2 mb-8">
@@ -252,7 +252,7 @@ export default async function CadManagementProductPage() {
               ))}
             </ul>
 
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
               2 clases
             </p>
           </div>
@@ -260,8 +260,8 @@ export default async function CadManagementProductPage() {
           {/* Clases del Workshop */}
           <div className="divide-y divide-line">
             {/* CLASE 1: COTIZACIÓN */}
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 1 · Cotización
               </p>
               <div className="border-l-2 border-line pl-5">
@@ -276,8 +276,8 @@ export default async function CadManagementProductPage() {
             </div>
 
             {/* CLASE 2: CÓMPUTO */}
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 2 · Cómputo
               </p>
               <div className="border-l-2 border-line pl-5">
@@ -292,9 +292,9 @@ export default async function CadManagementProductPage() {
         </div>
 
         {/* Para quién es */}
-        <div className="grid md:grid-cols-2 gap-0 border border-line mb-16">
-          <div className="bg-white p-8 border-b md:border-b-0 md:border-r border-line">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+        <div className="grid md:grid-cols-2 gap-0 border border-line mb-16 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 border-b md:border-b-0 md:border-r border-line">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               Para quién es
             </p>
             <p className="text-sm font-light text-stone leading-relaxed">
@@ -304,8 +304,8 @@ export default async function CadManagementProductPage() {
               se sostiene con buena memoria.
             </p>
           </div>
-          <div className="bg-white p-8">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+          <div className="bg-paper p-8">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               No es para
             </p>
             <ul className="flex flex-col gap-2">
@@ -332,18 +332,18 @@ export default async function CadManagementProductPage() {
           <div className="flex flex-col gap-3 max-w-sm">
             <BuyButton
               checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_CAD_MANAGEMENT!}
-              className="border border-ink text-ink px-5 py-4 text-sm font-light hover:border-rust hover:text-rust transition-colors text-center"
+              className="bg-ink text-paper px-5 py-4 text-sm font-medium hover:bg-accent transition-colors text-center"
             >
               Acceder al pack · USD 150
             </BuyButton>
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
               Acceso de por vida · actualizaciones incluidas
             </p>
           </div>
         ) : (
           <Link
             href="/cad-management/modulo-a"
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
+            className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
           >
             Continuar →
           </Link>

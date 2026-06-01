@@ -13,7 +13,7 @@ export default async function BootcampProductPage() {
   const weeks = getBootcampWeeks();
 
   return (
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-screen bg-bg">
       <div className="px-8 md:px-14 py-20 max-w-5xl mx-auto">
 
         {/* Hero */}
@@ -23,9 +23,9 @@ export default async function BootcampProductPage() {
         >
           ← forastero
         </Link>
-        <p className="eyebrow mb-6">Bootcamp · 8 semanas</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-6">Bootcamp · 8 semanas</p>
         <h1
-          className="text-5xl font-light leading-tight mb-6 text-ink"
+          className="text-5xl font-semibold leading-tight mb-6 text-ink"
           style={{ letterSpacing: "-0.04em" }}
         >
           Bootcamp CAD → BIM
@@ -38,14 +38,14 @@ export default async function BootcampProductPage() {
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 mb-20">
           {!access && (
-            <span className="inline-block border border-line text-stone/50 px-5 py-3 text-sm font-light cursor-default">
+            <span className="inline-block font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-3 cursor-default">
               Próximamente
             </span>
           )}
           {access && (
             <Link
               href="/bootcamp/dashboard"
-              className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
+              className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
             >
               Ir a mi progreso →
             </Link>
@@ -60,7 +60,7 @@ export default async function BootcampProductPage() {
 
         {/* La idea */}
         <div className="h-px bg-line mb-10" />
-        <p className="eyebrow mb-8">La idea</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-8">La idea</p>
         <div className="max-w-2xl mb-16">
           <p className="text-base font-light text-deep leading-[1.65] mb-5">
             No vas a "aprender BIM" mirando tutoriales sueltos durante meses. Vas
@@ -76,8 +76,8 @@ export default async function BootcampProductPage() {
 
         {/* Cómo funciona */}
         <div className="h-px bg-line mb-10" />
-        <p className="eyebrow mb-8">Cómo funciona</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-line mb-16">
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-8">Cómo funciona</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-line mb-16 rounded-[24px] overflow-hidden">
           {[
             {
               title: "Una semana = un objetivo concreto",
@@ -92,7 +92,7 @@ export default async function BootcampProductPage() {
               body: "Cuando te trabás, escribís al asistente del bootcamp. Sabe qué semana estás cursando, qué proyecto elegiste, qué software usás. Te guía con criterio profesional, no con respuestas genéricas de internet. Te acompaña de principio a fin del bootcamp.",
             },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 border-r border-line last:border-r-0">
+            <div key={i} className="bg-paper p-8 border-r border-line last:border-r-0">
               <p className="text-sm font-light text-ink leading-snug mb-3">{item.title}</p>
               <p className="text-sm font-light text-stone leading-relaxed">{item.body}</p>
             </div>
@@ -101,16 +101,16 @@ export default async function BootcampProductPage() {
 
         {/* Proyectos */}
         <div className="h-px bg-line mb-10" />
-        <p className="eyebrow mb-6">Los 2 proyectos guía</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-6">Los 2 proyectos guía</p>
         <p className="text-sm font-light text-stone mb-8">
           Al inicio elegís uno de estos dos proyectos.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line border border-line mb-16">
-          <div className="bg-white p-8">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-line border border-line mb-16 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-3">
               Opción A · Preexistencia
             </p>
-            <h3 className="text-lg font-light text-ink mb-2">
+            <h3 className="text-lg font-medium text-ink mb-2">
               Refugio Alpe di Portola · Suiza
             </h3>
             <p className="text-sm font-light text-stone leading-relaxed mb-4">
@@ -122,7 +122,7 @@ export default async function BootcampProductPage() {
               preexistencia: nueva cubierta, nuevo pavimento, sustitución
               de carpinterías.
             </p>
-            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-3">
+            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-soft mb-3">
               Ideal si te interesa:
             </p>
             <ul className="flex flex-col gap-1.5">
@@ -139,11 +139,11 @@ export default async function BootcampProductPage() {
               ))}
             </ul>
           </div>
-          <div className="bg-white p-8">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
+          <div className="bg-paper p-8">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-3">
               Opción B · Obra nueva
             </p>
-            <h3 className="text-lg font-light text-ink mb-2">
+            <h3 className="text-lg font-medium text-ink mb-2">
               Cabina Patagonia · Argentina
             </h3>
             <p className="text-sm font-light text-stone leading-relaxed mb-4">
@@ -155,7 +155,7 @@ export default async function BootcampProductPage() {
               Documentación arquitectónica completa: plantas, cortes, alzados,
               carpinterías, terminaciones y detalles constructivos.
             </p>
-            <p className="font-mono text-[9px] tracking-[.08em] uppercase text-stone mb-3">
+            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-soft mb-3">
               Ideal si te interesa:
             </p>
             <ul className="flex flex-col gap-1.5">
@@ -176,16 +176,16 @@ export default async function BootcampProductPage() {
 
         {/* Semanas */}
         <div className="h-px bg-line mb-10" />
-        <p id="semanas" className="eyebrow mb-8">Programa · 8 semanas</p>
-        <div className="flex flex-col divide-y divide-line border border-line mb-16">
+        <p id="semanas" className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-8">Programa · 8 semanas</p>
+        <div className="flex flex-col divide-y divide-line border border-line mb-16 rounded-[24px] overflow-hidden">
           {weeks.map((w) => {
             const weekNum = w.semana ?? 0;
             const isPublic = PUBLIC_SLUGS.includes(w.slug);
 
             const rowInner = (
-              <div className="flex items-start justify-between gap-6 px-6 py-5 bg-white">
+              <div className="flex items-start justify-between gap-6 px-6 py-5 bg-paper">
                 <div className="flex items-start gap-5 flex-1 min-w-0">
-                  <span className="font-mono text-[10px] tracking-[.1em] text-stone shrink-0 pt-0.5">
+                  <span className="font-mono text-[10px] tracking-[.1em] text-soft shrink-0 pt-0.5">
                     {String(weekNum).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
@@ -194,7 +194,7 @@ export default async function BootcampProductPage() {
                         {w.title}
                       </p>
                       {isPublic && (
-                        <span className="font-mono text-[8px] tracking-[.1em] uppercase text-stone border border-line px-1.5 py-0.5 shrink-0 leading-none">
+                        <span className="font-mono text-[8px] tracking-[.1em] uppercase text-soft border border-line px-1.5 py-0.5 shrink-0 leading-none">
                           vista previa
                         </span>
                       )}
@@ -237,8 +237,8 @@ export default async function BootcampProductPage() {
 
         {/* Qué necesitás */}
         <div className="h-px bg-line mb-10" />
-        <p className="eyebrow mb-8">Qué necesitás</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-line mb-16">
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-8">Qué necesitás</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-line mb-16 rounded-[24px] overflow-hidden">
           {[
             {
               label: "Software",
@@ -253,8 +253,8 @@ export default async function BootcampProductPage() {
               body: "AutoCAD® a nivel intermedio. Si todavía no manejás AutoCAD® en este nivel, empezá primero por el Taller de Documentación de Obras.",
             },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 border-r border-line last:border-r-0">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
+            <div key={i} className="bg-paper p-8 border-r border-line last:border-r-0">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-3">
                 {item.label}
               </p>
               <p className="text-sm font-light text-stone leading-relaxed">{item.body}</p>
@@ -264,7 +264,7 @@ export default async function BootcampProductPage() {
 
         {/* Cuándo no es para vos */}
         <div className="h-px bg-line mb-10" />
-        <p className="eyebrow mb-8">Cuándo no es para vos</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-8">Cuándo no es para vos</p>
         <div className="max-w-2xl mb-16">
           <ul className="flex flex-col gap-3">
             {[
@@ -282,7 +282,7 @@ export default async function BootcampProductPage() {
 
         {/* FAQ */}
         <div className="h-px bg-line mb-10" />
-        <p className="eyebrow mb-8">Preguntas frecuentes</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-8">Preguntas frecuentes</p>
         <div className="max-w-2xl border-t border-line mb-16">
           {[
             {
@@ -324,17 +324,17 @@ export default async function BootcampProductPage() {
         <div className="h-px bg-line mb-10" />
         {!access ? (
           <div className="flex flex-col gap-4 max-w-sm">
-            <span className="border border-line text-stone/50 px-5 py-4 text-sm font-light text-center cursor-default">
+            <span className="font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-4 cursor-default text-center">
               Próximamente
             </span>
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
               Acceso de por vida · a tu ritmo
             </p>
           </div>
         ) : (
           <Link
             href="/bootcamp/dashboard"
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
+            className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
           >
             Ir a mi progreso →
           </Link>

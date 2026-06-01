@@ -11,7 +11,7 @@ export default async function TallerPage() {
     : false;
 
   return (
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-screen bg-bg">
       <div className="px-8 md:px-14 py-20 max-w-5xl mx-auto">
         {/* Hero */}
         <Link
@@ -20,9 +20,9 @@ export default async function TallerPage() {
         >
           ← forastero
         </Link>
-        <p className="eyebrow mb-6">Taller de Documentación de Obras</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-6">Taller de Documentación de Obras</p>
         <h1
-          className="text-5xl font-light leading-tight mb-4 text-ink"
+          className="text-5xl font-semibold leading-tight mb-4 text-ink"
           style={{ letterSpacing: "-0.04em" }}
         >
           Documentación de Obras
@@ -36,7 +36,7 @@ export default async function TallerPage() {
         {!access && (
           <BuyButton
             checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_TALLER!}
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
+            className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors mb-20"
           >
             Acceder al Taller · USD 100
           </BuyButton>
@@ -44,7 +44,7 @@ export default async function TallerPage() {
         {access && (
           <Link
             href="/cad-management/modulo-a"
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors mb-20"
+            className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors mb-20"
           >
             Continuar →
           </Link>
@@ -53,19 +53,19 @@ export default async function TallerPage() {
         <div className="h-px bg-line mb-10" />
 
         {/* Qué incluye */}
-        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-10">
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-10">
           Qué incluye
         </p>
 
-        <div className="border border-line mb-16">
-          <div className="bg-white p-8 md:p-10 border-b border-line">
+        <div className="border border-line mb-16 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 md:p-10 border-b border-line">
             <p className="text-sm font-light text-stone leading-relaxed mb-6 max-w-xl">
               Un sistema de trabajo para organizar archivos, estructurar layers y
               producir planos ejecutivos que se reutilizan en cada proyecto. Desde
               la organización del archivo hasta las planillas de cierre.
             </p>
 
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               El Taller incluye:
             </p>
             <ul className="flex flex-col gap-2 mb-8">
@@ -89,15 +89,15 @@ export default async function TallerPage() {
               ))}
             </ul>
 
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
               4 clases · 7 módulos
             </p>
           </div>
 
           {/* Clases */}
           <div className="divide-y divide-line">
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 1
               </p>
               <div className="border-l-2 border-line pl-5">
@@ -112,8 +112,8 @@ export default async function TallerPage() {
               </div>
             </div>
 
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 2
               </p>
               <div className="flex flex-col gap-5">
@@ -138,8 +138,8 @@ export default async function TallerPage() {
               </div>
             </div>
 
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 3
               </p>
               <div className="flex flex-col gap-5">
@@ -165,8 +165,8 @@ export default async function TallerPage() {
               </div>
             </div>
 
-            <div className="bg-white p-6 md:p-8">
-              <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+            <div className="bg-paper p-6 md:p-8">
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
                 Clase 4
               </p>
               <div className="flex flex-col gap-5">
@@ -194,9 +194,9 @@ export default async function TallerPage() {
         </div>
 
         {/* Para quién es */}
-        <div className="grid md:grid-cols-2 gap-0 border border-line mb-16">
-          <div className="bg-white p-8 border-b md:border-b-0 md:border-r border-line">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+        <div className="grid md:grid-cols-2 gap-0 border border-line mb-16 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 border-b md:border-b-0 md:border-r border-line">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               Para quién es
             </p>
             <p className="text-sm font-light text-stone leading-relaxed">
@@ -206,8 +206,8 @@ export default async function TallerPage() {
               sistema.
             </p>
           </div>
-          <div className="bg-white p-8">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+          <div className="bg-paper p-8">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               No es para
             </p>
             <ul className="flex flex-col gap-2">
@@ -234,18 +234,18 @@ export default async function TallerPage() {
           <div className="flex flex-col gap-3 max-w-sm">
             <BuyButton
               checkoutUrl={process.env.NEXT_PUBLIC_LEMON_CHECKOUT_TALLER!}
-              className="border border-ink text-ink px-5 py-4 text-sm font-light hover:border-rust hover:text-rust transition-colors text-center"
+              className="bg-ink text-paper px-5 py-4 text-sm font-medium hover:bg-accent transition-colors text-center"
             >
               Acceder al Taller · USD 100
             </BuyButton>
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
               Acceso de por vida · actualizaciones incluidas
             </p>
           </div>
         ) : (
           <Link
             href="/cad-management/modulo-a"
-            className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
+            className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
           >
             Continuar →
           </Link>

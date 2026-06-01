@@ -8,7 +8,7 @@ export default async function PackCompletoPage() {
   const access = userId ? await hasAccess(userId, "pack-completo") : false;
 
   return (
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-screen bg-bg">
       <div className="px-8 md:px-14 py-20 max-w-5xl mx-auto">
         {/* Hero */}
         <Link
@@ -17,9 +17,9 @@ export default async function PackCompletoPage() {
         >
           ← forastero
         </Link>
-        <p className="eyebrow mb-6">Pack Completo</p>
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-6">Pack Completo</p>
         <h1
-          className="text-5xl font-light leading-tight mb-4 text-ink"
+          className="text-5xl font-semibold leading-tight mb-4 text-ink"
           style={{ letterSpacing: "-0.04em" }}
         >
           CAD Management + Bootcamp
@@ -36,7 +36,7 @@ export default async function PackCompletoPage() {
         </p>
 
         {!access && (
-          <span className="inline-block border border-line text-stone/50 px-5 py-3 text-sm font-light cursor-default mb-20">
+          <span className="inline-block font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-3 cursor-default mb-20">
             Próximamente
           </span>
         )}
@@ -44,7 +44,7 @@ export default async function PackCompletoPage() {
           <div className="flex flex-wrap gap-4 mb-20">
             <Link
               href="/cad-management"
-              className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
+              className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
             >
               Ir a CAD Management →
             </Link>
@@ -60,18 +60,18 @@ export default async function PackCompletoPage() {
         <div className="h-px bg-line mb-10" />
 
         {/* Qué incluye */}
-        <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-10">
+        <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-10">
           Qué incluye
         </p>
 
         {/* Bloque CAD Management */}
-        <div className="border border-line mb-4">
-          <div className="bg-white p-8 md:p-10 border-b border-line">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
+        <div className="border border-line mb-4 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 md:p-10 border-b border-line">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-3">
               1 · CAD Management (Taller + Workshop)
             </p>
             <h2
-              className="text-2xl font-light text-ink mb-4"
+              className="text-2xl font-semibold text-ink mb-4"
               style={{ letterSpacing: "-0.03em" }}
             >
               Sistema completo para tu estudio
@@ -98,7 +98,7 @@ export default async function PackCompletoPage() {
               ))}
             </ul>
           </div>
-          <div className="bg-white p-6 md:p-8">
+          <div className="bg-paper p-6 md:p-8">
             <p className="text-xs font-light text-stone">
               Valor individual: <span className="text-ink">USD 150</span>
             </p>
@@ -106,13 +106,13 @@ export default async function PackCompletoPage() {
         </div>
 
         {/* Bloque Bootcamp */}
-        <div className="border border-line mb-16">
-          <div className="bg-white p-8 md:p-10 border-b border-line">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-3">
+        <div className="border border-line mb-16 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 md:p-10 border-b border-line">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-3">
               2 · Bootcamp CAD→BIM
             </p>
             <h2
-              className="text-2xl font-light text-ink mb-4"
+              className="text-2xl font-semibold text-ink mb-4"
               style={{ letterSpacing: "-0.03em" }}
             >
               Transición real a BIM en 8 semanas
@@ -142,7 +142,7 @@ export default async function PackCompletoPage() {
               ))}
             </ul>
           </div>
-          <div className="bg-white p-6 md:p-8">
+          <div className="bg-paper p-6 md:p-8">
             <p className="text-xs font-light text-stone">
               Valor individual: <span className="text-ink">USD 350</span>
             </p>
@@ -150,9 +150,9 @@ export default async function PackCompletoPage() {
         </div>
 
         {/* Para quién es */}
-        <div className="grid md:grid-cols-2 gap-0 border border-line mb-16">
-          <div className="bg-white p-8 border-b md:border-b-0 md:border-r border-line">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+        <div className="grid md:grid-cols-2 gap-0 border border-line mb-16 rounded-[24px] overflow-hidden">
+          <div className="bg-paper p-8 border-b md:border-b-0 md:border-r border-line">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               Para quién es
             </p>
             <p className="text-sm font-light text-stone leading-relaxed">
@@ -161,8 +161,8 @@ export default async function PackCompletoPage() {
               todo y prefiere no comprar por partes.
             </p>
           </div>
-          <div className="bg-white p-8">
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone mb-4">
+          <div className="bg-paper p-8">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">
               Qué necesitás
             </p>
             <ul className="flex flex-col gap-2">
@@ -187,10 +187,10 @@ export default async function PackCompletoPage() {
         <div className="h-px bg-line mb-10" />
         {!access ? (
           <div className="flex flex-col gap-3 max-w-sm">
-            <span className="border border-line text-stone/50 px-5 py-4 text-sm font-light text-center cursor-default">
+            <span className="font-mono text-[11px] tracking-[.12em] uppercase text-soft px-5 py-4 cursor-default text-center">
               Próximamente
             </span>
-            <p className="font-mono text-[10px] tracking-[.1em] uppercase text-stone">
+            <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft">
               Acceso de por vida · certificado del Bootcamp incluido
             </p>
           </div>
@@ -198,7 +198,7 @@ export default async function PackCompletoPage() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/cad-management"
-              className="inline-block border border-ink text-ink px-5 py-3 text-sm font-light hover:border-rust hover:text-rust transition-colors"
+              className="inline-block bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-accent transition-colors"
             >
               Ir a CAD Management →
             </Link>
