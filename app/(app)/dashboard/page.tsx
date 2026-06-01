@@ -78,7 +78,7 @@ export default async function DashboardPage() {
   return (
     <ContentArea>
       {/* 3.1 Saludo */}
-      <h1 className="text-4xl font-light tracking-tight text-ink mb-1">
+      <h1 className="text-4xl font-semibold tracking-tight text-ink mb-1">
         Hola {name}
       </h1>
       {email && (
@@ -89,10 +89,10 @@ export default async function DashboardPage() {
         <>
           <div className="h-px bg-line mb-8" />
           <div className="max-w-md">
-            <p className="text-base font-light text-deep mb-2">
+            <p className="text-base text-stone mb-2">
               Todavía no tenés formaciones activas.
             </p>
-            <p className="text-sm font-light text-stone mb-6">
+            <p className="text-sm text-stone mb-6">
               Explorá las formaciones disponibles y empezá cuando quieras.
             </p>
             <Link
@@ -111,7 +111,7 @@ export default async function DashboardPage() {
           {nextStep && (
             <>
               <div className="h-px bg-line mb-8" />
-              <p className="eyebrow mb-4">Próximo paso</p>
+              <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-4">Próximo paso</p>
               <Link
                 href={nextStep.href}
                 className="inline-block border border-ink text-sm font-light text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
@@ -123,36 +123,36 @@ export default async function DashboardPage() {
 
           {/* Mis formaciones */}
           <div className="h-px bg-line mt-10 mb-8" />
-          <p className="eyebrow mb-6">Mis formaciones</p>
+          <p className="font-mono text-[11px] tracking-[.12em] uppercase text-soft mb-6">Mis formaciones</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
             {tallerAccess && (
-              <div className="border border-line bg-white p-6 flex flex-col gap-5">
-                <p className="text-sm font-light text-ink leading-snug">
+              <div className="border border-line bg-paper p-6 flex flex-col gap-5">
+                <p className="text-sm text-ink leading-snug">
                   Taller de Documentación de Obras
                 </p>
                 <Link
                   href="/cad-management"
-                  className="font-mono text-[9px] tracking-[.1em] uppercase text-stone border border-line px-4 py-2 hover:border-ink hover:text-ink transition-colors self-start"
+                  className="font-mono text-[9px] tracking-[.1em] uppercase text-ink border border-line px-4 py-2 hover:border-ink hover:bg-ink hover:text-paper transition-colors self-start"
                 >
                   Acceder →
                 </Link>
               </div>
             )}
             {workshopAccess && (
-              <div className="border border-line bg-white p-6 flex flex-col gap-5">
-                <p className="text-sm font-light text-ink leading-snug">
+              <div className="border border-line bg-paper p-6 flex flex-col gap-5">
+                <p className="text-sm text-ink leading-snug">
                   Workshop Cotización de Obras
                 </p>
                 <Link
                   href="/cad-management/workshop-cotizacion"
-                  className="font-mono text-[9px] tracking-[.1em] uppercase text-stone border border-line px-4 py-2 hover:border-ink hover:text-ink transition-colors self-start"
+                  className="font-mono text-[9px] tracking-[.1em] uppercase text-ink border border-line px-4 py-2 hover:border-ink hover:bg-ink hover:text-paper transition-colors self-start"
                 >
                   Acceder →
                 </Link>
               </div>
             )}
             {bootcampAccess && (
-              <div className="border border-line bg-white p-6 flex flex-col gap-5">
+              <div className="border border-line bg-paper p-6 flex flex-col gap-5">
                 <div>
                   <p className="text-sm font-light text-ink leading-snug mb-1">
                     Bootcamp CAD→BIM
@@ -165,7 +165,7 @@ export default async function DashboardPage() {
                 </div>
                 <Link
                   href="/bootcamp/dashboard"
-                  className="font-mono text-[9px] tracking-[.1em] uppercase text-stone border border-line px-4 py-2 hover:border-ink hover:text-ink transition-colors self-start"
+                  className="font-mono text-[9px] tracking-[.1em] uppercase text-ink border border-line px-4 py-2 hover:border-ink hover:bg-ink hover:text-paper transition-colors self-start"
                 >
                   Acceder →
                 </Link>

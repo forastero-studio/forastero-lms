@@ -18,17 +18,17 @@ export default function ModuleCard({
   return (
     <Link
       href={locked ? "#" : href}
-      className={`block border border-line bg-white p-6 group transition-colors ${
-        locked ? "opacity-50 cursor-not-allowed" : "hover:border-stone"
+      className={`block border border-line bg-paper p-6 group transition-colors ${
+        locked ? "opacity-50 cursor-not-allowed" : "hover:border-line-strong"
       }`}
     >
       <p className="font-mono text-[9px] tracking-widest uppercase text-stone mb-8">
         {number}
       </p>
-      <h3 className="text-xl font-light tracking-tight text-ink mb-3 group-hover:text-deep transition-colors">
+      <h3 className="text-xl tracking-tight text-ink mb-3 group-hover:text-deep transition-colors">
         {title}
       </h3>
-      <p className="text-sm font-light text-stone leading-relaxed">
+      <p className="text-sm text-stone leading-relaxed">
         {description}
       </p>
       {locked && (

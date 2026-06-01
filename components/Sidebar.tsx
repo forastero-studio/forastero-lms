@@ -134,8 +134,8 @@ export default function Sidebar({
         onClick={onClick}
         className={`block text-left py-1.5 ${size} transition-colors ${
           active
-            ? `${activePl} pr-3 border-l-2 border-rust font-medium text-ink`
-            : `${pl} font-light text-stone hover:text-ink`
+            ? `${activePl} pr-3 border-l-2 border-ink font-medium text-ink`
+            : `${pl} text-stone hover:text-ink`
         }`}
       >
         {label}
@@ -162,7 +162,7 @@ export default function Sidebar({
       <div>
         <button
           onClick={() => toggle(nodeKey)}
-          className={`w-full text-left flex items-center justify-between ${pl} pr-2 py-1.5 ${size} font-light text-stone hover:text-ink transition-colors`}
+          className={`w-full text-left flex items-center justify-between ${pl} pr-2 py-1.5 ${size} text-stone hover:text-ink transition-colors`}
         >
           {label}
           <span className="font-mono text-[8px] shrink-0 ml-1">

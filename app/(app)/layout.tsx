@@ -55,7 +55,7 @@ export default async function AppLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen bg-bg">
       <Sidebar {...sidebarProps} />
       <main className="flex-1 overflow-y-auto">{children}</main>
       <AgentDrawer />
