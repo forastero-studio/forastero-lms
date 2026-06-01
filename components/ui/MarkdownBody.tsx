@@ -8,17 +8,17 @@ const components: Components = {
   h1: () => null,
   h2: ({ children }) => (
     <h2
-      className="text-2xl font-light text-ink mt-10 mb-4"
+      className="text-2xl font-semibold text-ink mt-10 mb-4"
       style={{ letterSpacing: "-0.025em" }}
     >
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-lg font-light text-ink mt-6 mb-3">{children}</h3>
+    <h3 className="text-lg font-medium text-ink mt-6 mb-3">{children}</h3>
   ),
   p: ({ children }) => (
-    <p className="text-base font-light text-deep leading-relaxed mb-4">
+    <p className="text-base font-light text-ink leading-[1.75] mb-4">
       {children}
     </p>
   ),
@@ -31,7 +31,7 @@ const components: Components = {
     </ol>
   ),
   li: ({ children }) => (
-    <li className="flex items-start gap-3 text-sm font-light text-deep">
+    <li className="flex items-start gap-3 text-sm font-light text-ink leading-[1.75]">
       <span className="mt-2 w-1 h-1 rounded-full shrink-0 bg-stone" />
       <span>{children}</span>
     </li>
