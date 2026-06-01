@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { auth } from "@clerk/nextjs/server";
+import HeroMacAnimation from "@/components/HeroMacAnimation";
 
 function W({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
@@ -125,67 +126,11 @@ function Hero() {
             </div>
           </div>
 
-          {/* Right: Dashboard Mockup */}
-          <DashboardMockup />
+          {/* Right: Mac window animation */}
+          <HeroMacAnimation />
         </div>
       </W>
     </section>
-  );
-}
-
-function DashboardMockup() {
-  const cards = [
-    {
-      label: "Semana 2 · Estructura y muros",
-      text: "Modelás la envolvente del Refugio Alpe di Portola. Tipos de muro con composición de capas y sistema de fases.",
-      code: false,
-    },
-    {
-      label: "Validación IFC",
-      text: "Verde. Los niveles están definidos según cotas reales. Pasás a Semana 3.",
-      code: true,
-    },
-    {
-      label: "Tu progreso",
-      text: "Bootcamp · Semana 2 de 8 · acceso de por vida",
-      code: false,
-    },
-  ];
-
-  return (
-    <div
-      className="bg-paper border border-line rounded-[26px]"
-      style={{ padding: "22px", boxShadow: "0 36px 90px rgba(40,38,32,0.08)" }}
-    >
-      {/* Top bar */}
-      <div className="flex justify-between items-center" style={{ marginBottom: "22px" }}>
-        <div className="flex gap-[7px]">
-          <div className="w-[10px] h-[10px] rounded-full bg-[#d3d0c9]" />
-          <div className="w-[10px] h-[10px] rounded-full bg-[#d3d0c9]" />
-          <div className="w-[10px] h-[10px] rounded-full bg-[#d3d0c9]" />
-        </div>
-        <p className="font-mono text-[11px] tracking-[2px] uppercase text-soft">
-          forastero · asistente
-        </p>
-      </div>
-      {/* Cards */}
-      <div className="flex flex-col gap-4">
-        {cards.map((card, i) => (
-          <div key={i} className="bg-bg border border-line rounded-[18px] p-5">
-            <h4 className="font-mono text-[10px] uppercase tracking-[1.5px] text-soft mb-3">
-              {card.label}
-            </h4>
-            <p
-              className={`leading-[1.55] text-[14px] ${
-                card.code ? "font-mono text-ink" : "text-stone"
-              }`}
-            >
-              {card.text}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }
 
