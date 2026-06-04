@@ -131,7 +131,7 @@ export default async function DashboardPage() {
                   Taller de Documentación de Obras
                 </p>
                 <Link
-                  href="/cad-management"
+                  href={`/cad-management/${nextTallerModule?.slug ?? "modulo-a"}`}
                   className="font-mono text-[9px] tracking-[.1em] uppercase text-ink border border-line px-4 py-2 hover:border-ink hover:bg-ink hover:text-paper transition-colors self-start"
                 >
                   Acceder →
