@@ -111,7 +111,7 @@ A la par del plano de estructura, vas a aprender a generar el **plano de replant
 
 ## Ejercicio del módulo
 
-Tomá el archivo del Módulo A que ya organizaste y vinculá la arquitectura como XREF al `00.ESTRUCTURA.dwg`. Cuando tengas eso funcionando, generá el plano de replanteo de muros tomando como base ese mismo vínculo: la idea es que veas en la práctica cómo una sola modificación en la base de arquitectura se refleja automáticamente en los planos derivados.
+Tomá el archivo de arquitectura que organizaste en el Módulo A y vinculá el `00.ESTRUCTURA.dwg` como XREF dentro de él. Cuando tengas eso funcionando, generá el plano de replanteo de muros tomando como base ese mismo vínculo: la idea es que veas en la práctica cómo una sola modificación en la base de arquitectura se refleja automáticamente en los planos derivados.
 
 Como segundo paso, organizá las planillas de doblado siguiendo la estructura del ejemplo: portada, cómputo, vigas, losas.
 

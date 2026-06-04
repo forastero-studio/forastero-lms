@@ -107,7 +107,7 @@ Como bonus, te dejo dos anexos en video sobre AutoCAD (IOS y Windows) que cubren
 
 ## Ejercicio del módulo
 
-Generá los tres planos del módulo —marmolería, terminaciones y cielorrasos— sobre la XREF de arquitectura. La marmolería pedila a 1:20 y prestá especial atención al despiece. El de cielorrasos arrancalo con una tipología simple y agregale las luminarias del set de bloques.
+Generá los tres planos del módulo —marmolería, terminaciones y cielorrasos—. La marmolería pedila a 1:20 y prestá especial atención al despiece. El de cielorrasos arrancalo con una tipología simple y agregale las luminarias del set de bloques.
 
 Como ejercicio paralelo, organizá tu .dwg con **layouts** —uno por cada plano— en lugar de tener tres archivos separados. El video y los anexos te explican el cómo. Es el cambio de método más importante de este módulo.
 

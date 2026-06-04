@@ -76,7 +76,7 @@ nextModulo: "modulo-d"
 
 Las instalaciones son donde la documentación se pone seria. No alcanza con que el plano "se vea bien": tiene que ser **legible para el instalador en obra**, tiene que tener la información mínima que pide la municipalidad o el ente regulador, y tiene que cumplir con criterios de representación gráfica que no son negociables.
 
-En este módulo vas a producir cuatro planos completos: **agua fría y caliente**, **cloacal**, **pluvial** y **gas**. Cada uno tiene su lógica, sus convenciones de representación y sus particularidades. Y todos comparten algo importante: se montan sobre la misma XREF de arquitectura que armaste en el Módulo B.
+En este módulo vas a producir cuatro planos completos: **agua fría y caliente**, **cloacal**, **pluvial** y **gas**. Cada uno tiene su lógica, sus convenciones de representación y sus particularidades.
 
 Vas a aprender también a leer y construir **esquemas de instalación**, esa representación isométrica/axonométrica que comunica el funcionamiento de las redes sanitarias por niveles. Es lo que se entrega adicionalmente al plano en planta y lo que muchas veces marca la diferencia entre una documentación pasable y una buena.
 

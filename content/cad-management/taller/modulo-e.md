@@ -60,7 +60,7 @@ La instalación eléctrica y la termomecánica son las dos redes que más se **c
 
 En este módulo vas a producir **cinco planos**: la instalación eléctrica dividida en dos láminas (iluminación / tomas y corrientes débiles), y la termomecánica desplegada en tres opciones de climatización (aire acondicionado / radiadores / losa radiante). No siempre vas a usar las tres en un mismo proyecto, pero entender las tres te permite elegir con criterio cuál corresponde según clima, tipo de obra y presupuesto del cliente.
 
-A esta altura del Taller ya manejás layers, CTB, XREFs y layouts. Lo que vas a sumar acá es el ojo para la **coordinación entre planos superpuestos**: usar la XREF de arquitectura, la XREF de cielorrasos del módulo anterior, y los bloques propios de la disciplina para que todo calce sin contradicciones.
+A esta altura del Taller ya manejás layers, CTB, XREFs y layouts. Lo que vas a sumar acá es el ojo para la **coordinación entre planos superpuestos**.
 
 Hay dos anexos de AutoCAD que cierran la metodología del Taller en lo que respecta a impresión profesional: el de **CTB en profundidad** y el de **gestión de impresiones**. Material denso pero clave para entregar.
 
