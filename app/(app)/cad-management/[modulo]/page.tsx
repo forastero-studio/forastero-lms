@@ -4,7 +4,7 @@ import ContentArea from "@/components/ContentArea";
 import ModuleCard from "@/components/ModuleCard";
 import MarkdownBody from "@/components/ui/MarkdownBody";
 import DescargablesList from "@/components/DescargablesList";
-import { getCadManagementModule, getCadManagementModules, getWorkshopModules } from "@/lib/content";
+import { getCadManagementModule, getCadManagementModules, getTallerModules, getWorkshopModules } from "@/lib/content";
 import { hasAccess } from "@/lib/db";
 import Link from "next/link";
 
@@ -56,7 +56,7 @@ export default async function ModuloPage({ params }: Props) {
     );
   }
 
-  const allModules = getCadManagementModules();
+  const allModules = isWorkshopModule ? getWorkshopModules() : getTallerModules();
 
   return (
     <ContentArea>
@@ -146,7 +146,7 @@ export default async function ModuloPage({ params }: Props) {
       )}
 
       <div className="h-px bg-line mb-8" />
-      <p className="eyebrow mb-6">Módulos del taller</p>
+      <p className="eyebrow mb-6">{isWorkshopModule ? "Clases del workshop" : "Módulos del taller"}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {allModules.map((m, i) => (
           <ModuleCard
