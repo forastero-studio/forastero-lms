@@ -220,6 +220,7 @@ const PRODUCTS = [
     price: "USD 350",
     cta: "Ver el Bootcamp",
     primary: true,
+    comingSoon: true,
   },
 ];
 
@@ -277,6 +278,11 @@ function ProductsSection() {
               >
                 {p.price}
               </div>
+              {p.comingSoon && (
+                <p className="font-mono text-[9px] tracking-[.1em] uppercase text-soft mb-3">
+                  — Próximamente —
+                </p>
+              )}
               <span
                 className={`self-start rounded-full font-semibold text-[15px] transition-all duration-300 ${
                   p.primary
@@ -417,6 +423,9 @@ function PacksSection() {
               <div className="text-[12px] text-bg mb-[22px]" style={{ opacity: 0.62 }}>
                 CAD Management + Bootcamp
               </div>
+              <p className="font-mono text-[9px] tracking-[.1em] uppercase mb-3" style={{ color: "#a8a59d" }}>
+                — Próximamente —
+              </p>
               <Link
                 href="/pack-completo"
                 className="inline-block rounded-full font-semibold transition-all duration-300 hover:-translate-y-0.5"
