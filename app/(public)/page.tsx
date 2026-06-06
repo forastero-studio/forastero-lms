@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { auth } from "@clerk/nextjs/server";
 import HeroMacAnimation from "@/components/HeroMacAnimation";
+import MobileNav from "@/components/MobileNav";
 
 function W({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
@@ -44,7 +45,8 @@ async function Nav() {
         >
           forastero
         </Link>
-        <div className="flex gap-[38px] text-[13px] text-stone items-center">
+        {/* Desktop: idéntico al actual */}
+        <div className="hidden md:flex gap-[38px] text-[13px] text-stone items-center">
           <a href="#productos" className="hover:text-ink transition-colors">
             Formaciones
           </a>
@@ -69,6 +71,9 @@ async function Nav() {
             </Link>
           )}
         </div>
+
+        {/* Mobile: hamburguesa + CTA */}
+        <MobileNav isSignedIn={!!userId} />
       </W>
     </nav>
   );
